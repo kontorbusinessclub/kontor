@@ -1,0 +1,160 @@
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.viewport {
+  position: relative;
+  overflow: hidden;
+  /* Weicher Auslauf an beiden Rändern. */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.75rem;
+  will-change: transform;
+}
+
+/* Richtungen: links startet bei 0 und läuft nach -50%,
+   rechts startet bei -50% und läuft nach 0. */
+.left {
+  animation-name: marqueeLeft;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.right {
+  animation-name: marqueeRight;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Unterschiedliches Tempo pro Reihe. */
+.slow {
+  animation-duration: 48s;
+}
+.medium {
+  animation-duration: 40s;
+}
+.fast {
+  animation-duration: 33s;
+}
+
+/* Versetzter Start, damit die Reihen nicht synchron laufen. */
+.d0 {
+  animation-delay: 0s;
+}
+.d1 {
+  animation-delay: -7s;
+}
+.d2 {
+  animation-delay: -14s;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+/* Chips: Champagner-Fläche, feiner Gold-Rand, Tinte-Text, dezenter Hover. */
+.chip {
+  flex-shrink: 0;
+  white-space: nowrap;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-gold, #bd9d5e) 40%, transparent);
+  background-color: var(--color-champagner, #efe5c9);
+  color: var(--color-tinte, #14181f);
+  font-family: var(--font-serif), serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Variierende Breiten/Polster für unregelmäßigen Rhythmus. */
+.wNarrow {
+  padding: 0.55rem 1.1rem;
+}
+.wMid {
+  padding: 0.6rem 1.6rem;
+}
+.wWide {
+  padding: 0.65rem 2.1rem;
+}
+
+/* Leicht versetzte vertikale Lage. */
+.up {
+  transform: translateY(-0.3rem);
+}
+.down {
+  transform: translateY(0.3rem);
+}
+
+.chip:hover {
+  transform: translateY(-0.2rem);
+  border-color: var(--color-gold, #bd9d5e);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--color-koenigsblau, #1a2f6e) 18%, transparent);
+}
+
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Zwei identische Gruppen, daher exakt -50%. */
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    row-gap: 0.75rem;
+  }
+
+  .chip {
+    transform: none;
+  }
+
+  .up,
+  .down {
+    transform: none;
+  }
+
+  .viewport {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}

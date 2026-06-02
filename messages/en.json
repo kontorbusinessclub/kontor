@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "title": "Kontor Business Club",
+    "description": "Recommend. Grow. Connect. An exclusive circle of entrepreneurs in the Münsterland region, one representative per industry."
+  },
+  "nav": {
+    "club": "Club",
+    "events": "Events",
+    "members": "Members",
+    "mitgliedschaft": "Membership",
+    "kontakt": "Contact",
+    "kapitel": {
+      "clubleben": "Club life",
+      "philosophie": "Philosophy",
+      "charta": "Charter",
+      "business": "Business events",
+      "social": "Social events",
+      "kalender": "Event calendar",
+      "login": "Login",
+      "vorteile": "Benefits",
+      "antrag": "Membership application",
+      "beratung": "Consultation",
+      "formular": "Contact form"
+    }
+  },
+  "common": {
+    "cta": {
+      "anfragen": "Get in touch",
+      "anmelden": "Sign in",
+      "mehr": "Learn more",
+      "senden": "Send",
+      "absenden": "Submit",
+      "zumAntrag": "Apply to join",
+      "zumKontakt": "Contact us"
+    },
+    "form": {
+      "name": "Name",
+      "firma": "Company",
+      "email": "Email",
+      "telefon": "Phone",
+      "nachricht": "Message",
+      "branche": "Industry",
+      "website": "Website",
+      "anzahlGaeste": "Number of guests",
+      "vertreter": "Representative",
+      "istMitglied": "I am already a member",
+      "pflichtfeld": "Required",
+      "erfolg": "Thanks. We have your message and will get back to you soon.",
+      "fehler": "Something went wrong. Please check your details and try again."
+    }
+  },
+  "home": {
+    "kicker": "Münsterland",
+    "slogan": "Recommend. Grow. Connect.",
+    "aufhaenger": "Many industries. One goal.",
+    "intro": "An exclusive circle of entrepreneurs and executives. One representative per industry.",
+    "nextEvent": {
+      "kicker": "Opening night",
+      "titel": "The first Kontor event",
+      "datumLabel": "18 June 2026",
+      "ortLabel": "Münsterland",
+      "cta": "Reserve your spot"
+    },
+    "aktuelles": {
+      "kicker": "Updates",
+      "titel": "What is happening at Kontor",
+      "intro": "New members, upcoming dates, glimpses from the club. See what we are working on right now."
+    },
+    "saeulen": {
+      "kicker": "What matters",
+      "titel": "Three pillars, one club",
+      "club": {
+        "titel": "The club",
+        "text": "A fixed circle of self-employed professionals, entrepreneurs and managing directors. One representative per industry, so no one competes against another and everyone works for each other."
+      },
+      "veranstaltungen": {
+        "titel": "Events",
+        "text": "Business events for real referrals and social events for the personal connection. Always in person, never during your regular working hours."
+      },
+      "miteinander": {
+        "titel": "Togetherness",
+        "text": "We build on trust, not stacks of business cards. People who know each other recommend differently. That is the heart of Kontor."
+      }
+    },
+    "banner": {
+      "titel": "Represented companies"
+    },
+    "testimonials": {
+      "kicker": "Voices",
+      "titel": "What members say",
+      "items": [
+        {
+          "zitat": "At Kontor I know everyone personally. A referral from here carries far more weight than any cold contact.",
+          "name": "Placeholder name",
+          "rolle": "Managing director, consulting"
+        },
+        {
+          "zitat": "No competition at my own table. That is exactly what makes the difference. We genuinely help each other.",
+          "name": "Placeholder name",
+          "rolle": "Owner, trades"
+        },
+        {
+          "zitat": "The events never fall within my working hours. I take that seriously, and so does my family.",
+          "name": "Placeholder name",
+          "rolle": "Founder, start-up"
+        }
+      ]
+    },
+    "faq": {
+      "kicker": "Frequent questions",
+      "titel": "Good to know",
+      "items": [
+        {
+          "frage": "Do the events take place online?",
+          "antwort": "No. All events happen in person only. Meeting face to face is the heart of Kontor."
+        },
+        {
+          "frage": "When do the events take place?",
+          "antwort": "Never during your regular working hours. We respect that your day-to-day business comes first."
+        },
+        {
+          "frage": "How many members per industry?",
+          "antwort": "Exactly one. There is only one representative per industry at Kontor. That way there is no competition inside the club, only real referral business."
+        },
+        {
+          "frage": "Can someone stand in for me?",
+          "antwort": "At business events, yes. If you cannot attend yourself, a fixed representative from your company may come. Social events are personal."
+        },
+        {
+          "frage": "May I bring someone along?",
+          "antwort": "Yes. Friends and colleagues are welcome, especially if they might fit the idea behind Kontor."
+        },
+        {
+          "frage": "How do I become a member?",
+          "antwort": "Low-threshold and transparent. You submit an application, we talk, and if your industry is still open, we welcome you in."
+        }
+      ]
+    },
+    "social": {
+      "titel": "Stay in the loop",
+      "text": "Dates, glimpses and new members first on our channels.",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "kontaktCta": {
+      "titel": "Is this for you?",
+      "text": "If your industry is still open and you value real referrals, let us talk.",
+      "cta": "Get in touch"
+    }
+  },
+  "club": {
+    "clubleben": {
+      "kicker": "Club life",
+      "titel": "How Kontor feels",
+      "intro": "Kontor is not just another networking date in your calendar. It is a fixed circle where people actually know each other.",
+      "absaetze": [
+        "With us there is not a different face at the table every evening. The circle stays small enough for trust to grow. People who meet over months recommend differently than someone you ran into once at a trade fair.",
+        "We clearly separate business and social. Business events are about concrete referrals, projects and collaboration. Social events are about the person behind the company.",
+        "Everything takes place in person and never during your regular working hours. Your day-to-day business comes first. The club fits around it, not the other way round."
+      ]
+    },
+    "philosophie": {
+      "kicker": "Philosophy",
+      "titel": "Why one representative per industry",
+      "intro": "The rule sounds strict, but it is the reason Kontor works.",
+      "absaetze": [
+        "If two accountants or two tradespeople sit at the same table, you get competition instead of referrals. No one sends a client to a direct rival. That is why Kontor has only one representative per industry.",
+        "It makes every referral valuable. Whoever is asked in the club is the one go-to person for their field. Complementarity instead of competition is our model.",
+        "For you that means your industry is yours as long as you are part of the club. No one else from your field joins alongside you."
+      ]
+    },
+    "charta": {
+      "kicker": "Charter",
+      "titel": "What we agree on",
+      "intro": "A few simple principles hold Kontor together.",
+      "punkte": [
+        "One industry, one representative. No internal competition.",
+        "Referrals are meant seriously and are honoured.",
+        "All events in person, never during regular working hours.",
+        "Representation only at business events, by a fixed person from the company.",
+        "Guests are welcome if they fit the idea behind Kontor.",
+        "We speak openly and keep what is confidential confidential."
+      ]
+    }
+  },
+  "events": {
+    "intro": {
+      "kicker": "Events",
+      "titel": "Two formats, one circle",
+      "text": "At Kontor there are business events for the professional side and social events for the personal one. Both always in person and outside your regular working hours."
+    },
+    "business": {
+      "titel": "Business events",
+      "text": "This is about concrete referrals, projects and collaboration. Everyone presents what they are looking for and what they can offer. If you cannot attend yourself, a fixed representative from your company may come."
+    },
+    "social": {
+      "titel": "Social events",
+      "text": "Relaxed, personal, no agenda. This is where you get to know the person behind the company. Friends and colleagues may join if they fit the idea behind Kontor."
+    },
+    "kalender": {
+      "titel": "Upcoming dates",
+      "text": "The next events at a glance. Register through the form below.",
+      "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in the Münsterland region."
+    },
+    "anmeldung": {
+      "titel": "Register for an event",
+      "intro": "Tell us which event you are coming to and whether you are bringing someone along."
+    }
+  },
+  "members": {
+    "login": {
+      "kicker": "Members",
+      "titel": "Members area",
+      "intro": "Sign-in is reserved for members. Here you find internal dates, contacts and documents.",
+      "emailLabel": "Email",
+      "cta": "Sign in",
+      "hinweis": "The members area is not public. Members are admitted personally and receive their access directly from us."
+    }
+  },
+  "mitgliedschaft": {
+    "vorteile": {
+      "kicker": "Membership",
+      "titel": "What you get at Kontor",
+      "intro": "A membership is more than a line on a list. It secures your spot and your industry.",
+      "punkte": [
+        "Your industry is yours. No direct competition inside the club.",
+        "Real referrals from a circle that knows you.",
+        "Business events for tangible value, social events for the connection.",
+        "Dates always in person and never during regular working hours.",
+        "Representation possible at business events, by a fixed person.",
+        "Bringing guests allowed if they fit."
+      ]
+    },
+    "antrag": {
+      "kicker": "Admission",
+      "titel": "How to become a member",
+      "intro": "The way into Kontor is low-threshold and transparent. You submit an application, we get to know each other, and if your industry is open, we welcome you in."
+    }
+  },
+  "kontakt": {
+    "beratung": {
+      "kicker": "Contact",
+      "titel": "Let us talk",
+      "intro": "Questions about Kontor, or want to know whether your industry is still open? Write to us and we will get back to you soon."
+    },
+    "formular": {
+      "kicker": "Message",
+      "titel": "Write to us",
+      "intro": "The more concrete your message, the better we can answer you."
+    }
+  },
+  "legal": {
+    "impressum": {
+      "titel": "Imprint",
+      "platzhalter": "The full details under Section 5 TMG will follow shortly."
+    },
+    "datenschutz": {
+      "titel": "Privacy",
+      "platzhalter": "The full privacy policy will follow shortly."
+    }
+  },
+  "footer": {
+    "slogan": "Recommend. Grow. Connect.",
+    "ort": "Kontor Business Club · Münsterland",
+    "adresse": [
+      "Kontor Business Club",
+      "Münsterland"
+    ],
+    "rechtliches": {
+      "impressum": "Imprint",
+      "datenschutz": "Privacy"
+    },
+    "socialTitel": "Follow",
+    "headings": {
+      "navigation": "Navigation",
+      "rechtliches": "Legal"
+    }
+  },
+  "chapterOutro": {
+    "frage": "Is this for you?",
+    "weiter": "Next"
+  }
+}

@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* ============================================================
+   KONTOR BUSINESS CLUB · Design Tokens (Markenfibel v1.0)
+   Einzige Wahrheitsquelle für Farben + Schrift.
+   ============================================================ */
+@theme {
+  --color-koenigsblau: #1a2f6e; /* primär */
+  --color-smaragd: #15543f; /* sekundär, sparsam */
+  --color-champagner: #efe5c9; /* erhobene Flächen */
+  --color-gold: #bd9d5e; /* Akzent, nie Textfarbe auf Hell */
+  --color-kontorblau: #3457a7; /* UI/Hover */
+  --color-tinte: #14181f; /* Fließtext */
+  --color-pergament: #f4eedd; /* Seitenhintergrund */
+  --color-reinweiss: #ffffff; /* nur Bilderkarten/Datenflächen */
+
+  --font-serif: var(--font-lora), Georgia, serif; /* Headlines + Wortmarke */
+  --font-sans: var(--font-source), "Segoe UI", sans-serif; /* Fließtext + UI */
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace; /* Meta */
+
+  --container-wide: 1200px;
+  --container-text: 800px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-pergament);
+    color: var(--color-tinte);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    color: var(--color-koenigsblau);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-koenigsblau);
+  }
+}
