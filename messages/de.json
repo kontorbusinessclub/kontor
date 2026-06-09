@@ -41,7 +41,7 @@
       "nachricht": "Nachricht",
       "branche": "Branche",
       "website": "Website",
-      "anzahlGaeste": "Anzahl Gäste",
+      "veranstaltung": "Veranstaltung",
       "vertreter": "Vertreter",
       "istMitglied": "Ich bin bereits Mitglied",
       "pflichtfeld": "Pflichtfeld",
@@ -54,17 +54,29 @@
     "slogan": "Empfehlen. Wachsen. Verbinden.",
     "aufhaenger": "Viele Branchen. Ein Ziel.",
     "intro": "Ein exklusiver Kreis von Unternehmern und Führungskräften. Eine Branche, ein Vertreter.",
+    "willkommen": {
+      "titel": "Herzlich willkommen",
+      "text": "Schön, dass du da bist. Der Kontor Business Club bringt Unternehmer, Geschäftsführer und Gründer in einem festen, vertrauensvollen Kreis zusammen. Wir empfehlen einander, wachsen gemeinsam und verbinden Geschäftliches mit echtem Miteinander – immer in Präsenz und außerhalb deiner Arbeitszeit."
+    },
+    "events": {
+      "kicker": "Termine",
+      "titel": "Die nächsten Veranstaltungen",
+      "text": "Ein Blick auf die kommenden Business- und Social Events. Sichere dir deinen Platz.",
+      "anmelden": "Anmelden",
+      "leer": "Aktuell sind keine kommenden Veranstaltungen eingetragen.",
+      "tag": {
+        "business": "Business",
+        "social": "Social"
+      },
+      "prev": "Vorheriges Event",
+      "next": "Nächstes Event"
+    },
     "nextEvent": {
       "kicker": "Auftakt",
       "titel": "Das erste Kontor Event",
       "datumLabel": "18. Juni 2026",
       "ortLabel": "Provinzial Zentrale, Münster",
       "cta": "Platz sichern"
-    },
-    "aktuelles": {
-      "kicker": "Aktuelles",
-      "titel": "Was im Kontor passiert",
-      "intro": "Neue Mitglieder, kommende Termine, Einblicke aus dem Club. Hier siehst du, woran wir gerade arbeiten."
     },
     "saeulen": {
       "kicker": "Worauf es ankommt",
@@ -81,9 +93,6 @@
         "titel": "Miteinander",
         "text": "Wir setzen auf Vertrauen statt Visitenkarten-Stapel. Wer sich kennt, empfiehlt anders. Genau das ist der Kern vom Kontor."
       }
-    },
-    "banner": {
-      "titel": "Vertretene Unternehmen"
     },
     "testimonials": {
       "kicker": "Stimmen",
@@ -136,19 +145,17 @@
         }
       ]
     },
-    "social": {
-      "titel": "Bleib auf dem Laufenden",
-      "text": "Termine, Einblicke und neue Mitglieder zuerst auf unseren Kanälen.",
-      "instagram": "Instagram",
-      "linkedin": "LinkedIn"
-    },
     "kontaktCta": {
-      "titel": "Passt das zu dir?",
+      "titel": "Passt der Club zu dir?",
       "text": "Wenn deine Branche noch frei ist und du auf echte Empfehlungen setzt, lass uns reden.",
-      "cta": "Kontakt aufnehmen"
+      "ctaEvent": "Anmeldung zum Event",
+      "ctaMitglied": "Mitglied werden"
     }
   },
   "club": {
+    "kicker": "Club",
+    "titel": "Unser Club",
+    "intro": "Das Kontor ist ein fester Kreis aus Unternehmern, die sich kennen, vertrauen und füreinander empfehlen. Hier erfährst du, wie sich der Club anfühlt, warum es pro Branche nur einen Vertreter gibt und worauf wir uns verständigen.",
     "clubleben": {
       "kicker": "Clubleben",
       "titel": "So fühlt sich das Kontor an",

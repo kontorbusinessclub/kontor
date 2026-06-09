@@ -37,7 +37,7 @@ export async function Hero() {
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <Button
           variant="gold"
-          href="/events/eventkalender"
+          href="/events#kalender"
           className="bg-champagner text-koenigsblau shadow-lg hover:bg-gold hover:text-koenigsblau focus-visible:ring-offset-koenigsblau"
         >
           {t("nextEvent.cta")}

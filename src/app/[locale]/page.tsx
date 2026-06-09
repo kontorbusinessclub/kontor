@@ -1,20 +1,17 @@
 import { setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { Hero } from "@/components/home/hero";
-import { NextEvent } from "@/components/home/next-event";
+import { Willkommen } from "@/components/home/willkommen";
 import { Saeulen } from "@/components/home/saeulen";
-import { MemberBanner } from "@/components/home/member-banner";
-import { Aktuelles } from "@/components/home/aktuelles";
+import { EventsPreview } from "@/components/home/events-preview";
 import { Testimonials } from "@/components/home/testimonials";
 import { Faq } from "@/components/home/faq";
-import { Social } from "@/components/home/social";
 import { KontaktCta } from "@/components/home/kontakt-cta";
 
 /**
- * Startseite des Kontor Business Club.
- * Stapelt die Sektionen im Hintergrund-System:
- * Hero -> NextEvent -> Säulen -> Mitglieder-Banner -> Aktuelles ->
- * Testimonials -> FAQ -> Social -> Kontakt-CTA.
+ * Startseite des Kontor Business Club (Reihenfolge gemäß Aufgabe 9):
+ * Einspieler (Hero) → Herzlich willkommen → Drei Säulen → Events →
+ * Was Mitglieder sagen → FAQs → Passt der Club zu dir?
  */
 export default async function HomePage({
   params,
@@ -28,20 +25,16 @@ export default async function HomePage({
     <>
       <Hero />
 
-      <Section background="champagner">
-        <NextEvent />
+      <Section background="pergament">
+        <Willkommen />
       </Section>
 
-      <Section background="pergament">
+      <Section background="champagner">
         <Saeulen />
       </Section>
 
-      <Section background="champagner">
-        <MemberBanner />
-      </Section>
-
       <Section background="pergament">
-        <Aktuelles />
+        <EventsPreview />
       </Section>
 
       <Section background="koenigsblau">
@@ -50,10 +43,6 @@ export default async function HomePage({
 
       <Section background="pergament">
         <Faq />
-      </Section>
-
-      <Section background="champagner">
-        <Social />
       </Section>
 
       <KontaktCta />

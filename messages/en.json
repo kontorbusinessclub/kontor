@@ -41,7 +41,7 @@
       "nachricht": "Message",
       "branche": "Industry",
       "website": "Website",
-      "anzahlGaeste": "Number of guests",
+      "veranstaltung": "Event",
       "vertreter": "Representative",
       "istMitglied": "I am already a member",
       "pflichtfeld": "Required",
@@ -54,17 +54,29 @@
     "slogan": "Recommend. Grow. Connect.",
     "aufhaenger": "Many industries. One goal.",
     "intro": "An exclusive circle of entrepreneurs and executives. One representative per industry.",
+    "willkommen": {
+      "titel": "Welcome",
+      "text": "Good to have you here. The Kontor Business Club brings entrepreneurs, managing directors and founders together in a fixed, trusted circle. We recommend one another, grow together and combine business with genuine connection – always in person and outside your working hours."
+    },
+    "events": {
+      "kicker": "Dates",
+      "titel": "The next events",
+      "text": "A look at the upcoming business and social events. Reserve your spot.",
+      "anmelden": "Register",
+      "leer": "There are currently no upcoming events listed.",
+      "tag": {
+        "business": "Business",
+        "social": "Social"
+      },
+      "prev": "Previous event",
+      "next": "Next event"
+    },
     "nextEvent": {
       "kicker": "Opening night",
       "titel": "The first Kontor event",
       "datumLabel": "18 June 2026",
       "ortLabel": "Provinzial headquarters, Münster",
       "cta": "Reserve your spot"
-    },
-    "aktuelles": {
-      "kicker": "Updates",
-      "titel": "What is happening at Kontor",
-      "intro": "New members, upcoming dates, glimpses from the club. See what we are working on right now."
     },
     "saeulen": {
       "kicker": "What matters",
@@ -81,9 +93,6 @@
         "titel": "Togetherness",
         "text": "We build on trust, not stacks of business cards. People who know each other recommend differently. That is the heart of Kontor."
       }
-    },
-    "banner": {
-      "titel": "Represented companies"
     },
     "testimonials": {
       "kicker": "Voices",
@@ -136,19 +145,17 @@
         }
       ]
     },
-    "social": {
-      "titel": "Stay in the loop",
-      "text": "Dates, glimpses and new members first on our channels.",
-      "instagram": "Instagram",
-      "linkedin": "LinkedIn"
-    },
     "kontaktCta": {
-      "titel": "Is this for you?",
+      "titel": "Is the club right for you?",
       "text": "If your industry is still open and you value real referrals, let us talk.",
-      "cta": "Get in touch"
+      "ctaEvent": "Register for an event",
+      "ctaMitglied": "Become a member"
     }
   },
   "club": {
+    "kicker": "Club",
+    "titel": "Our club",
+    "intro": "Kontor is a fixed circle of entrepreneurs who know each other, trust each other and recommend one another. Here you learn how the club feels, why there is only one representative per industry and what we agree on.",
     "clubleben": {
       "kicker": "Club life",
       "titel": "How Kontor feels",

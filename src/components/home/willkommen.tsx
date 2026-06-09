@@ -1,29 +1,24 @@
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
-import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
- * Aktuelles-Sektion auf pergament-Fläche. Noch keine echten News,
- * daher ein kurzer Hinweistext als Platzhalter. Sanft eingeblendet.
+ * „Herzlich willkommen"-Text auf der Startseite (Aufgabe 9, Position 2).
+ * Ruhiger Einstiegsabsatz unter dem Hero.
  */
-export async function Aktuelles() {
-  const t = await getTranslations("home");
+export async function Willkommen() {
+  const t = await getTranslations("home.willkommen");
 
   return (
     <Container variant="text">
-      <Reveal className="flex flex-col items-start gap-5">
-        <Kicker tone="light">{t("aktuelles.kicker")}</Kicker>
-
+      <Reveal className="flex flex-col items-center gap-6 text-center">
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
-          {t("aktuelles.titel")}
+          {t("titel")}
         </h2>
-
-        <GoldRule className="mx-0" />
-
+        <GoldRule />
         <p className="font-sans text-lg font-light leading-relaxed text-tinte/85">
-          {t("aktuelles.intro")}
+          {t("text")}
         </p>
       </Reveal>
     </Container>

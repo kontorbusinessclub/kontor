@@ -11,37 +11,51 @@ import {
 } from "@/lib/forms/schemas";
 
 /**
- * Eingabe-Typ (vor zod-Transform): anzahlGaeste/Checkboxen kommen als
- * String aus dem DOM. Das Schema coerced sie zum Ausgabe-Typ
- * (EventRegistrationInput) mit number/boolean.
+ * Eingabe-Typ (vor zod-Transform): Checkboxen kommen als String/Boolean
+ * aus dem DOM, das Schema coerced sie zum Ausgabe-Typ.
  */
 type EventFormValues = z.input<typeof eventRegistrationSchema>;
-import { submitEventRegistration } from "@/lib/forms/actions";
-import { Field, Input, Textarea } from "@/components/ui/field";
+import { postForm, honeypotProps } from "@/lib/forms/submit";
+import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 import { Kicker } from "@/components/ui/kicker";
 
+export type EventOption = { id: string; label: string };
+
 type EventRegistrationFormProps = {
-  /** Name des Events, fuer das angemeldet wird (vorbelegt, nicht editierbar). */
-  eventName: string;
+  /** Künftige Events als Auswahl (aus der zentralen events-Liste). */
+  events: EventOption[];
+  /** Vorausgewähltes Event (z.B. via Query-Param ?event= oder Karten-Klick). */
+  defaultEventId?: string;
+  /** Hinweistext zur Vertreter-Regel (Business Events). */
+  vertreterHint: string;
 };
 
 type Status = "idle" | "success" | "error";
 
 /**
- * Anmeldeformular fuer ein konkretes Event.
+ * Anmeldeformular für eine Veranstaltung (Aufgabe 12).
  *
- * Telefon ist Pflicht (Rueckruf statt nur Mail). Der eventName wird
- * aussen reingereicht und mit den Formulardaten an die Server Action
- * uebergeben. Sichtbare Texte kommen aus den Uebersetzungen.
+ * „Anzahl Gäste" entfällt (12.1). Stattdessen Pflicht-Auswahl der
+ * Veranstaltung aus der zentralen events-Liste (12.2), vorausgewählt
+ * ist die nächste anstehende bzw. die per ?event= übergebene.
+ * Versand über /api/event-registration.
  */
-export function EventRegistrationForm({ eventName }: EventRegistrationFormProps) {
+export function EventRegistrationForm({
+  events,
+  defaultEventId,
+  vertreterHint,
+}: EventRegistrationFormProps) {
   const t = useTranslations("events.anmeldung");
-  const te = useTranslations("events");
   const tf = useTranslations("common.form");
   const tc = useTranslations("common.cta");
 
   const [status, setStatus] = useState<Status>("idle");
+
+  const initialEventId =
+    defaultEventId && events.some((e) => e.id === defaultEventId)
+      ? defaultEventId
+      : (events[0]?.id ?? "");
 
   const {
     register,
@@ -57,16 +71,16 @@ export function EventRegistrationForm({ eventName }: EventRegistrationFormProps)
       email: "",
       telefon: "",
       nachricht: "",
-      eventName,
-      anzahlGaeste: 0,
+      eventId: initialEventId,
       vertreter: false,
       istMitglied: false,
+      hp: "",
     },
   });
 
-  async function onSubmit(data: EventRegistrationInput) {
+  async function onSubmit(values: EventRegistrationInput) {
     setStatus("idle");
-    const result = await submitEventRegistration({ ...data, eventName });
+    const result = await postForm("/api/event-registration", values);
 
     if (result.ok) {
       reset({
@@ -75,10 +89,10 @@ export function EventRegistrationForm({ eventName }: EventRegistrationFormProps)
         email: "",
         telefon: "",
         nachricht: "",
-        eventName,
-        anzahlGaeste: 0,
+        eventId: initialEventId,
         vertreter: false,
         istMitglied: false,
+        hp: "",
       });
       setStatus("success");
       return;
@@ -99,7 +113,7 @@ export function EventRegistrationForm({ eventName }: EventRegistrationFormProps)
   return (
     <div className="mx-auto w-full max-w-[var(--container-text)]">
       <div className="flex flex-col gap-4">
-        <Kicker tone="light">{eventName}</Kicker>
+        <Kicker tone="light">{tf("veranstaltung")}</Kicker>
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau">
           {t("titel")}
         </h2>
@@ -114,7 +128,31 @@ export function EventRegistrationForm({ eventName }: EventRegistrationFormProps)
         className="mt-10 flex flex-col gap-6"
         aria-describedby={status !== "idle" ? "event-form-status" : undefined}
       >
-        <input type="hidden" value={eventName} {...register("eventName")} />
+        <input {...honeypotProps} {...register("hp")} />
+
+        <Field
+          label={tf("veranstaltung")}
+          htmlFor="event-eventId"
+          required
+          error={errors.eventId?.message}
+        >
+          <Select
+            id="event-eventId"
+            invalid={Boolean(errors.eventId)}
+            aria-describedby={errors.eventId ? "event-eventId-error" : undefined}
+            {...register("eventId")}
+          >
+            {events.length === 0 ? (
+              <option value="">—</option>
+            ) : (
+              events.map((event) => (
+                <option key={event.id} value={event.id}>
+                  {event.label}
+                </option>
+              ))
+            )}
+          </Select>
+        </Field>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <Field
@@ -180,25 +218,6 @@ export function EventRegistrationForm({ eventName }: EventRegistrationFormProps)
               {...register("telefon")}
             />
           </Field>
-
-          <Field
-            label={tf("anzahlGaeste")}
-            htmlFor="event-gaeste"
-            error={errors.anzahlGaeste?.message}
-          >
-            <Input
-              id="event-gaeste"
-              type="number"
-              min={0}
-              step={1}
-              inputMode="numeric"
-              invalid={Boolean(errors.anzahlGaeste)}
-              aria-describedby={
-                errors.anzahlGaeste ? "event-gaeste-error" : undefined
-              }
-              {...register("anzahlGaeste")}
-            />
-          </Field>
         </div>
 
         <Field
@@ -248,7 +267,7 @@ export function EventRegistrationForm({ eventName }: EventRegistrationFormProps)
               id="event-vertreter-hint"
               className="pl-8 font-sans text-sm text-tinte/70"
             >
-              {te("business.text")}
+              {vertreterHint}
             </p>
           </div>
         </div>

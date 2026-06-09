@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { contactSchema, type ContactInput } from "@/lib/forms/schemas";
-import { submitContact } from "@/lib/forms/actions";
+import { postForm, honeypotProps } from "@/lib/forms/submit";
 import { Field, Input, Textarea } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
@@ -35,12 +35,13 @@ export function ContactForm() {
       email: "",
       telefon: "",
       nachricht: "",
+      hp: "",
     },
   });
 
   async function onSubmit(values: ContactInput) {
     setStatus("idle");
-    const result = await submitContact(values);
+    const result = await postForm("/api/contact", values);
 
     if (result.ok) {
       setStatus("success");
@@ -66,6 +67,8 @@ export function ContactForm() {
       noValidate
       className="flex flex-col gap-6"
     >
+      <input {...honeypotProps} {...register("hp")} />
+
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Field
           label={t("name")}

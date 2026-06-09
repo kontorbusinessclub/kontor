@@ -8,7 +8,7 @@ import {
   membershipApplicationSchema,
   type MembershipApplicationInput,
 } from "@/lib/forms/schemas";
-import { submitMembershipApplication } from "@/lib/forms/actions";
+import { postForm, honeypotProps } from "@/lib/forms/submit";
 import { Field, Input, Textarea } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
@@ -40,12 +40,13 @@ export function MembershipApplicationForm() {
       telefon: "",
       website: "",
       nachricht: "",
+      hp: "",
     },
   });
 
   async function onSubmit(values: MembershipApplicationInput) {
     setStatus("idle");
-    const result = await submitMembershipApplication(values);
+    const result = await postForm("/api/membership-application", values);
 
     if (result.ok) {
       setStatus("success");
@@ -71,6 +72,8 @@ export function MembershipApplicationForm() {
       noValidate
       className="flex flex-col gap-6"
     >
+      <input {...honeypotProps} {...register("hp")} />
+
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Field
           label={t("name")}

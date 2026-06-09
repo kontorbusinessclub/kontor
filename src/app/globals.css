@@ -23,6 +23,19 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset für den fixierten Header, damit Anker-Sprünge (Aufgabe 10)
+       nicht unter dem Header verschwinden. */
+    scroll-padding-top: 7rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     background-color: var(--color-pergament);
     color: var(--color-tinte);

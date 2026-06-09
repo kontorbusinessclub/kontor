@@ -1,7 +1,11 @@
 /**
  * Navigations-Datenmodell — EINE Quelle für Desktop + Mobile.
- * Labels kommen aus den Übersetzungen (messages/*.json, Namespace "nav"/"chapters").
- * "Unterseiten" = eigene Routen (Kapitel), die oben laden (kein Anchor-Scroll).
+ * Labels kommen aus den Übersetzungen (messages/*.json, Namespace "nav").
+ *
+ * Aufgabe 10: Pro Reiter gibt es EINE Seite. Die ehemaligen Unterseiten
+ * sind jetzt Anker-Sektionen (#anker) auf dieser Seite und werden per
+ * Smooth-Scroll angesprungen. Ausnahme: der mehrstufige Mitgliedsantrag
+ * bleibt eine eigene Route (/mitgliedschaft/antrag).
  */
 export type NavChild = { key: string; href: string };
 export type NavItem = { key: string; href: string; children?: NavChild[] };
@@ -9,20 +13,20 @@ export type NavItem = { key: string; href: string; children?: NavChild[] };
 export const navItems: NavItem[] = [
   {
     key: "club",
-    href: "/club/clubleben",
+    href: "/club",
     children: [
-      { key: "clubleben", href: "/club/clubleben" },
-      { key: "philosophie", href: "/club/philosophie" },
-      { key: "charta", href: "/club/charta" },
+      { key: "clubleben", href: "/club#clubleben" },
+      { key: "philosophie", href: "/club#philosophie" },
+      { key: "charta", href: "/club#charta" },
     ],
   },
   {
     key: "events",
-    href: "/events/eventkalender",
+    href: "/events",
     children: [
-      { key: "business", href: "/events/business-events" },
-      { key: "social", href: "/events/social-events" },
-      { key: "kalender", href: "/events/eventkalender" },
+      { key: "business", href: "/events#business-events" },
+      { key: "social", href: "/events#social-events" },
+      { key: "kalender", href: "/events#kalender" },
     ],
   },
   {
@@ -32,18 +36,18 @@ export const navItems: NavItem[] = [
   },
   {
     key: "mitgliedschaft",
-    href: "/mitgliedschaft/vorteile",
+    href: "/mitgliedschaft",
     children: [
-      { key: "vorteile", href: "/mitgliedschaft/vorteile" },
+      { key: "vorteile", href: "/mitgliedschaft#vorteile" },
       { key: "antrag", href: "/mitgliedschaft/antrag" },
     ],
   },
   {
     key: "kontakt",
-    href: "/kontakt/formular",
+    href: "/kontakt",
     children: [
-      { key: "beratung", href: "/kontakt/beratung" },
-      { key: "formular", href: "/kontakt/formular" },
+      { key: "beratung", href: "/kontakt#beratung" },
+      { key: "formular", href: "/kontakt#formular" },
     ],
   },
 ];

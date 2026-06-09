@@ -6,6 +6,7 @@ import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
 import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
+import { Button } from "@/components/ui/button";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -15,22 +16,27 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "club.charta" });
+  const t = await getTranslations({ locale, namespace: "mitgliedschaft.vorteile" });
   return { title: t("titel") };
 }
 
-export default async function ChartaPage({ params }: PageProps) {
+/**
+ * Reiter „Mitgliedschaft" als Seite mit Anker-Sektion #vorteile
+ * (Aufgabe 10). Der mehrstufige Antrag bleibt eigene Route
+ * /mitgliedschaft/antrag und wird hier prominent verlinkt.
+ */
+export default async function MitgliedschaftPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("club.charta");
-
+  const t = await getTranslations("mitgliedschaft.vorteile");
+  const tcta = await getTranslations("common.cta");
   const punkte = t.raw("punkte") as string[];
 
   return (
     <>
       <ImageOverlay
-        src="/images/muenster-dom.jpg"
-        alt="St.-Paulus-Dom über den Dächern von Münster"
+        src="/images/muenster-aasee.jpg"
+        alt="Abendstimmung am Aasee in Münster"
         overlay="strong"
         priority
         heightClassName="min-h-[42vh]"
@@ -43,7 +49,7 @@ export default async function ChartaPage({ params }: PageProps) {
         <GoldRule className="mx-0 mt-6" />
       </ImageOverlay>
 
-      <Section background="pergament">
+      <Section id="vorteile" background="pergament">
         <Container variant="text">
           <Reveal>
             <p className="font-sans text-xl font-light leading-relaxed text-tinte/85">
@@ -51,23 +57,30 @@ export default async function ChartaPage({ params }: PageProps) {
             </p>
           </Reveal>
 
-          <ol className="mt-10 flex flex-col">
+          <ul className="mt-12 flex flex-col">
             {punkte.map((punkt, index) => (
-              <Reveal key={index} delay={index * 70}>
-                <li className="group flex items-baseline gap-5 border-t border-gold/30 py-5 transition-colors duration-200 hover:bg-champagner/40">
+              <li key={index} className="flex flex-col">
+                {index > 0 ? <GoldRule className="mx-0 my-6 w-full" /> : null}
+                <div className="group flex items-baseline gap-5 transition-colors duration-200 hover:bg-champagner/40">
                   <span
+                    className="font-mono text-sm text-smaragd transition-colors duration-200 group-hover:text-gold"
                     aria-hidden="true"
-                    className="shrink-0 font-mono text-sm tracking-[0.18em] text-koenigsblau/60 transition-colors duration-200 group-hover:text-gold"
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-sans text-lg leading-relaxed text-tinte/90">
+                  <p className="font-sans text-lg leading-relaxed text-tinte">
                     {punkt}
-                  </span>
-                </li>
-              </Reveal>
+                  </p>
+                </div>
+              </li>
             ))}
-          </ol>
+          </ul>
+
+          <div className="mt-12">
+            <Button href="/mitgliedschaft/antrag" variant="primary">
+              {tcta("zumAntrag")}
+            </Button>
+          </div>
         </Container>
       </Section>
     </>
