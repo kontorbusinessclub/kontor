@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kontor Business Club",
-    "description": "Recommend. Grow. Connect. An exclusive circle of entrepreneurs in the Münsterland region, one representative per industry."
+    "description": "Recommend. Grow. Connect. An exclusive circle of entrepreneurs – one representative per industry."
   },
   "nav": {
     "club": "Club",
@@ -50,7 +50,7 @@
     }
   },
   "home": {
-    "kicker": "Münsterland",
+    "kicker": "Münster",
     "slogan": "Recommend. Grow. Connect.",
     "aufhaenger": "Many industries. One goal.",
     "intro": "An exclusive circle of entrepreneurs and executives. One representative per industry.",
@@ -58,7 +58,7 @@
       "kicker": "Opening night",
       "titel": "The first Kontor event",
       "datumLabel": "18 June 2026",
-      "ortLabel": "Münsterland",
+      "ortLabel": "Provinzial headquarters, Münster",
       "cta": "Reserve your spot"
     },
     "aktuelles": {
@@ -200,7 +200,7 @@
     "kalender": {
       "titel": "Upcoming dates",
       "text": "The next events at a glance. Register through the form below.",
-      "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in the Münsterland region."
+      "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in Münster."
     },
     "anmeldung": {
       "titel": "Register for an event",
@@ -261,10 +261,10 @@
   },
   "footer": {
     "slogan": "Recommend. Grow. Connect.",
-    "ort": "Kontor Business Club · Münsterland",
+    "ort": "Kontor Business Club · Münster",
     "adresse": [
       "Kontor Business Club",
-      "Münsterland"
+      "Münster"
     ],
     "rechtliches": {
       "impressum": "Imprint",

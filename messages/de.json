@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kontor Business Club",
-    "description": "Empfehlen. Wachsen. Verbinden. Ein exklusiver Unternehmerkreis im Münsterland, eine Branche, ein Vertreter."
+    "description": "Empfehlen. Wachsen. Verbinden. Ein exklusiver Unternehmerkreis – eine Branche, ein Vertreter."
   },
   "nav": {
     "club": "Club",
@@ -50,7 +50,7 @@
     }
   },
   "home": {
-    "kicker": "Münsterland",
+    "kicker": "Münster",
     "slogan": "Empfehlen. Wachsen. Verbinden.",
     "aufhaenger": "Viele Branchen. Ein Ziel.",
     "intro": "Ein exklusiver Kreis von Unternehmern und Führungskräften. Eine Branche, ein Vertreter.",
@@ -58,7 +58,7 @@
       "kicker": "Auftakt",
       "titel": "Das erste Kontor Event",
       "datumLabel": "18. Juni 2026",
-      "ortLabel": "Münsterland",
+      "ortLabel": "Provinzial Zentrale, Münster",
       "cta": "Platz sichern"
     },
     "aktuelles": {
@@ -200,7 +200,7 @@
     "kalender": {
       "titel": "Kommende Termine",
       "text": "Die nächsten Events auf einen Blick. Anmeldung über das Formular unten.",
-      "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 im Münsterland."
+      "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 in Münster."
     },
     "anmeldung": {
       "titel": "Zum Event anmelden",
@@ -261,10 +261,10 @@
   },
   "footer": {
     "slogan": "Empfehlen. Wachsen. Verbinden.",
-    "ort": "Kontor Business Club · Münsterland",
+    "ort": "Kontor Business Club · Münster",
     "adresse": [
       "Kontor Business Club",
-      "Münsterland"
+      "Münster"
     ],
     "rechtliches": {
       "impressum": "Impressum",

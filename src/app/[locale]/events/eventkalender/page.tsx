@@ -10,7 +10,7 @@ import { EventRegistrationForm } from "@/components/forms/event-registration-for
 
 /**
  * Eventkalender.
- * Zeigt das naechste Event prominent (Auftakt 18.06.2026, Muensterland)
+ * Zeigt das naechste Event prominent (Auftakt 18.06.2026, Münster)
  * und darunter das Anmeldeformular. Sind keine weiteren Termine
  * eingetragen, erscheint der Leer-Hinweis.
  */
