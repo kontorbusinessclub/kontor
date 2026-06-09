@@ -25,6 +25,8 @@ export async function EventsPreview() {
     location: `${event.location.name}, ${event.location.city}`,
     type: event.type,
     typeLabel: t(`tag.${event.type}`),
+    image: event.image,
+    imageAlt: `${event.location.name} in ${event.location.city} – Veranstaltungsort des ${event.title}`,
   }));
 
   return (

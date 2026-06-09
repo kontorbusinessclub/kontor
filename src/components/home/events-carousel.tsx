@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 export type EventCard = {
@@ -12,6 +13,8 @@ export type EventCard = {
   location: string;
   type: "business" | "social";
   typeLabel: string;
+  image: string;
+  imageAlt: string;
 };
 
 type EventsCarouselProps = {
@@ -61,8 +64,18 @@ export function EventsCarousel({ cards, labels }: EventsCarouselProps) {
           >
             <Link
               href={card.href}
-              className="group flex h-full flex-col gap-4 rounded-lg border border-gold/30 bg-reinweiss p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/60 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold motion-reduce:transform-none"
+              className="group flex h-full flex-col overflow-hidden rounded-lg border border-gold/30 bg-reinweiss transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/60 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold motion-reduce:transform-none"
             >
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src={card.image}
+                  alt={card.imageAlt}
+                  fill
+                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex h-full flex-col gap-4 p-6">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-sm uppercase tracking-[0.16em] text-koenigsblau">
                   {card.dateLabel}
@@ -85,6 +98,7 @@ export function EventsCarousel({ cards, labels }: EventsCarouselProps) {
                   className="inline-block h-2 w-2 -rotate-45 border-r border-t border-gold transition-transform group-hover:translate-x-1"
                 />
               </span>
+              </div>
             </Link>
           </li>
         ))}
