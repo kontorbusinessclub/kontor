@@ -68,7 +68,6 @@ export function LanguageSwitcher({ tone = "dark", className }: LanguageSwitcherP
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const optionRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -92,7 +91,6 @@ export function LanguageSwitcher({ tone = "dark", className }: LanguageSwitcherP
 
   useEffect(() => {
     if (open) {
-      setActiveIndex(0);
       // Fokus auf die erste Option, sobald das Dropdown offen ist.
       requestAnimationFrame(() => optionRefs.current[0]?.focus());
     }
@@ -118,14 +116,12 @@ export function LanguageSwitcher({ tone = "dark", className }: LanguageSwitcherP
       case "ArrowDown": {
         e.preventDefault();
         const next = (index + 1) % ordered.length;
-        setActiveIndex(next);
         optionRefs.current[next]?.focus();
         break;
       }
       case "ArrowUp": {
         e.preventDefault();
         const prev = (index - 1 + ordered.length) % ordered.length;
-        setActiveIndex(prev);
         optionRefs.current[prev]?.focus();
         break;
       }

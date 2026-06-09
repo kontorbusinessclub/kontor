@@ -42,22 +42,6 @@ export const contactSchema = z.object({
   hp: honeypot,
 });
 
-export const membershipApplicationSchema = z.object({
-  name,
-  firma,
-  email,
-  telefon,
-  nachricht,
-  branche: z.string().trim().min(2, "Bitte nenn deine Branche."),
-  website: z
-    .string()
-    .trim()
-    .url("Bitte gib eine gültige URL an.")
-    .optional()
-    .or(z.literal("")),
-  hp: honeypot,
-});
-
 /**
  * Event-Anmeldung (Aufgabe 12): „Anzahl Gäste" entfernt, stattdessen
  * Pflicht-Auswahl der Veranstaltung über die id aus der zentralen Liste.
@@ -97,8 +81,5 @@ export const feedbackSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
-export type MembershipApplicationInput = z.infer<
-  typeof membershipApplicationSchema
->;
 export type EventRegistrationInput = z.infer<typeof eventRegistrationSchema>;
 export type FeedbackInput = z.infer<typeof feedbackSchema>;

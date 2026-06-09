@@ -21,6 +21,8 @@ export function CookieBanner() {
   useEffect(() => {
     try {
       if (localStorage.getItem(STORAGE_KEY) !== "true") {
+        // localStorage ist erst clientseitig verfügbar; bewusst im Effect.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setVisible(true);
       }
     } catch {

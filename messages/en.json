@@ -244,6 +244,125 @@
       "intro": "The way into Kontor is low-threshold and transparent. You submit an application, we get to know each other, and if your industry is open, we welcome you in."
     }
   },
+  "antrag": {
+    "schrittLabel": "Step {n} of {total}",
+    "weiter": "Next",
+    "zurueck": "Back",
+    "absenden": "Submit application",
+    "senden": "Sending …",
+    "erfolgTitel": "Thank you!",
+    "erfolgText": "Your application has reached us. The board will get back to you within 7 working days.",
+    "erfolgCta": "Back to home",
+    "fehler": "Something went wrong. Please check your details and try again.",
+    "pflicht": "Required",
+    "steps": {
+      "1": "Personal details",
+      "2": "Company details",
+      "3": "Authorised representative",
+      "4": "Membership & term",
+      "5": "Payment information",
+      "6": "Communication",
+      "7": "FAQs",
+      "8": "Declarations",
+      "9": "Confirmation"
+    },
+    "fields": {
+      "vorname": "First name",
+      "nachname": "Last name",
+      "titelFunktion": "Title / role",
+      "geburtsdatum": "Date of birth",
+      "strasse": "Street and number",
+      "plzOrt": "Postcode and city",
+      "telefonMobil": "Mobile phone",
+      "telefonBuero": "Office / landline phone",
+      "emailPrivat": "Private email",
+      "emailGeschaeftlich": "Business email",
+      "website": "Website",
+      "unternehmen": "Company name (full)",
+      "rechtsform": "Legal form",
+      "registernummer": "Commercial / register number",
+      "unternehmensanschrift": "Company address",
+      "plzOrtUnternehmen": "Postcode and city (company)",
+      "branche": "Industry / focus",
+      "fachgebiet": "Desired field in the club",
+      "erwerb": "Type of activity",
+      "unternehmensgroesse": "Company size",
+      "kurzbeschreibung": "Short company description",
+      "kurzpraesentation": "Short presentation of person and activity",
+      "istVertretungsberechtigt": "Is the applicant the authorised representative?",
+      "vbVorname": "First name (representative)",
+      "vbNachname": "Last name (representative)",
+      "vbFunktion": "Role (representative)",
+      "vbTelefon": "Phone (representative)",
+      "vbEmail": "Email (representative)",
+      "zahlungsintervall": "Payment interval",
+      "starttermin": "Desired start date",
+      "empfohlenVon": "Recommended by an existing member?",
+      "zahlungsmethode": "Payment method",
+      "kontoinhaber": "Account holder",
+      "iban": "IBAN",
+      "bic": "BIC",
+      "bank": "Bank",
+      "profiltext": "Profile text for the members area",
+      "referenzen": "3 strongest reference services / products",
+      "kommunikation": "Newsletter & club communication"
+    },
+    "ja": "Yes",
+    "nein": "No",
+    "erwerbOpt": {
+      "haupterwerb": "Main occupation",
+      "nebenerwerb": "Secondary occupation"
+    },
+    "groessen": {
+      "1": "1 person",
+      "2-5": "2–5 employees",
+      "6-20": "6–20 employees",
+      "21-50": "21–50 employees",
+      "50+": "50+ employees"
+    },
+    "intervalle": {
+      "monatlich": "Monthly",
+      "vierteljaehrlich": "Quarterly",
+      "halbjaehrlich": "Half-yearly",
+      "jaehrlich": "Yearly"
+    },
+    "laufzeitInfo": "Term: indefinite, cancellable monthly with one full month's notice to the end of the month.",
+    "aufnahmegebuehr": "A one-time admission fee of €150.00 applies in addition.",
+    "methoden": {
+      "sepa": "SEPA direct debit",
+      "ueberweisung": "Bank transfer"
+    },
+    "sepaBald": "This payment method will be available soon.",
+    "sepaMandatTitel": "SEPA direct debit mandate",
+    "sepaMandatCheckbox": "I authorise the Kontor Business Club to collect payments from my account by direct debit and accept the mandate text above.",
+    "ueberweisungInfo": "The club's bank details will be provided separately after admission. [Placeholder – to follow.]",
+    "kanaele": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "app": "App"
+    },
+    "einverstaendnis": {
+      "agb": "I have read the terms and conditions of the Kontor Business Club and accept them as binding.",
+      "datenschutz": "I have read the privacy policy and consent to the processing of my data.",
+      "foto": "I consent to photo and video recordings of me being taken at club events and used for the public relations of the Kontor Business Club. (optional, revocable at any time)",
+      "unternehmer": "I confirm that I act as an entrepreneur within the meaning of German law (HGB/BGB) and conclude this membership in the course of my professional/commercial activity."
+    },
+    "agbLink": "Terms and Conditions",
+    "datenschutzLink": "Privacy policy",
+    "faqTitel": "Frequent questions about the admission process",
+    "faq": {
+      "items": [
+        { "frage": "Who can become a member?", "antwort": "Self-employed entrepreneurs, managing directors and innovative start-up founders. The club admits exactly one member per industry." },
+        { "frage": "How does the admission process work?", "antwort": "You submit your application with a short presentation of yourself and your company. The board reviews the application and decides within seven working days." },
+        { "frage": "What does membership cost?", "antwort": "The monthly fee is €80 (alternatively payable quarterly, half-yearly or yearly). A one-time admission fee of €150 applies in addition." },
+        { "frage": "How long does the contract run?", "antwort": "Membership runs for an indefinite period and can be cancelled with one full month's notice to the end of the month." },
+        { "frage": "What if I cannot attend an event?", "antwort": "For business events you may send a representative. For social events personal attendance is expected; representation is not provided here." },
+        { "frage": "Can I bring guests?", "antwort": "Yes. Interested friends and colleagues are welcome before they possibly become members themselves. Please announce guests in advance to the club management." },
+        { "frage": "When do the events take place?", "antwort": "Twice a month – one business event and one social event – outside regular working hours, always in person." }
+      ]
+    },
+    "reviewTitel": "Please review your details"
+  },
   "kontakt": {
     "beratung": {
       "kicker": "Contact",

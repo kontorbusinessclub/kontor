@@ -6,7 +6,7 @@ import { GoldRule } from "@/components/ui/gold-rule";
 import { Card } from "@/components/ui/card";
 import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
-import { MembershipApplicationForm } from "@/components/forms/membership-application-form";
+import { MembershipWizard } from "@/components/forms/membership-wizard";
 
 /**
  * Mitgliedschaft / Aufnahmeantrag.
@@ -48,7 +48,7 @@ export default async function AntragPage({
 
           <Reveal delay={120}>
             <Card className="mt-12">
-              <MembershipApplicationForm />
+              <MembershipWizard />
             </Card>
           </Reveal>
         </Container>
