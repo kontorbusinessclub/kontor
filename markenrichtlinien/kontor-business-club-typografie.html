@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontor Business Club &middot; Typografie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --koenigsblau:#1A2F6E;
+    --smaragd:#15543F;
+    --champagner:#EFE5C9;
+    --gold:#BD9D5E;
+    --kontorblau:#3457A7;
+    --tinte:#14181F;
+    --pergament:#F4EEDD;
+
+    --serif:'Lora',Georgia,serif;
+    --sans:'Source Sans 3','Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--pergament);}
+  body{
+    font-family:var(--sans);color:var(--tinte);line-height:1.65;font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);color:var(--koenigsblau);font-weight:600;}
+
+  /* ---------- Cover ---------- */
+  .cover{
+    background:var(--koenigsblau);color:var(--champagner);
+    padding:clamp(48px,8vw,92px) clamp(20px,5vw,48px);text-align:center;
+  }
+  .cover .kicker{
+    font-family:var(--sans);font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:22px;
+  }
+  .cover h1{
+    color:var(--champagner);font-weight:600;
+    font-size:clamp(38px,8vw,66px);line-height:1.06;letter-spacing:.005em;
+  }
+  .cover .gline{width:64px;height:1px;background:var(--gold);margin:22px auto;position:relative;}
+  .cover .gline::before,.cover .gline::after{
+    content:"";position:absolute;top:50%;width:5px;height:5px;
+    background:var(--gold);transform:translateY(-50%) rotate(45deg);
+  }
+  .cover .gline::before{left:-13px;}.cover .gline::after{right:-13px;}
+  .cover .sub{max-width:600px;margin:0 auto;font-size:clamp(15px,2.3vw,17px);color:#d2c5a2;font-weight:300;}
+  .cover .pair{
+    margin-top:30px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    color:var(--gold);text-transform:uppercase;
+  }
+
+  main{max-width:980px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,40px) 60px;}
+  section{margin-bottom:clamp(48px,7vw,84px);}
+  .snum{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--koenigsblau);
+    text-transform:uppercase;font-weight:500;margin-bottom:8px;}
+  .stitle{font-size:clamp(26px,4.4vw,34px);line-height:1.15;margin-bottom:8px;}
+  .sintro{color:var(--tinte);opacity:.72;font-size:15px;font-weight:300;max-width:680px;margin-bottom:28px;}
+
+  /* ---------- Pairing cards ---------- */
+  .pair-grid{display:grid;gap:22px;grid-template-columns:1fr 1fr;}
+  @media (max-width:680px){.pair-grid{grid-template-columns:1fr;}}
+  .face{background:var(--champagner);border:1px solid #e3d8bd;padding:clamp(24px,3.5vw,34px);}
+  .face .tag{font-family:var(--sans);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--smaragd);font-weight:600;margin-bottom:14px;}
+  .face .specimen-serif{font-family:var(--serif);font-weight:600;color:var(--koenigsblau);
+    font-size:64px;line-height:1;margin-bottom:6px;}
+  .face .specimen-sans{font-family:var(--sans);font-weight:600;color:var(--koenigsblau);
+    font-size:60px;line-height:1;margin-bottom:6px;}
+  .face .fname{font-family:var(--serif);font-size:21px;color:var(--koenigsblau);margin-bottom:4px;}
+  .face .fname.sansname{font-family:var(--sans);font-weight:700;}
+  .face .frole{font-size:13.5px;color:var(--tinte);opacity:.75;margin-bottom:14px;}
+  .face .glyphs{font-family:var(--serif);font-size:18px;color:var(--tinte);letter-spacing:.02em;
+    border-top:1px solid #e3d8bd;padding-top:14px;}
+  .face .glyphs.sansglyph{font-family:var(--sans);}
+  .face .weights{font-family:var(--mono);font-size:11px;color:var(--tinte);opacity:.7;margin-top:8px;letter-spacing:.04em;}
+
+  /* ---------- Scale ---------- */
+  .scale{background:var(--champagner);border:1px solid #e3d8bd;padding:clamp(24px,4vw,40px);}
+  .scale .row{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px dotted #d6c89f;}
+  .scale .row:last-child{border-bottom:0;}
+  .scale .meta{flex-shrink:0;width:130px;font-family:var(--mono);font-size:10.5px;
+    color:var(--tinte);opacity:.65;letter-spacing:.04em;line-height:1.5;}
+  .scale .ex{flex:1;color:var(--koenigsblau);}
+  .ex.wordmark{font-family:var(--serif);font-weight:600;font-size:26px;letter-spacing:.14em;text-transform:uppercase;}
+  .ex.h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1.1;}
+  .ex.h2{font-family:var(--serif);font-weight:600;font-size:28px;}
+  .ex.h3{font-family:var(--serif);font-weight:600;font-size:20px;}
+  .ex.lead{font-family:var(--sans);font-weight:300;font-size:19px;color:var(--tinte);}
+  .ex.body{font-family:var(--sans);font-weight:400;font-size:16px;color:var(--tinte);}
+  .ex.cap{font-family:var(--sans);font-weight:400;font-size:13px;color:var(--tinte);opacity:.65;}
+  .ex.ui{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--smaragd);}
+
+  /* ---------- Image legibility demo ---------- */
+  .img-demo{position:relative;border:1px solid #e3d8bd;overflow:hidden;min-height:260px;
+    display:flex;align-items:center;
+    background:
+      linear-gradient(125deg, rgba(26,47,110,.78), rgba(21,84,63,.62)),
+      repeating-linear-gradient(45deg,#3a4a6b 0 22px,#33425f 22px 44px);
+  }
+  .img-demo .inner{padding:clamp(28px,4vw,48px);color:var(--champagner);}
+  .img-demo .ks{font-family:var(--sans);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:12px;}
+  .img-demo h3{font-family:var(--serif);color:var(--champagner);font-weight:600;
+    font-size:clamp(26px,4.2vw,38px);line-height:1.12;max-width:580px;margin-bottom:12px;}
+  .img-demo p{font-family:var(--sans);font-weight:300;font-size:14.5px;color:#e6dcc2;max-width:480px;}
+  .img-note{margin-top:14px;font-size:13px;color:var(--tinte);opacity:.72;font-style:italic;font-weight:300;}
+
+  /* ---------- Applied: card + letter ---------- */
+  .applied-grid{display:grid;gap:24px;grid-template-columns:1fr 1fr;align-items:start;}
+  @media (max-width:760px){.applied-grid{grid-template-columns:1fr;}}
+  .applied-label{font-family:var(--sans);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--smaragd);font-weight:600;margin-bottom:12px;}
+
+  .biz{
+    aspect-ratio:1.75/1;background:var(--koenigsblau);color:var(--champagner);
+    border:6px solid var(--champagner);box-shadow:0 22px 46px -28px rgba(20,22,32,.55);
+    padding:24px 26px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .biz .wm{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.12em;text-transform:uppercase;}
+  .biz .grule{width:38px;height:1px;background:var(--gold);margin:10px 0;}
+  .biz .who{font-family:var(--sans);}
+  .biz .who .nm{font-weight:600;font-size:15px;color:#fff;}
+  .biz .who .ti{font-size:11.5px;color:var(--gold);letter-spacing:.04em;margin-top:2px;}
+  .biz .contact{font-family:var(--sans);font-size:10.5px;color:#cdc09e;letter-spacing:.03em;line-height:1.7;}
+
+  .letter{
+    background:#fff;border:1px solid #e3d8bd;box-shadow:0 22px 46px -30px rgba(20,22,32,.4);
+    padding:26px 28px;font-family:var(--sans);
+  }
+  .letter .lh{display:flex;justify-content:space-between;align-items:flex-start;
+    border-bottom:1px solid #e8e0cf;padding-bottom:14px;margin-bottom:16px;}
+  .letter .lh .wm{font-family:var(--serif);font-weight:600;color:var(--koenigsblau);
+    font-size:16px;letter-spacing:.1em;text-transform:uppercase;}
+  .letter .lh .wm small{display:block;font-family:var(--sans);font-weight:400;
+    font-size:9px;letter-spacing:.18em;color:var(--smaragd);margin-top:4px;text-transform:uppercase;}
+  .letter .lh .gdot{width:30px;height:30px;border-radius:50%;border:1.4px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);
+    color:var(--gold);font-size:13px;}
+  .letter .ldate{font-size:11px;color:var(--tinte);opacity:.6;margin-bottom:14px;}
+  .letter .lbody{font-size:13px;color:var(--tinte);font-weight:400;line-height:1.7;}
+  .letter .lbody p{margin-bottom:9px;}
+  .letter .lsig{font-family:var(--serif);color:var(--koenigsblau);font-size:15px;margin-top:6px;}
+  .letter .lfoot{margin-top:16px;padding-top:12px;border-top:1px solid #e8e0cf;
+    font-size:9.5px;color:var(--tinte);opacity:.55;letter-spacing:.04em;line-height:1.7;}
+
+  /* ---------- Tokens ---------- */
+  .code{background:var(--champagner);border:1px solid #e3d8bd;padding:clamp(20px,3vw,28px);overflow-x:auto;}
+  .code pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tinte);}
+  .code .com{color:var(--smaragd);}
+  .code .var{color:var(--koenigsblau);}
+
+  /* ---------- Alternatives ---------- */
+  .alts{display:grid;gap:16px;grid-template-columns:1fr 1fr;}
+  @media (max-width:680px){.alts{grid-template-columns:1fr;}}
+  .alt{background:var(--champagner);border:1px solid #e3d8bd;padding:20px 22px;}
+  .alt .ah{font-family:var(--serif);font-weight:600;color:var(--koenigsblau);font-size:17px;margin-bottom:4px;}
+  .alt .ap{font-family:var(--mono);font-size:11.5px;color:var(--smaragd);letter-spacing:.04em;margin-bottom:10px;}
+  .alt p{font-size:13.5px;color:var(--tinte);font-weight:300;line-height:1.55;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--koenigsblau);color:var(--champagner);
+    padding:clamp(40px,6vw,60px) clamp(20px,5vw,40px);text-align:center;}
+  footer .slogan{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4vw,30px);color:var(--champagner);}
+  footer .slogan .em{color:var(--gold);}
+  footer .gline{width:48px;height:1px;background:var(--gold);margin:18px auto 20px;}
+  footer p{max-width:560px;margin:0 auto;font-family:var(--sans);font-size:13px;color:#cdc09e;font-weight:300;font-style:italic;}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <p class="kicker">Markenfibel &middot; Typografie</p>
+  <h1>Lora &amp; Source&nbsp;Sans&nbsp;3</h1>
+  <div class="gline"></div>
+  <p class="sub">Eine Serife für Würde und Erbe, eine Grotesk für Klarheit und
+  Zugänglichkeit. Sachlich, schnörkellos, bildverträglich.</p>
+  <p class="pair">Serife: Lora &nbsp;&middot;&nbsp; Grotesk: Source Sans 3</p>
+</header>
+
+<main>
+
+  <!-- 01 PAIRING -->
+  <section>
+    <p class="snum">01 &middot; Der Zweiklang</p>
+    <h2 class="stitle">Zwei Schriften, zwei Aufgaben</h2>
+    <p class="sintro">Die Serife trägt das Elitäre und Verbindliche, die Grotesk
+    das Zugängliche und Gegenwärtige. Beide sind frei von Zierrat.</p>
+
+    <div class="pair-grid">
+      <div class="face">
+        <div class="tag">Überschriften &amp; Wortmarke</div>
+        <div class="specimen-serif">Kk</div>
+        <div class="fname">Lora</div>
+        <div class="frole">Serife, mittlerer Strichkontrast. Würde, Erbe,
+        editoriale Intelligenz. Bricht über Bildern nicht weg.</div>
+        <div class="glyphs">Aa Bb Cc &middot; 1234 &middot; Ää Öö Üü ß</div>
+        <div class="weights">weights 400 &middot; 500 &middot; 600 &middot; 700 &middot; italic</div>
+      </div>
+      <div class="face">
+        <div class="tag">Fließtext &amp; Bedienelemente</div>
+        <div class="specimen-sans">Kk</div>
+        <div class="fname sansname">Source Sans 3</div>
+        <div class="frole">Humanistische Grotesk, sehr gut lesbar. Klarheit,
+        Modernität, Zugänglichkeit. Tritt hinter Bilder zurück.</div>
+        <div class="glyphs sansglyph">Aa Bb Cc &middot; 1234 &middot; Ää Öö Üü ß</div>
+        <div class="weights">weights 300 &middot; 400 &middot; 600 &middot; 700 &middot; italic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 SCALE -->
+  <section>
+    <p class="snum">02 &middot; Typografische Skala</p>
+    <h2 class="stitle">Hierarchie und Anwendung</h2>
+    <p class="sintro">Jede Ebene mit fester Zuordnung zu Schrift, Schnitt und
+    Farbe. Überschriften in Lora und Königsblau, Lauftext in Source Sans 3 und Tinte.</p>
+
+    <div class="scale">
+      <div class="row"><div class="meta">Wortmarke<br>Lora 600 &middot; Caps</div>
+        <div class="ex wordmark">Kontor Business Club</div></div>
+      <div class="row"><div class="meta">H1 Display<br>Lora 600</div>
+        <div class="ex h1">Verbunden im Münsterland</div></div>
+      <div class="row"><div class="meta">H2<br>Lora 600</div>
+        <div class="ex h2">Ein Vertreter je Branche</div></div>
+      <div class="row"><div class="meta">H3<br>Lora 600</div>
+        <div class="ex h3">Begegnung auf Augenhöhe</div></div>
+      <div class="row"><div class="meta">Lead<br>Source Sans 300</div>
+        <div class="ex lead">Ein exklusiver Kreis, der gemeinsam geschäftlich
+        wächst und dabei den Spaß nicht vergisst.</div></div>
+      <div class="row"><div class="meta">Fließtext<br>Source Sans 400</div>
+        <div class="ex body">Der Club verbindet Unternehmer, Führungskräfte und
+        Selbstständige aller Branchen. Empfehlungen entstehen aus Vertrauen, und
+        Vertrauen entsteht aus regelmäßiger, persönlicher Begegnung.</div></div>
+      <div class="row"><div class="meta">Bildunterschrift<br>Source Sans 400 &middot; gedimmt</div>
+        <div class="ex cap">Monatliches Treffen der Mitglieder im Herzen des Münsterlands.</div></div>
+      <div class="row"><div class="meta">UI-Label<br>Source Sans 600 &middot; Caps</div>
+        <div class="ex ui">Aufnahme anfragen</div></div>
+    </div>
+  </section>
+
+  <!-- 03 IMAGE -->
+  <section>
+    <p class="snum">03 &middot; Bildverträglichkeit</p>
+    <h2 class="stitle">Schrift über Bildern</h2>
+    <p class="sintro">Loras mittlerer Strichkontrast bleibt auch auf Fotos lesbar.
+    Ein Königsblau-Schleier über dem Bild sichert den Kontrast zusätzlich ab.</p>
+
+    <div class="img-demo">
+      <div class="inner">
+        <div class="ks">Mitgliedschaft</div>
+        <h3>Wo aus Begegnung Geschäft wird.</h3>
+        <p>Headline in Lora, Vorspann in Source Sans 3, beides auf einem
+        abgedunkelten Bild. Die Lesbarkeit bleibt erhalten.</p>
+      </div>
+    </div>
+    <p class="img-note">Faustregel: über Fotos immer einen Königsblau-Schleier mit
+    etwa 60 bis 80 Prozent Deckkraft legen, dann Text in Champagner-Crème setzen.</p>
+  </section>
+
+  <!-- 04 APPLIED -->
+  <section>
+    <p class="snum">04 &middot; Anwendung</p>
+    <h2 class="stitle">Visitenkarte und Brief</h2>
+    <p class="sintro">Dieselben zwei Schriften tragen auch die gedruckten Medien,
+    gemeinsam mit den festgelegten Farbregeln.</p>
+
+    <div class="applied-grid">
+      <div>
+        <div class="applied-label">Visitenkarte</div>
+        <div class="biz">
+          <div>
+            <div class="wm">Kontor Business Club</div>
+            <div class="grule"></div>
+          </div>
+          <div class="who">
+            <div class="nm">Dr. Maria Beispiel</div>
+            <div class="ti">Mitglied &middot; Branche Recht</div>
+          </div>
+          <div class="contact">maria.beispiel@kontor-businessclub.de<br>+49 251 000000 &middot; Münsterland</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="applied-label">Briefkopf</div>
+        <div class="letter">
+          <div class="lh">
+            <div class="wm">Kontor Business Club<small>Münsterland</small></div>
+            <div class="gdot">KM</div>
+          </div>
+          <div class="ldate">Münster, 28. Mai 2026</div>
+          <div class="lbody">
+            <p>Sehr geehrte Frau Beispiel,</p>
+            <p>wir freuen uns, Ihnen die Aufnahme in den Kontor Business Club
+            anzubieten. Als Vertreterin Ihrer Branche ergänzen Sie unseren Kreis
+            um eine Stimme, die wir sehr schätzen.</p>
+            <p>Über die weiteren Schritte informieren wir Sie gerne persönlich.</p>
+            <div class="lsig">Der Vorstand</div>
+          </div>
+          <div class="lfoot">Kontor Business Club &middot; Münsterland &middot;
+          kontor-businessclub.de</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 TOKENS -->
+  <section>
+    <p class="snum">05 &middot; Entwicklung</p>
+    <h2 class="stitle">Schrift-Tokens</h2>
+    <p class="sintro">Einbindung über Google Fonts, Zuordnung über CSS-Variablen.</p>
+
+    <div class="code">
+<pre><span class="com">/* &lt;head&gt;: Google Fonts (SIL Open Font License, kostenlos) */</span>
+&lt;link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&amp;family=Source+Sans+3:wght@300;400;600;700&amp;display=swap" rel="stylesheet"&gt;
+
+<span class="var">:root</span> {
+  <span class="var">--serif</span>: <span class="com">/* Überschriften, Wortmarke */</span> 'Lora', Georgia, serif;
+  <span class="var">--sans</span>:  <span class="com">/* Fließtext, UI, Print-Details */</span> 'Source Sans 3', 'Segoe UI', sans-serif;
+}
+
+<span class="var">body</span>        { font-family: <span class="var">var(--sans)</span>; font-weight: 400; }
+<span class="var">h1, h2, h3</span>  { font-family: <span class="var">var(--serif)</span>; font-weight: 600; }
+<span class="var">.lead</span>       { font-family: <span class="var">var(--sans)</span>; font-weight: 300; }
+<span class="var">.caption</span>    { font-family: <span class="var">var(--sans)</span>; opacity: .65; }
+<span class="var">.ui-label</span>   { font-family: <span class="var">var(--sans)</span>; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; }</pre>
+    </div>
+  </section>
+
+  <!-- 06 ALTERNATIVES -->
+  <section>
+    <p class="snum">06 &middot; Alternativen</p>
+    <h2 class="stitle">Wenn eine andere Richtung gewünscht ist</h2>
+    <p class="sintro">Gleichwertige Wege, falls der Auftritt editorialer oder
+    konsequent moderner ausfallen soll.</p>
+
+    <div class="alts">
+      <div class="alt">
+        <div class="ah">Editorialer</div>
+        <div class="ap">Newsreader + Libre Franklin</div>
+        <p>Etwas mehr Zeitungs- und Journal-Charakter. Newsreader wirkt
+        redaktioneller als Lora, Libre Franklin gibt dem Lauftext mehr Gravität.
+        Geeignet, wenn der Club stark über Inhalte und Vorträge kommuniziert.</p>
+      </div>
+      <div class="alt">
+        <div class="ah">Konsequent modern</div>
+        <div class="ap">Source Sans 3 (oder Work Sans) allein</div>
+        <p>Ein reines Grotesk-System über alle Ebenen. Maximal bildverträglich
+        und zeitgemäß, betont die innovationsgetriebene Seite. Verliert allerdings
+        einen Teil der heraldischen Würde, die die Farben aufbauen.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="slogan">Empfehlen. <span class="em">Wachsen.</span> Verbinden.</p>
+  <div class="gline"></div>
+  <p>Dieses Schriftmuster rendert die empfohlenen Schriften live und hält
+  zugleich die Farb- und Hintergrundregeln der Markenfibel ein.</p>
+</footer>
+
+</body>
+</html>
