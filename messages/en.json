@@ -271,12 +271,13 @@
   },
   "legal": {
     "impressum": {
-      "titel": "Imprint",
-      "platzhalter": "The full details under Section 5 TMG will follow shortly."
+      "titel": "Imprint"
     },
     "datenschutz": {
-      "titel": "Privacy",
-      "platzhalter": "The full privacy policy will follow shortly."
+      "titel": "Privacy"
+    },
+    "agb": {
+      "titel": "Terms and Conditions"
     }
   },
   "cookie": {
@@ -295,7 +296,8 @@
     ],
     "rechtliches": {
       "impressum": "Imprint",
-      "datenschutz": "Privacy"
+      "datenschutz": "Privacy",
+      "agb": "Terms"
     },
     "feedback": "Event feedback",
     "socialTitel": "Connect",

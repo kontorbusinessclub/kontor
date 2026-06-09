@@ -83,6 +83,11 @@ export async function SiteFooter() {
                   {tf("rechtliches.datenschutz")}
                 </Link>
               </li>
+              <li>
+                <Link href="/agb" className={link}>
+                  {tf("rechtliches.agb")}
+                </Link>
+              </li>
             </ul>
           </div>
 

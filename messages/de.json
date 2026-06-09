@@ -271,12 +271,13 @@
   },
   "legal": {
     "impressum": {
-      "titel": "Impressum",
-      "platzhalter": "Die vollständigen Angaben nach Paragraf 5 TMG folgen in Kürze."
+      "titel": "Impressum"
     },
     "datenschutz": {
-      "titel": "Datenschutz",
-      "platzhalter": "Die vollständige Datenschutzerklärung folgt in Kürze."
+      "titel": "Datenschutz"
+    },
+    "agb": {
+      "titel": "Allgemeine Geschäftsbedingungen"
     }
   },
   "cookie": {
@@ -295,7 +296,8 @@
     ],
     "rechtliches": {
       "impressum": "Impressum",
-      "datenschutz": "Datenschutz"
+      "datenschutz": "Datenschutz",
+      "agb": "AGB"
     },
     "feedback": "Feedback zur Veranstaltung",
     "socialTitel": "Vernetzen",
