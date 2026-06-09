@@ -256,6 +256,19 @@
       "intro": "Je konkreter deine Nachricht, desto besser können wir dir antworten."
     }
   },
+  "feedback": {
+    "kicker": "Feedback",
+    "titel": "Feedback zur Veranstaltung",
+    "intro": "Dein Eindruck hilft uns, die nächsten Events besser zu machen. Sag uns, wie es war.",
+    "bewertung": "Bewertung",
+    "sterneLabel": "{n} von 5 Sternen",
+    "feedbackLabel": "Dein Feedback",
+    "gutGelaufen": "Was lief gut?",
+    "verbessern": "Was können wir verbessern?",
+    "leer": "Aktuell gibt es keine vergangenen Veranstaltungen, zu denen du Feedback geben kannst.",
+    "erfolg": "Danke für dein Feedback!",
+    "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut."
+  },
   "legal": {
     "impressum": {
       "titel": "Impressum",
@@ -265,6 +278,12 @@
       "titel": "Datenschutz",
       "platzhalter": "Die vollständige Datenschutzerklärung folgt in Kürze."
     }
+  },
+  "cookie": {
+    "ariaLabel": "Cookie-Hinweis",
+    "text": "Diese Website verwendet ausschließlich technisch notwendige Cookies, um grundlegende Funktionen wie Spracheinstellungen und Sicherheit zu gewährleisten. Es findet kein Tracking durch Drittanbieter statt. Mehr Informationen findest du in unserer",
+    "link": "Datenschutzerklärung",
+    "button": "Verstanden"
   },
   "footer": {
     "slogan": "Empfehlen. Wachsen. Verbinden.",
@@ -278,6 +297,7 @@
       "impressum": "Impressum",
       "datenschutz": "Datenschutz"
     },
+    "feedback": "Feedback zur Veranstaltung",
     "socialTitel": "Vernetzen",
     "headings": {
       "navigation": "Navigation",

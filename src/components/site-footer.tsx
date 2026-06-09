@@ -61,6 +61,11 @@ export async function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/feedback" className={link}>
+                  {tf("feedback")}
+                </Link>
+              </li>
             </ul>
           </nav>
 

@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { navItems } from "@/lib/navigation";
-import { LocaleSwitcher } from "@/components/locale-switcher";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { MobileNav } from "@/components/mobile-nav";
 import { Wordmark } from "@/components/wordmark";
 
@@ -30,7 +30,7 @@ export async function SiteHeader() {
           </Link>
 
           <div className="flex items-center justify-end gap-2">
-            <LocaleSwitcher tone="dark" className="hidden sm:flex" />
+            <LanguageSwitcher tone="dark" className="hidden sm:block" />
             <MobileNav />
           </div>
         </div>

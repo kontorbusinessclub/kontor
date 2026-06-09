@@ -256,6 +256,19 @@
       "intro": "The more concrete your message, the better we can answer you."
     }
   },
+  "feedback": {
+    "kicker": "Feedback",
+    "titel": "Event feedback",
+    "intro": "Your impression helps us make the next events better. Tell us how it was.",
+    "bewertung": "Rating",
+    "sterneLabel": "{n} out of 5 stars",
+    "feedbackLabel": "Your feedback",
+    "gutGelaufen": "What went well?",
+    "verbessern": "What can we improve?",
+    "leer": "There are currently no past events you can give feedback on.",
+    "erfolg": "Thanks for your feedback!",
+    "fehler": "Something went wrong. Please check your details and try again."
+  },
   "legal": {
     "impressum": {
       "titel": "Imprint",
@@ -265,6 +278,12 @@
       "titel": "Privacy",
       "platzhalter": "The full privacy policy will follow shortly."
     }
+  },
+  "cookie": {
+    "ariaLabel": "Cookie notice",
+    "text": "This website uses only technically necessary cookies to ensure basic functions such as language settings and security. There is no third-party tracking. You can find more information in our",
+    "link": "privacy policy",
+    "button": "Got it"
   },
   "footer": {
     "slogan": "Recommend. Grow. Connect.",
@@ -278,6 +297,7 @@
       "impressum": "Imprint",
       "datenschutz": "Privacy"
     },
+    "feedback": "Event feedback",
     "socialTitel": "Connect",
     "headings": {
       "navigation": "Navigation",
