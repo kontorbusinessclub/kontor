@@ -36,7 +36,7 @@ export default async function BusinessEventsPage({
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {t("business.titel")}
         </h1>
-        <GoldRule diamonds className="mx-0 mt-6" />
+        <GoldRule className="mx-0 mt-6" />
         <p className="mt-6 max-w-2xl font-sans text-lg font-light leading-relaxed text-champagner/85">
           {t("business.text")}
         </p>
@@ -51,7 +51,7 @@ export default async function BusinessEventsPage({
           </Reveal>
 
           <Reveal delay={80}>
-            <GoldRule diamonds className="mx-0" />
+            <GoldRule className="mx-0" />
           </Reveal>
 
           <Reveal delay={160}>

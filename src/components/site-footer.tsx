@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { navItems } from "@/lib/navigation";
+import { Wordmark } from "@/components/wordmark";
 
 /**
  * Footer auf koenigsblau. Ausgewogenes Raster: links Markenblock
@@ -26,20 +27,17 @@ export async function SiteFooter() {
           <div className="max-w-sm">
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 font-serif text-xl uppercase tracking-[0.14em] text-champagner transition-colors hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="inline-flex transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
               aria-label="Kontor Business Club – Startseite"
             >
-              <span>Kontor</span>
-              <span
-                className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-gold text-xs font-semibold text-gold"
-                aria-hidden="true"
-              >
-                K
-              </span>
-              <span>Business Club</span>
+              <Wordmark tone="light" size="footer" />
             </Link>
 
-            <p className="mt-5 font-serif text-lg leading-snug text-champagner/90">
+            <p className="mt-4 font-serif text-base font-semibold leading-snug text-gold">
+              {tf("claim")}
+            </p>
+
+            <p className="mt-4 font-serif text-lg leading-snug text-champagner/90">
               {tf("slogan")}
             </p>
 

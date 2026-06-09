@@ -26,7 +26,7 @@ export function Faq() {
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
           {t("faq.titel")}
         </h2>
-        <GoldRule diamonds className="mx-0" />
+        <GoldRule className="mx-0" />
       </header>
 
       <Accordion.Root type="single" collapsible className="mt-10 flex flex-col">

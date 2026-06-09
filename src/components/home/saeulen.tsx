@@ -22,7 +22,7 @@ export async function Saeulen() {
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
           {t("saeulen.titel")}
         </h2>
-        <GoldRule diamonds className="mx-0" />
+        <GoldRule className="mx-0" />
       </header>
 
       <div className="mt-12 grid gap-6 md:grid-cols-3">

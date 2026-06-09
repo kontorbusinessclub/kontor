@@ -24,7 +24,7 @@ export async function KontaktCta() {
           {t("kontaktCta.titel")}
         </h2>
 
-        <GoldRule diamonds className="mt-6" />
+        <GoldRule className="mt-6" />
 
         <p className="mx-auto mt-6 max-w-xl font-sans text-lg font-light leading-relaxed text-champagner/90">
           {t("kontaktCta.text")}

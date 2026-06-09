@@ -23,7 +23,7 @@ export async function Social() {
           {t("social.titel")}
         </h2>
 
-        <GoldRule diamonds className="mx-0" />
+        <GoldRule className="mx-0" />
 
         <p className="font-sans text-lg font-light leading-relaxed text-tinte/85">
           {t("social.text")}

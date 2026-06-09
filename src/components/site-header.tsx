@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { navItems } from "@/lib/navigation";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { MobileNav } from "@/components/mobile-nav";
+import { Wordmark } from "@/components/wordmark";
 
 /**
  * Sticky Header. Zentrierte Wortmarke "Kontor [Gold-Kreis K] Business Club"
@@ -22,17 +23,10 @@ export async function SiteHeader() {
 
           <Link
             href="/"
-            className="flex items-center justify-center gap-3 font-serif uppercase tracking-[0.14em] text-koenigsblau transition-colors hover:text-kontorblau focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+            className="flex items-center justify-center transition-colors hover:text-kontorblau focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
             aria-label="Kontor Business Club – Startseite"
           >
-            <span className="text-lg sm:text-xl">Kontor</span>
-            <span
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gold text-sm font-semibold text-gold"
-              aria-hidden="true"
-            >
-              K
-            </span>
-            <span className="text-lg sm:text-xl">Business Club</span>
+            <Wordmark tone="dark" size="header" />
           </Link>
 
           <div className="flex items-center justify-end gap-2">

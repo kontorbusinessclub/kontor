@@ -28,7 +28,7 @@ export async function Hero() {
         {t("slogan")}
       </h1>
 
-      <GoldRule diamonds className="mt-7" />
+      <GoldRule className="mt-7" />
 
       <p className="mx-auto mt-7 max-w-2xl font-sans text-lg font-light leading-relaxed text-champagner/90">
         {t("intro")}

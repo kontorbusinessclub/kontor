@@ -261,6 +261,7 @@
   },
   "footer": {
     "slogan": "Recommend. Grow. Connect.",
+    "claim": "Kontor – Many industries, one goal.",
     "ort": "Kontor Business Club · Münster",
     "adresse": [
       "Kontor Business Club",
@@ -270,7 +271,7 @@
       "impressum": "Imprint",
       "datenschutz": "Privacy"
     },
-    "socialTitel": "Follow",
+    "socialTitel": "Connect",
     "headings": {
       "navigation": "Navigation",
       "rechtliches": "Legal"

@@ -261,6 +261,7 @@
   },
   "footer": {
     "slogan": "Empfehlen. Wachsen. Verbinden.",
+    "claim": "Kontor – Viele Branchen, ein Ziel.",
     "ort": "Kontor Business Club · Münster",
     "adresse": [
       "Kontor Business Club",
@@ -270,7 +271,7 @@
       "impressum": "Impressum",
       "datenschutz": "Datenschutz"
     },
-    "socialTitel": "Folgen",
+    "socialTitel": "Vernetzen",
     "headings": {
       "navigation": "Navigation",
       "rechtliches": "Rechtliches"

@@ -61,7 +61,7 @@ export async function MemberBanner() {
     <Container className="flex flex-col gap-8">
       <header className="flex flex-col items-center gap-4 text-center">
         <Kicker tone="light">{t("banner.titel")}</Kicker>
-        <GoldRule diamonds />
+        <GoldRule />
       </header>
 
       <div className={styles.stage} aria-label={t("banner.titel")}>
