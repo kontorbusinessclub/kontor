@@ -46,7 +46,11 @@
       "istMitglied": "Ich bin bereits Mitglied",
       "pflichtfeld": "Pflichtfeld",
       "erfolg": "Danke. Deine Nachricht ist bei uns. Wir melden uns zeitnah.",
-      "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut."
+      "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut.",
+      "fehlerValidierung": "Bitte prüfe deine Angaben. Markierte Felder enthalten Fehler.",
+      "fehlerRateLimit": "Zu viele Anfragen in kurzer Zeit. Bitte warte einen Moment und versuch es erneut.",
+      "fehlerServer": "Bei der Übertragung ist ein technischer Fehler aufgetreten. Bitte versuch es in ein paar Minuten erneut oder schreib uns direkt an info@kontor-businessclub.com.",
+      "fehlerNetzwerk": "Keine Verbindung zum Server. Bitte prüfe deine Internetverbindung und versuch es erneut."
     }
   },
   "home": {
@@ -385,6 +389,7 @@
     "gutGelaufen": "Was lief gut?",
     "verbessern": "Was können wir verbessern?",
     "leer": "Aktuell gibt es keine vergangenen Veranstaltungen, zu denen du Feedback geben kannst.",
+    "testOption": "Testveranstaltung – nur Vorschau",
     "erfolg": "Danke für dein Feedback!",
     "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut."
   },

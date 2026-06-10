@@ -31,6 +31,13 @@ export type KontorEvent = {
   image: string;
 };
 
+/**
+ * Test-/Vorschau-Event für das Feedback-Formular (Aufgabe 4). Erscheint nur,
+ * wenn NEXT_PUBLIC_FEEDBACK_TEST_MODE=true gesetzt ist, und ermöglicht dem
+ * Auftraggeber, den Funktionsfluss vor dem ersten echten Event zu testen.
+ */
+export const FEEDBACK_TEST_EVENT_ID = "test-veranstaltung";
+
 const PROVINZIAL: EventLocation = {
   name: "Provinzial Versicherung Zentrale",
   street: "Provinzial-Allee 1",

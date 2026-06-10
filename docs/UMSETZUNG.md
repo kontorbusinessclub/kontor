@@ -67,6 +67,36 @@ zurückgegeben (die App lief also auch ohne Konfiguration durch).
   self-hosted Fonts), SEPA-Mandatstext (`src/content/legal.ts`), Cookie-Hinweis
   (`src/components/cookie-banner.tsx`).
 
+## Bugfix Mail-Domain (Nachtrag zu § 15)
+
+**Was war kaputt:** Auf dem Preview-Deployment scheiterte der Versand mit
+`403 – The mail.kontor-businessclub.com domain is not verified`. Im UI erschien
+nur die generische Fehlermeldung. Verifiziert ist bei Resend die Subdomain
+`kontakt.kontor-businessclub.com` (= Wert von `MAIL_FROM`).
+
+**Was geändert wurde:**
+- Zentrale, validierte Mail-Config `src/lib/mail-config.ts` (`loadMailConfig`)
+  als einzige Quelle für `RESEND_API_KEY`, `MAIL_FROM`, `MAIL_TO`. Keine
+  hartcodierten Domains/Adressen mehr; auch der frühere Fallback-Default in
+  `resend.ts` ist entfernt.
+- **Strict-Check** im gemeinsamen Handler aller vier `/api`-Routen: fehlt eine
+  Variable, antwortet die Route mit **500** und loggt `[config] …`.
+- **Differenzierte UI-Fehler** je HTTP-Status (400/422 Validierung, 429
+  Rate-Limit, 5xx Server, fetch-Fehler Netzwerk) – keine technischen Details im
+  UI (`src/lib/forms/submit.ts`, alle Formulare).
+- **Feedback-Test-Modus** `NEXT_PUBLIC_FEEDBACK_TEST_MODE` (Option
+  „Testveranstaltung – nur Vorschau", Betreff-Prefix `[TEST]`).
+
+**Wichtiger Hinweis:** Im Code gab es **keinen** Hardcode `mail.…`. Der Code
+liest `MAIL_FROM` ausschließlich aus der Umgebung. Die wahrscheinlichste Ursache
+des Live-Fehlers ist daher, dass der in Vercel hinterlegte `MAIL_FROM`-Wert
+tatsächlich auf `mail.kontor-businessclub.com` zeigt. **Bitte den Vercel-Wert
+prüfen** – er muss lauten:
+`Kontor Business Club <no-reply@kontakt.kontor-businessclub.com>`.
+
+**Wie testen:** drei Formulare auf dem Preview gemäß `docs/MAILVERSAND-TESTS.md`
+erneut absenden; das Feedback-Formular ggf. mit `NEXT_PUBLIC_FEEDBACK_TEST_MODE=true`.
+
 ## SEPA-Aktivierungspfad
 
 Sobald die Gläubiger-Identifikationsnummer vorliegt:

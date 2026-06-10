@@ -15,7 +15,7 @@ import {
  * aus dem DOM, das Schema coerced sie zum Ausgabe-Typ.
  */
 type EventFormValues = z.input<typeof eventRegistrationSchema>;
-import { postForm, honeypotProps } from "@/lib/forms/submit";
+import { postForm, honeypotProps, submitErrorKey } from "@/lib/forms/submit";
 import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 import { Kicker } from "@/components/ui/kicker";
@@ -51,6 +51,7 @@ export function EventRegistrationForm({
   const tc = useTranslations("common.cta");
 
   const [status, setStatus] = useState<Status>("idle");
+  const [errorKey, setErrorKey] = useState("fehler");
 
   const initialEventId =
     defaultEventId && events.some((e) => e.id === defaultEventId)
@@ -107,6 +108,7 @@ export function EventRegistrationForm({
         });
       }
     }
+    setErrorKey(submitErrorKey(result.reason));
     setStatus("error");
   }
 
@@ -293,7 +295,7 @@ export function EventRegistrationForm({
               role="alert"
               className="font-sans text-base text-smaragd"
             >
-              {tf("fehler")}
+              {tf(errorKey)}
             </p>
           ) : null}
         </div>

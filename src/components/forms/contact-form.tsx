@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { contactSchema, type ContactInput } from "@/lib/forms/schemas";
-import { postForm, honeypotProps } from "@/lib/forms/submit";
+import { postForm, honeypotProps, submitErrorKey } from "@/lib/forms/submit";
 import { Field, Input, Textarea } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
@@ -20,6 +20,7 @@ export function ContactForm() {
   const t = useTranslations("common.form");
   const tcta = useTranslations("common.cta");
   const [status, setStatus] = useState<Status>("idle");
+  const [errorKey, setErrorKey] = useState("fehler");
 
   const {
     register,
@@ -49,6 +50,7 @@ export function ContactForm() {
       return;
     }
 
+    setErrorKey(submitErrorKey(result.reason));
     setStatus("error");
     if (result.errors) {
       for (const [field, messages] of Object.entries(result.errors)) {
@@ -165,7 +167,7 @@ export function ContactForm() {
           role="alert"
           className="rounded-md border border-smaragd/40 bg-white px-4 py-3 font-sans text-base text-smaragd"
         >
-          {t("fehler")}
+          {t(errorKey)}
         </p>
       ) : null}
 

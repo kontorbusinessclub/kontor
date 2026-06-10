@@ -1,81 +1,50 @@
 import { Resend } from "resend";
 
 /**
- * E-Mail-Versand via Resend (Aufgabe 15).
+ * E-Mail-Versand via Resend (Aufgabe 15 / Bugfix Mail-Domain).
  *
- * Lazy initialisiert. Fehlt RESEND_API_KEY, wird nicht geworfen, sondern
- * eine Warnung geloggt und {skipped:true} zurückgegeben, damit die App
- * auch ohne Konfiguration läuft (lokal/CI).
- *
- * Konfiguration ausschließlich über Environment-Variablen (keine
- * Klartextwerte im Code):
- *   RESEND_API_KEY – API-Key (nur serverseitig)
- *   MAIL_FROM      – verifizierte Absenderadresse (kontakt.kontor-businessclub.com)
- *   MAIL_TO        – Posteingang (info@kontor-businessclub.com)
+ * Absender, Empfänger und API-Key werden NICHT hier ermittelt, sondern
+ * von der zentralen Mail-Config (`src/lib/mail-config.ts`) validiert und
+ * explizit übergeben. So gibt es keine hartcodierten Domains/Adressen.
  */
 
-let cached: Resend | null | undefined;
+const clients = new Map<string, Resend>();
 
-function getResend(): Resend | null {
-  if (cached !== undefined) {
-    return cached;
+function client(apiKey: string): Resend {
+  let instance = clients.get(apiKey);
+  if (!instance) {
+    instance = new Resend(apiKey);
+    clients.set(apiKey, instance);
   }
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    cached = null;
-    return null;
-  }
-  cached = new Resend(apiKey);
-  return cached;
-}
-
-/** Absenderadresse (verifizierte Subdomain). */
-export function getFrom(): string {
-  return (
-    process.env.MAIL_FROM ||
-    "Kontor Business Club <no-reply@kontakt.kontor-businessclub.com>"
-  );
-}
-
-/** Posteingang für eingehende Benachrichtigungen. */
-export function getInbox(): string {
-  return (
-    process.env.MAIL_TO ||
-    process.env.KONTOR_INBOX ||
-    "info@kontor-businessclub.com"
-  );
+  return instance;
 }
 
 export interface SendMailInput {
+  apiKey: string;
+  from: string;
   to: string | string[];
   subject: string;
   html: string;
-  /** Plaintext-Fallback (Aufgabe 15: HTML + Text). */
+  /** Plaintext-Fallback. */
   text?: string;
   replyTo?: string;
 }
 
 export type SendMailResult =
-  | { skipped: true }
-  | { skipped: false; id: string | null }
-  | { skipped: false; error: string };
+  | { ok: true; id: string | null }
+  | { ok: false; error: string };
 
 export async function sendMail({
+  apiKey,
+  from,
   to,
   subject,
   html,
   text,
   replyTo,
 }: SendMailInput): Promise<SendMailResult> {
-  const resend = getResend();
-
-  if (!resend) {
-    console.warn("[resend] RESEND_API_KEY fehlt. E-Mail wird nicht versendet.");
-    return { skipped: true };
-  }
-
-  const { data, error } = await resend.emails.send({
-    from: getFrom(),
+  const { data, error } = await client(apiKey).emails.send({
+    from,
     to,
     subject,
     html,
@@ -85,8 +54,8 @@ export async function sendMail({
 
   if (error) {
     console.error("[resend] Versand fehlgeschlagen:", error);
-    return { skipped: false, error: error.message };
+    return { ok: false, error: error.message };
   }
 
-  return { skipped: false, id: data?.id ?? null };
+  return { ok: true, id: data?.id ?? null };
 }

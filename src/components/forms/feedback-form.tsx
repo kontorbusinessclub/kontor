@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import type { z } from "zod";
 import { feedbackSchema, type FeedbackInput } from "@/lib/forms/schemas";
-import { postForm, honeypotProps } from "@/lib/forms/submit";
+import { FEEDBACK_TEST_EVENT_ID } from "@/lib/events";
+import { postForm, honeypotProps, submitErrorKey } from "@/lib/forms/submit";
 import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
@@ -31,6 +32,14 @@ export function FeedbackForm({ events }: FeedbackFormProps) {
   const tf = useTranslations("common.form");
   const tcta = useTranslations("common.cta");
   const [status, setStatus] = useState<Status>("idle");
+  const [errorKey, setErrorKey] = useState("fehler");
+
+  // Test-Modus (Aufgabe 4): fügt ein fiktives Vorschau-Event hinzu, damit der
+  // Funktionsfluss vor dem ersten echten Event geprüft werden kann.
+  const testMode = process.env.NEXT_PUBLIC_FEEDBACK_TEST_MODE === "true";
+  const allEvents: FeedbackEventOption[] = testMode
+    ? [{ id: FEEDBACK_TEST_EVENT_ID, label: t("testOption") }, ...events]
+    : events;
 
   const {
     register,
@@ -45,7 +54,7 @@ export function FeedbackForm({ events }: FeedbackFormProps) {
     defaultValues: {
       name: "",
       email: "",
-      eventId: events[0]?.id ?? "",
+      eventId: allEvents[0]?.id ?? "",
       bewertung: 0,
       feedback: "",
       gutGelaufen: "",
@@ -73,10 +82,11 @@ export function FeedbackForm({ events }: FeedbackFormProps) {
         });
       }
     }
+    setErrorKey(submitErrorKey(result.reason));
     setStatus("error");
   }
 
-  if (events.length === 0) {
+  if (allEvents.length === 0) {
     return (
       <p className="font-sans text-base leading-relaxed text-tinte/80">
         {t("leer")}
@@ -103,7 +113,7 @@ export function FeedbackForm({ events }: FeedbackFormProps) {
           invalid={Boolean(errors.eventId)}
           {...register("eventId")}
         >
-          {events.map((event) => (
+          {allEvents.map((event) => (
             <option key={event.id} value={event.id}>
               {event.label}
             </option>
@@ -200,7 +210,7 @@ export function FeedbackForm({ events }: FeedbackFormProps) {
           role="alert"
           className="rounded-md border border-smaragd/40 bg-white px-4 py-3 font-sans text-base text-smaragd"
         >
-          {t("fehler")}
+          {tf(errorKey)}
         </p>
       ) : null}
 

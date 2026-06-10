@@ -1,14 +1,16 @@
 import type { ZodType } from "zod";
-import { getInbox, sendMail } from "@/lib/email/resend";
+import { sendMail } from "@/lib/email/resend";
+import { loadMailConfig } from "@/lib/mail-config";
 import { fieldsToHtml, fieldsToText, type MailField } from "@/lib/email/format";
 
 /**
- * Gemeinsame Logik der /api-Form-Endpunkte (Aufgabe 15):
+ * Gemeinsame Logik der /api-Form-Endpunkte (Aufgabe 15 / Bugfix Mail-Domain):
  *  - nur POST
+ *  - strikter Mail-Config-Check (RESEND_API_KEY/MAIL_FROM/MAIL_TO) → sonst 500
  *  - JSON-Body lesen
  *  - Honeypot prüfen (still verwerfen)
- *  - Zod-Validierung
- *  - einfaches IP-Rate-Limiting (best effort, in-memory)
+ *  - Zod-Validierung (→ 400 inkl. Feldfehler)
+ *  - einfaches IP-Rate-Limiting (best effort, in-memory) → 429
  *  - Benachrichtigung an MAIL_TO + optionale Bestätigung an Absender
  *  - Antwort { ok: true } / { ok: false, error }
  */
@@ -70,6 +72,17 @@ export async function handleFormRequest<T>(
     return json({ ok: false, error: "method_not_allowed" }, 405);
   }
 
+  // Strict-Check: ohne vollständige Mail-Konfiguration scheitert der
+  // Endpoint laut (HTTP 500), statt stumm einen falschen Absender zu nutzen.
+  const mailConfig = loadMailConfig();
+  if (!mailConfig.ok) {
+    console.error(
+      `[config] Mail-Umgebungsvariablen fehlen: ${mailConfig.missing.join(", ")}`,
+    );
+    return json({ ok: false, error: "server_error" }, 500);
+  }
+  const { apiKey, from, to } = mailConfig.config;
+
   if (rateLimited(clientIp(req))) {
     return json({ ok: false, error: "rate_limited" }, 429);
   }
@@ -101,30 +114,29 @@ export async function handleFormRequest<T>(
   const mail = build(parsed.data);
 
   const notify = await sendMail({
-    to: getInbox(),
+    apiKey,
+    from,
+    to,
     subject: mail.subject,
     html: fieldsToHtml(mail.title, mail.fields),
     text: fieldsToText(mail.title, mail.fields),
     replyTo: mail.replyTo,
   });
 
-  if (!notify.skipped && "error" in notify) {
+  if (!notify.ok) {
+    // Technische Details bleiben im Server-Log, nicht im UI.
     return json({ ok: false, error: "send_failed" }, 502);
   }
 
   if (mail.confirm) {
     await sendMail({
+      apiKey,
+      from,
       to: mail.confirm.to,
       subject: mail.confirm.subject,
       html: mail.confirm.html,
       text: mail.confirm.text,
     });
-  }
-
-  // Ohne RESEND_API_KEY läuft die App weiter (Mail wird übersprungen).
-  if (notify.skipped) {
-    console.info("[forms] Resend nicht konfiguriert. Eingang:", mail.title);
-    return json({ ok: true, note: "not_configured" });
   }
 
   return json({ ok: true });

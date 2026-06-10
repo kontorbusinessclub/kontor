@@ -46,7 +46,11 @@
       "istMitglied": "I am already a member",
       "pflichtfeld": "Required",
       "erfolg": "Thanks. We have your message and will get back to you soon.",
-      "fehler": "Something went wrong. Please check your details and try again."
+      "fehler": "Something went wrong. Please check your details and try again.",
+      "fehlerValidierung": "Please check your details. The highlighted fields contain errors.",
+      "fehlerRateLimit": "Too many requests in a short time. Please wait a moment and try again.",
+      "fehlerServer": "A technical error occurred during transmission. Please try again in a few minutes or email us directly at info@kontor-businessclub.com.",
+      "fehlerNetzwerk": "No connection to the server. Please check your internet connection and try again."
     }
   },
   "home": {
@@ -385,6 +389,7 @@
     "gutGelaufen": "What went well?",
     "verbessern": "What can we improve?",
     "leer": "There are currently no past events you can give feedback on.",
+    "testOption": "Test event – preview only",
     "erfolg": "Thanks for your feedback!",
     "fehler": "Something went wrong. Please check your details and try again."
   },

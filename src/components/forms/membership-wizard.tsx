@@ -16,7 +16,7 @@ import {
 } from "@/lib/forms/membership";
 import { SEPA_ENABLED } from "@/lib/sepa";
 import { SEPA_MANDAT_TEXT } from "@/content/legal";
-import { postForm, honeypotProps } from "@/lib/forms/submit";
+import { postForm, honeypotProps, submitErrorKey } from "@/lib/forms/submit";
 import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
@@ -40,8 +40,10 @@ const TOTAL = 9;
 export function MembershipWizard() {
   const t = useTranslations("antrag");
   const tf = useTranslations("antrag.fields");
+  const tc = useTranslations("common.form");
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorKey, setErrorKey] = useState("fehler");
 
   const form = useForm<Values, unknown, MembershipWizardData>({
     resolver: zodResolver(membershipWizardSchema),
@@ -83,6 +85,7 @@ export function MembershipWizard() {
       setStatus("success");
       return;
     }
+    setErrorKey(submitErrorKey(result.reason));
     setStatus("error");
   }
 
@@ -353,7 +356,7 @@ export function MembershipWizard() {
             ))}
           </dl>
           {status === "error" ? (
-            <p role="alert" className="font-sans text-base text-smaragd">{t("fehler")}</p>
+            <p role="alert" className="font-sans text-base text-smaragd">{tc(errorKey)}</p>
           ) : null}
         </div>
       ) : null}
