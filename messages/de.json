@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kontor Business Club",
-    "description": "Empfehlen. Wachsen. Verbinden. Ein exklusiver Unternehmerkreis im Münsterland, eine Branche, ein Vertreter."
+    "description": "Empfehlen. Wachsen. Verbinden. Ein exklusiver Unternehmerkreis – eine Branche, ein Vertreter."
   },
   "nav": {
     "club": "Club",
@@ -41,30 +41,46 @@
       "nachricht": "Nachricht",
       "branche": "Branche",
       "website": "Website",
-      "anzahlGaeste": "Anzahl Gäste",
+      "veranstaltung": "Veranstaltung",
       "vertreter": "Vertreter",
       "istMitglied": "Ich bin bereits Mitglied",
       "pflichtfeld": "Pflichtfeld",
       "erfolg": "Danke. Deine Nachricht ist bei uns. Wir melden uns zeitnah.",
-      "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut."
+      "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut.",
+      "fehlerValidierung": "Bitte prüfe deine Angaben. Markierte Felder enthalten Fehler.",
+      "fehlerRateLimit": "Zu viele Anfragen in kurzer Zeit. Bitte warte einen Moment und versuch es erneut.",
+      "fehlerServer": "Bei der Übertragung ist ein technischer Fehler aufgetreten. Bitte versuch es in ein paar Minuten erneut oder schreib uns direkt an info@kontor-businessclub.com.",
+      "fehlerNetzwerk": "Keine Verbindung zum Server. Bitte prüfe deine Internetverbindung und versuch es erneut."
     }
   },
   "home": {
-    "kicker": "Münsterland",
+    "kicker": "Münster",
     "slogan": "Empfehlen. Wachsen. Verbinden.",
     "aufhaenger": "Viele Branchen. Ein Ziel.",
     "intro": "Ein exklusiver Kreis von Unternehmern und Führungskräften. Eine Branche, ein Vertreter.",
+    "willkommen": {
+      "titel": "Herzlich willkommen",
+      "text": "Schön, dass du da bist. Der Kontor Business Club bringt Unternehmer, Geschäftsführer und Gründer in einem festen, vertrauensvollen Kreis zusammen. Wir empfehlen einander, wachsen gemeinsam und verbinden Geschäftliches mit echtem Miteinander – immer in Präsenz und außerhalb deiner Arbeitszeit."
+    },
+    "events": {
+      "kicker": "Termine",
+      "titel": "Die nächsten Veranstaltungen",
+      "text": "Ein Blick auf die kommenden Business- und Social Events. Sichere dir deinen Platz.",
+      "anmelden": "Anmelden",
+      "leer": "Aktuell sind keine kommenden Veranstaltungen eingetragen.",
+      "tag": {
+        "business": "Business",
+        "social": "Social"
+      },
+      "prev": "Vorheriges Event",
+      "next": "Nächstes Event"
+    },
     "nextEvent": {
       "kicker": "Auftakt",
       "titel": "Das erste Kontor Event",
       "datumLabel": "18. Juni 2026",
-      "ortLabel": "Münsterland",
+      "ortLabel": "Provinzial Zentrale, Münster",
       "cta": "Platz sichern"
-    },
-    "aktuelles": {
-      "kicker": "Aktuelles",
-      "titel": "Was im Kontor passiert",
-      "intro": "Neue Mitglieder, kommende Termine, Einblicke aus dem Club. Hier siehst du, woran wir gerade arbeiten."
     },
     "saeulen": {
       "kicker": "Worauf es ankommt",
@@ -81,9 +97,6 @@
         "titel": "Miteinander",
         "text": "Wir setzen auf Vertrauen statt Visitenkarten-Stapel. Wer sich kennt, empfiehlt anders. Genau das ist der Kern vom Kontor."
       }
-    },
-    "banner": {
-      "titel": "Vertretene Unternehmen"
     },
     "testimonials": {
       "kicker": "Stimmen",
@@ -136,19 +149,17 @@
         }
       ]
     },
-    "social": {
-      "titel": "Bleib auf dem Laufenden",
-      "text": "Termine, Einblicke und neue Mitglieder zuerst auf unseren Kanälen.",
-      "instagram": "Instagram",
-      "linkedin": "LinkedIn"
-    },
     "kontaktCta": {
-      "titel": "Passt das zu dir?",
+      "titel": "Passt der Club zu dir?",
       "text": "Wenn deine Branche noch frei ist und du auf echte Empfehlungen setzt, lass uns reden.",
-      "cta": "Kontakt aufnehmen"
+      "ctaEvent": "Anmeldung zum Event",
+      "ctaMitglied": "Mitglied werden"
     }
   },
   "club": {
+    "kicker": "Club",
+    "titel": "Unser Club",
+    "intro": "Das Kontor ist ein fester Kreis aus Unternehmern, die sich kennen, vertrauen und füreinander empfehlen. Hier erfährst du, wie sich der Club anfühlt, warum es pro Branche nur einen Vertreter gibt und worauf wir uns verständigen.",
     "clubleben": {
       "kicker": "Clubleben",
       "titel": "So fühlt sich das Kontor an",
@@ -200,7 +211,7 @@
     "kalender": {
       "titel": "Kommende Termine",
       "text": "Die nächsten Events auf einen Blick. Anmeldung über das Formular unten.",
-      "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 im Münsterland."
+      "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 in Münster."
     },
     "anmeldung": {
       "titel": "Zum Event anmelden",
@@ -237,6 +248,125 @@
       "intro": "Der Weg ins Kontor ist niedrigschwellig und transparent. Du stellst einen Antrag, wir lernen uns kennen, und wenn deine Branche frei ist, nehmen wir dich auf."
     }
   },
+  "antrag": {
+    "schrittLabel": "Schritt {n} von {total}",
+    "weiter": "Weiter",
+    "zurueck": "Zurück",
+    "absenden": "Antrag jetzt absenden",
+    "senden": "Wird gesendet …",
+    "erfolgTitel": "Vielen Dank!",
+    "erfolgText": "Ihr Antrag ist bei uns eingegangen. Das Kuratorium meldet sich innerhalb von 7 Werktagen bei Ihnen.",
+    "erfolgCta": "Zur Startseite",
+    "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut.",
+    "pflicht": "Pflichtfeld",
+    "steps": {
+      "1": "Persönliche Angaben",
+      "2": "Unternehmensdaten",
+      "3": "Vertretungsberechtigung",
+      "4": "Mitgliedschaft & Laufzeit",
+      "5": "Zahlungsinformation",
+      "6": "Kommunikation",
+      "7": "FAQs",
+      "8": "Einverständnisse",
+      "9": "Bestätigung"
+    },
+    "fields": {
+      "vorname": "Vorname",
+      "nachname": "Nachname",
+      "titelFunktion": "Titel / Funktion",
+      "geburtsdatum": "Geburtsdatum",
+      "strasse": "Straße und Hausnummer",
+      "plzOrt": "PLZ und Ort",
+      "telefonMobil": "Telefon mobil",
+      "telefonBuero": "Telefon Büro / Festnetz",
+      "emailPrivat": "E-Mail privat",
+      "emailGeschaeftlich": "E-Mail geschäftlich",
+      "website": "Website",
+      "unternehmen": "Unternehmensname (vollständig)",
+      "rechtsform": "Rechtsform",
+      "registernummer": "Handelsregister-/Registernummer",
+      "unternehmensanschrift": "Unternehmensanschrift",
+      "plzOrtUnternehmen": "PLZ und Ort (Unternehmen)",
+      "branche": "Branche / Tätigkeitsschwerpunkt",
+      "fachgebiet": "Gewünschtes Fachgebiet im Club",
+      "erwerb": "Erwerb",
+      "unternehmensgroesse": "Unternehmensgröße",
+      "kurzbeschreibung": "Kurzbeschreibung des Unternehmens",
+      "kurzpraesentation": "Kurzpräsentation von Person und Tätigkeit",
+      "istVertretungsberechtigt": "Ist die antragstellende Person die vertretungsberechtigte Person?",
+      "vbVorname": "Vorname (Vertretung)",
+      "vbNachname": "Nachname (Vertretung)",
+      "vbFunktion": "Funktion (Vertretung)",
+      "vbTelefon": "Telefon (Vertretung)",
+      "vbEmail": "E-Mail (Vertretung)",
+      "zahlungsintervall": "Zahlungsintervall",
+      "starttermin": "Gewünschter Starttermin",
+      "empfohlenVon": "Empfohlen durch bestehendes Mitglied?",
+      "zahlungsmethode": "Zahlungsmethode",
+      "kontoinhaber": "Kontoinhaber",
+      "iban": "IBAN",
+      "bic": "BIC",
+      "bank": "Bank",
+      "profiltext": "Profiltext für den Mitgliederbereich",
+      "referenzen": "3 stärkste Referenzleistungen / Produkte",
+      "kommunikation": "Newsletter & Clubkommunikation"
+    },
+    "ja": "Ja",
+    "nein": "Nein",
+    "erwerbOpt": {
+      "haupterwerb": "Haupterwerb",
+      "nebenerwerb": "Nebenerwerb"
+    },
+    "groessen": {
+      "1": "1 Person",
+      "2-5": "2–5 Mitarbeitende",
+      "6-20": "6–20 Mitarbeitende",
+      "21-50": "21–50 Mitarbeitende",
+      "50+": "50+ Mitarbeitende"
+    },
+    "intervalle": {
+      "monatlich": "Monatlich",
+      "vierteljaehrlich": "Vierteljährlich",
+      "halbjaehrlich": "Halbjährlich",
+      "jaehrlich": "Jährlich"
+    },
+    "laufzeitInfo": "Vertragslaufzeit: Unbestimmt, monatlich kündbar mit einer Frist von einem vollen Monat zum Monatsende.",
+    "aufnahmegebuehr": "Zusätzlich fällt einmalig eine Aufnahmegebühr von 150,00 € an.",
+    "methoden": {
+      "sepa": "SEPA-Lastschrift",
+      "ueberweisung": "Überweisung"
+    },
+    "sepaBald": "Diese Zahlungsmethode wird in Kürze freigeschaltet.",
+    "sepaMandatTitel": "SEPA-Lastschriftmandat",
+    "sepaMandatCheckbox": "Ich ermächtige den Kontor Business Club, Zahlungen von meinem Konto mittels Lastschrift einzuziehen, und erkenne den oben stehenden Mandatstext an.",
+    "ueberweisungInfo": "Die Bankverbindung des Clubs wird nach Aufnahme separat mitgeteilt. [Platzhalter – wird nachgereicht.]",
+    "kanaele": {
+      "email": "E-Mail",
+      "whatsapp": "WhatsApp",
+      "app": "App"
+    },
+    "einverstaendnis": {
+      "agb": "Ich habe die AGB des Kontor Business Clubs gelesen und erkenne diese als verbindlich an.",
+      "datenschutz": "Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu.",
+      "foto": "Ich bin damit einverstanden, dass bei Clubveranstaltungen Foto- und Video-Aufnahmen meiner Person erstellt und für die Öffentlichkeitsarbeit des Kontor Business Clubs genutzt werden dürfen. (optional, jederzeit widerrufbar)",
+      "unternehmer": "Ich bestätige, dass ich als Unternehmer/in im Sinne des deutschen Rechts (HGB/BGB) handle und diese Mitgliedschaft im Rahmen meiner beruflichen/gewerblichen Tätigkeit abschließe."
+    },
+    "agbLink": "AGB",
+    "datenschutzLink": "Datenschutzerklärung",
+    "faqTitel": "Häufige Fragen zum Aufnahmeprozess",
+    "faq": {
+      "items": [
+        { "frage": "Wer kann Mitglied werden?", "antwort": "Selbstständige Unternehmer/innen, Geschäftsführer/innen und innovative Start-up-Gründer/innen. Je Branche nimmt der Club genau ein Mitglied auf." },
+        { "frage": "Wie läuft der Aufnahmeprozess?", "antwort": "Sie reichen Ihren Antrag mit einer kurzen Vorstellung Ihrer Person und Ihres Unternehmens ein. Das Kuratorium prüft den Antrag und entscheidet innerhalb von sieben Werktagen." },
+        { "frage": "Was kostet die Mitgliedschaft?", "antwort": "Der monatliche Beitrag beträgt 80 € (alternativ vierteljährlich, halbjährlich oder jährlich zu zahlen). Zusätzlich fällt einmalig eine Aufnahmegebühr von 150 € an." },
+        { "frage": "Wie lange läuft der Vertrag?", "antwort": "Die Mitgliedschaft läuft auf unbestimmte Zeit und kann mit einer Frist von einem vollen Monat zum Monatsende gekündigt werden." },
+        { "frage": "Was passiert, wenn ich nicht zu einem Event kommen kann?", "antwort": "Zu Business Events können Sie einen Vertreter entsenden. Zu Social Events ist die persönliche Teilnahme erwünscht, eine Vertretung ist hier nicht vorgesehen." },
+        { "frage": "Kann ich Gäste mitbringen?", "antwort": "Ja. Interessierte Freunde und Kollegen sind willkommen, ehe sie ggf. selbst Mitglied werden. Bitte kündigen Sie Gäste vorher beim Clubmanagement an." },
+        { "frage": "Wann finden die Veranstaltungen statt?", "antwort": "Zweimal pro Monat – ein Business Event und ein Social Event – außerhalb regulärer Arbeitszeiten, immer in Präsenz." }
+      ]
+    },
+    "reviewTitel": "Bitte prüfe deine Angaben"
+  },
   "kontakt": {
     "beratung": {
       "kicker": "Kontakt",
@@ -249,28 +379,52 @@
       "intro": "Je konkreter deine Nachricht, desto besser können wir dir antworten."
     }
   },
+  "feedback": {
+    "kicker": "Feedback",
+    "titel": "Feedback zur Veranstaltung",
+    "intro": "Dein Eindruck hilft uns, die nächsten Events besser zu machen. Sag uns, wie es war.",
+    "bewertung": "Bewertung",
+    "sterneLabel": "{n} von 5 Sternen",
+    "feedbackLabel": "Dein Feedback",
+    "gutGelaufen": "Was lief gut?",
+    "verbessern": "Was können wir verbessern?",
+    "leer": "Aktuell gibt es keine vergangenen Veranstaltungen, zu denen du Feedback geben kannst.",
+    "testOption": "Testveranstaltung – nur Vorschau",
+    "erfolg": "Danke für dein Feedback!",
+    "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut."
+  },
   "legal": {
     "impressum": {
-      "titel": "Impressum",
-      "platzhalter": "Die vollständigen Angaben nach Paragraf 5 TMG folgen in Kürze."
+      "titel": "Impressum"
     },
     "datenschutz": {
-      "titel": "Datenschutz",
-      "platzhalter": "Die vollständige Datenschutzerklärung folgt in Kürze."
+      "titel": "Datenschutz"
+    },
+    "agb": {
+      "titel": "Allgemeine Geschäftsbedingungen"
     }
+  },
+  "cookie": {
+    "ariaLabel": "Cookie-Hinweis",
+    "text": "Diese Website verwendet ausschließlich technisch notwendige Cookies, um grundlegende Funktionen wie Spracheinstellungen und Sicherheit zu gewährleisten. Es findet kein Tracking durch Drittanbieter statt. Mehr Informationen findest du in unserer",
+    "link": "Datenschutzerklärung",
+    "button": "Verstanden"
   },
   "footer": {
     "slogan": "Empfehlen. Wachsen. Verbinden.",
-    "ort": "Kontor Business Club · Münsterland",
+    "claim": "Kontor – Viele Branchen, ein Ziel.",
+    "ort": "Kontor Business Club · Münster",
     "adresse": [
       "Kontor Business Club",
-      "Münsterland"
+      "Münster"
     ],
     "rechtliches": {
       "impressum": "Impressum",
-      "datenschutz": "Datenschutz"
+      "datenschutz": "Datenschutz",
+      "agb": "AGB"
     },
-    "socialTitel": "Folgen",
+    "feedback": "Feedback zur Veranstaltung",
+    "socialTitel": "Vernetzen",
     "headings": {
       "navigation": "Navigation",
       "rechtliches": "Rechtliches"

@@ -44,7 +44,7 @@ export function ChapterHeader({
         {title}
       </h1>
 
-      {rule ? <GoldRule diamonds className="mx-0" /> : null}
+      {rule ? <GoldRule className="mx-0" /> : null}
 
       {intro ? (
         <p

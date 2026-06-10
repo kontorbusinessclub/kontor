@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kontor Business Club",
-    "description": "Recommend. Grow. Connect. An exclusive circle of entrepreneurs in the Münsterland region, one representative per industry."
+    "description": "Recommend. Grow. Connect. An exclusive circle of entrepreneurs – one representative per industry."
   },
   "nav": {
     "club": "Club",
@@ -41,30 +41,46 @@
       "nachricht": "Message",
       "branche": "Industry",
       "website": "Website",
-      "anzahlGaeste": "Number of guests",
+      "veranstaltung": "Event",
       "vertreter": "Representative",
       "istMitglied": "I am already a member",
       "pflichtfeld": "Required",
       "erfolg": "Thanks. We have your message and will get back to you soon.",
-      "fehler": "Something went wrong. Please check your details and try again."
+      "fehler": "Something went wrong. Please check your details and try again.",
+      "fehlerValidierung": "Please check your details. The highlighted fields contain errors.",
+      "fehlerRateLimit": "Too many requests in a short time. Please wait a moment and try again.",
+      "fehlerServer": "A technical error occurred during transmission. Please try again in a few minutes or email us directly at info@kontor-businessclub.com.",
+      "fehlerNetzwerk": "No connection to the server. Please check your internet connection and try again."
     }
   },
   "home": {
-    "kicker": "Münsterland",
+    "kicker": "Münster",
     "slogan": "Recommend. Grow. Connect.",
     "aufhaenger": "Many industries. One goal.",
     "intro": "An exclusive circle of entrepreneurs and executives. One representative per industry.",
+    "willkommen": {
+      "titel": "Welcome",
+      "text": "Good to have you here. The Kontor Business Club brings entrepreneurs, managing directors and founders together in a fixed, trusted circle. We recommend one another, grow together and combine business with genuine connection – always in person and outside your working hours."
+    },
+    "events": {
+      "kicker": "Dates",
+      "titel": "The next events",
+      "text": "A look at the upcoming business and social events. Reserve your spot.",
+      "anmelden": "Register",
+      "leer": "There are currently no upcoming events listed.",
+      "tag": {
+        "business": "Business",
+        "social": "Social"
+      },
+      "prev": "Previous event",
+      "next": "Next event"
+    },
     "nextEvent": {
       "kicker": "Opening night",
       "titel": "The first Kontor event",
       "datumLabel": "18 June 2026",
-      "ortLabel": "Münsterland",
+      "ortLabel": "Provinzial headquarters, Münster",
       "cta": "Reserve your spot"
-    },
-    "aktuelles": {
-      "kicker": "Updates",
-      "titel": "What is happening at Kontor",
-      "intro": "New members, upcoming dates, glimpses from the club. See what we are working on right now."
     },
     "saeulen": {
       "kicker": "What matters",
@@ -81,9 +97,6 @@
         "titel": "Togetherness",
         "text": "We build on trust, not stacks of business cards. People who know each other recommend differently. That is the heart of Kontor."
       }
-    },
-    "banner": {
-      "titel": "Represented companies"
     },
     "testimonials": {
       "kicker": "Voices",
@@ -136,19 +149,17 @@
         }
       ]
     },
-    "social": {
-      "titel": "Stay in the loop",
-      "text": "Dates, glimpses and new members first on our channels.",
-      "instagram": "Instagram",
-      "linkedin": "LinkedIn"
-    },
     "kontaktCta": {
-      "titel": "Is this for you?",
+      "titel": "Is the club right for you?",
       "text": "If your industry is still open and you value real referrals, let us talk.",
-      "cta": "Get in touch"
+      "ctaEvent": "Register for an event",
+      "ctaMitglied": "Become a member"
     }
   },
   "club": {
+    "kicker": "Club",
+    "titel": "Our club",
+    "intro": "Kontor is a fixed circle of entrepreneurs who know each other, trust each other and recommend one another. Here you learn how the club feels, why there is only one representative per industry and what we agree on.",
     "clubleben": {
       "kicker": "Club life",
       "titel": "How Kontor feels",
@@ -200,7 +211,7 @@
     "kalender": {
       "titel": "Upcoming dates",
       "text": "The next events at a glance. Register through the form below.",
-      "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in the Münsterland region."
+      "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in Münster."
     },
     "anmeldung": {
       "titel": "Register for an event",
@@ -237,6 +248,125 @@
       "intro": "The way into Kontor is low-threshold and transparent. You submit an application, we get to know each other, and if your industry is open, we welcome you in."
     }
   },
+  "antrag": {
+    "schrittLabel": "Step {n} of {total}",
+    "weiter": "Next",
+    "zurueck": "Back",
+    "absenden": "Submit application",
+    "senden": "Sending …",
+    "erfolgTitel": "Thank you!",
+    "erfolgText": "Your application has reached us. The board will get back to you within 7 working days.",
+    "erfolgCta": "Back to home",
+    "fehler": "Something went wrong. Please check your details and try again.",
+    "pflicht": "Required",
+    "steps": {
+      "1": "Personal details",
+      "2": "Company details",
+      "3": "Authorised representative",
+      "4": "Membership & term",
+      "5": "Payment information",
+      "6": "Communication",
+      "7": "FAQs",
+      "8": "Declarations",
+      "9": "Confirmation"
+    },
+    "fields": {
+      "vorname": "First name",
+      "nachname": "Last name",
+      "titelFunktion": "Title / role",
+      "geburtsdatum": "Date of birth",
+      "strasse": "Street and number",
+      "plzOrt": "Postcode and city",
+      "telefonMobil": "Mobile phone",
+      "telefonBuero": "Office / landline phone",
+      "emailPrivat": "Private email",
+      "emailGeschaeftlich": "Business email",
+      "website": "Website",
+      "unternehmen": "Company name (full)",
+      "rechtsform": "Legal form",
+      "registernummer": "Commercial / register number",
+      "unternehmensanschrift": "Company address",
+      "plzOrtUnternehmen": "Postcode and city (company)",
+      "branche": "Industry / focus",
+      "fachgebiet": "Desired field in the club",
+      "erwerb": "Type of activity",
+      "unternehmensgroesse": "Company size",
+      "kurzbeschreibung": "Short company description",
+      "kurzpraesentation": "Short presentation of person and activity",
+      "istVertretungsberechtigt": "Is the applicant the authorised representative?",
+      "vbVorname": "First name (representative)",
+      "vbNachname": "Last name (representative)",
+      "vbFunktion": "Role (representative)",
+      "vbTelefon": "Phone (representative)",
+      "vbEmail": "Email (representative)",
+      "zahlungsintervall": "Payment interval",
+      "starttermin": "Desired start date",
+      "empfohlenVon": "Recommended by an existing member?",
+      "zahlungsmethode": "Payment method",
+      "kontoinhaber": "Account holder",
+      "iban": "IBAN",
+      "bic": "BIC",
+      "bank": "Bank",
+      "profiltext": "Profile text for the members area",
+      "referenzen": "3 strongest reference services / products",
+      "kommunikation": "Newsletter & club communication"
+    },
+    "ja": "Yes",
+    "nein": "No",
+    "erwerbOpt": {
+      "haupterwerb": "Main occupation",
+      "nebenerwerb": "Secondary occupation"
+    },
+    "groessen": {
+      "1": "1 person",
+      "2-5": "2–5 employees",
+      "6-20": "6–20 employees",
+      "21-50": "21–50 employees",
+      "50+": "50+ employees"
+    },
+    "intervalle": {
+      "monatlich": "Monthly",
+      "vierteljaehrlich": "Quarterly",
+      "halbjaehrlich": "Half-yearly",
+      "jaehrlich": "Yearly"
+    },
+    "laufzeitInfo": "Term: indefinite, cancellable monthly with one full month's notice to the end of the month.",
+    "aufnahmegebuehr": "A one-time admission fee of €150.00 applies in addition.",
+    "methoden": {
+      "sepa": "SEPA direct debit",
+      "ueberweisung": "Bank transfer"
+    },
+    "sepaBald": "This payment method will be available soon.",
+    "sepaMandatTitel": "SEPA direct debit mandate",
+    "sepaMandatCheckbox": "I authorise the Kontor Business Club to collect payments from my account by direct debit and accept the mandate text above.",
+    "ueberweisungInfo": "The club's bank details will be provided separately after admission. [Placeholder – to follow.]",
+    "kanaele": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "app": "App"
+    },
+    "einverstaendnis": {
+      "agb": "I have read the terms and conditions of the Kontor Business Club and accept them as binding.",
+      "datenschutz": "I have read the privacy policy and consent to the processing of my data.",
+      "foto": "I consent to photo and video recordings of me being taken at club events and used for the public relations of the Kontor Business Club. (optional, revocable at any time)",
+      "unternehmer": "I confirm that I act as an entrepreneur within the meaning of German law (HGB/BGB) and conclude this membership in the course of my professional/commercial activity."
+    },
+    "agbLink": "Terms and Conditions",
+    "datenschutzLink": "Privacy policy",
+    "faqTitel": "Frequent questions about the admission process",
+    "faq": {
+      "items": [
+        { "frage": "Who can become a member?", "antwort": "Self-employed entrepreneurs, managing directors and innovative start-up founders. The club admits exactly one member per industry." },
+        { "frage": "How does the admission process work?", "antwort": "You submit your application with a short presentation of yourself and your company. The board reviews the application and decides within seven working days." },
+        { "frage": "What does membership cost?", "antwort": "The monthly fee is €80 (alternatively payable quarterly, half-yearly or yearly). A one-time admission fee of €150 applies in addition." },
+        { "frage": "How long does the contract run?", "antwort": "Membership runs for an indefinite period and can be cancelled with one full month's notice to the end of the month." },
+        { "frage": "What if I cannot attend an event?", "antwort": "For business events you may send a representative. For social events personal attendance is expected; representation is not provided here." },
+        { "frage": "Can I bring guests?", "antwort": "Yes. Interested friends and colleagues are welcome before they possibly become members themselves. Please announce guests in advance to the club management." },
+        { "frage": "When do the events take place?", "antwort": "Twice a month – one business event and one social event – outside regular working hours, always in person." }
+      ]
+    },
+    "reviewTitel": "Please review your details"
+  },
   "kontakt": {
     "beratung": {
       "kicker": "Contact",
@@ -249,28 +379,52 @@
       "intro": "The more concrete your message, the better we can answer you."
     }
   },
+  "feedback": {
+    "kicker": "Feedback",
+    "titel": "Event feedback",
+    "intro": "Your impression helps us make the next events better. Tell us how it was.",
+    "bewertung": "Rating",
+    "sterneLabel": "{n} out of 5 stars",
+    "feedbackLabel": "Your feedback",
+    "gutGelaufen": "What went well?",
+    "verbessern": "What can we improve?",
+    "leer": "There are currently no past events you can give feedback on.",
+    "testOption": "Test event – preview only",
+    "erfolg": "Thanks for your feedback!",
+    "fehler": "Something went wrong. Please check your details and try again."
+  },
   "legal": {
     "impressum": {
-      "titel": "Imprint",
-      "platzhalter": "The full details under Section 5 TMG will follow shortly."
+      "titel": "Imprint"
     },
     "datenschutz": {
-      "titel": "Privacy",
-      "platzhalter": "The full privacy policy will follow shortly."
+      "titel": "Privacy"
+    },
+    "agb": {
+      "titel": "Terms and Conditions"
     }
+  },
+  "cookie": {
+    "ariaLabel": "Cookie notice",
+    "text": "This website uses only technically necessary cookies to ensure basic functions such as language settings and security. There is no third-party tracking. You can find more information in our",
+    "link": "privacy policy",
+    "button": "Got it"
   },
   "footer": {
     "slogan": "Recommend. Grow. Connect.",
-    "ort": "Kontor Business Club · Münsterland",
+    "claim": "Kontor – Many industries, one goal.",
+    "ort": "Kontor Business Club · Münster",
     "adresse": [
       "Kontor Business Club",
-      "Münsterland"
+      "Münster"
     ],
     "rechtliches": {
       "impressum": "Imprint",
-      "datenschutz": "Privacy"
+      "datenschutz": "Privacy",
+      "agb": "Terms"
     },
-    "socialTitel": "Follow",
+    "feedback": "Event feedback",
+    "socialTitel": "Connect",
     "headings": {
       "navigation": "Navigation",
       "rechtliches": "Legal"

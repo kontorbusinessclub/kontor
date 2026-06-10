@@ -26,7 +26,7 @@ export async function Testimonials() {
         <h2 className="font-serif text-3xl font-semibold leading-tight text-champagner sm:text-4xl">
           {t("testimonials.titel")}
         </h2>
-        <GoldRule diamonds className="mx-0" />
+        <GoldRule className="mx-0" />
       </header>
 
       <ul className="mt-12 grid gap-6 md:grid-cols-3">

@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { ChapterHeader } from "@/components/ui/chapter-header";
+import { LegalDocument } from "@/components/legal-document";
+import { impressum } from "@/content/legal";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -25,10 +27,7 @@ export default async function ImpressumPage({ params }: PageProps) {
     <Section background="pergament">
       <Container variant="text">
         <ChapterHeader kicker={t("titel")} title={t("titel")} tone="dark" />
-
-        <p className="mt-10 font-sans text-lg leading-relaxed text-tinte/90">
-          {t("platzhalter")}
-        </p>
+        <LegalDocument blocks={impressum} locale={locale} href="/impressum" />
       </Container>
     </Section>
   );

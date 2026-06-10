@@ -4,16 +4,25 @@ import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
+import { Button } from "@/components/ui/button";
 
 const SAEULEN = ["club", "veranstaltungen", "miteinander"] as const;
 
+/** Ziel-Anker je Säule (Aufgabe 9, „Mehr erfahren"). */
+const SAEULEN_HREFS: Record<(typeof SAEULEN)[number], string> = {
+  club: "/club#clubleben",
+  veranstaltungen: "/events#business-events",
+  miteinander: "/mitgliedschaft#vorteile",
+};
+
 /**
  * Drei Säulen des Kontor als Karten auf pergament-Fläche.
- * Gestaffelt eingeblendet, mit dezentem Hover (Anheben, Schatten,
- * Gold-Linie oben).
+ * Jede Karte schließt mit einem „Mehr erfahren"-CTA, der auf die
+ * passende Anker-Sektion verlinkt (Aufgabe 9).
  */
 export async function Saeulen() {
   const t = await getTranslations("home");
+  const tc = await getTranslations("common.cta");
 
   return (
     <Container>
@@ -22,7 +31,7 @@ export async function Saeulen() {
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
           {t("saeulen.titel")}
         </h2>
-        <GoldRule diamonds className="mx-0" />
+        <GoldRule className="mx-0" />
       </header>
 
       <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -36,11 +45,16 @@ export async function Saeulen() {
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gold transition-transform duration-300 group-hover:scale-x-100 motion-reduce:transition-none"
               />
-              <div className="flex flex-col gap-4">
+              <div className="flex h-full flex-col gap-4">
                 <CardTitle>{t(`saeulen.${key}.titel`)}</CardTitle>
                 <p className="font-sans text-base leading-relaxed text-tinte/85">
                   {t(`saeulen.${key}.text`)}
                 </p>
+                <div className="mt-auto pt-4">
+                  <Button href={SAEULEN_HREFS[key]} variant="outline" size="sm">
+                    {tc("mehr")}
+                  </Button>
+                </div>
               </div>
             </Card>
           </Reveal>

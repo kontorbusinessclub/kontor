@@ -24,19 +24,26 @@ export async function KontaktCta() {
           {t("kontaktCta.titel")}
         </h2>
 
-        <GoldRule diamonds className="mt-6" />
+        <GoldRule className="mt-6" />
 
         <p className="mx-auto mt-6 max-w-xl font-sans text-lg font-light leading-relaxed text-champagner/90">
           {t("kontaktCta.text")}
         </p>
 
-        <div className="mt-9">
+        <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button
             variant="gold"
-            href="/kontakt/formular"
+            href="/events#kalender"
             className="bg-champagner text-koenigsblau shadow-lg hover:bg-gold hover:text-koenigsblau focus-visible:ring-offset-koenigsblau"
           >
-            {t("kontaktCta.cta")}
+            {t("kontaktCta.ctaEvent")}
+          </Button>
+          <Button
+            variant="outline"
+            href="/mitgliedschaft/antrag"
+            className="border-champagner text-champagner hover:border-champagner hover:bg-champagner hover:text-koenigsblau focus-visible:ring-offset-koenigsblau"
+          >
+            {t("kontaktCta.ctaMitglied")}
           </Button>
         </div>
       </Reveal>

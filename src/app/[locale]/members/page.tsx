@@ -42,7 +42,7 @@ export default async function MembersPage({ params }: PageProps) {
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {t("titel")}
         </h1>
-        <GoldRule diamonds className="mx-0 mt-6" />
+        <GoldRule className="mx-0 mt-6" />
       </ImageOverlay>
 
       <Section background="pergament">

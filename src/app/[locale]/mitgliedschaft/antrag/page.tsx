@@ -6,7 +6,7 @@ import { GoldRule } from "@/components/ui/gold-rule";
 import { Card } from "@/components/ui/card";
 import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
-import { MembershipApplicationForm } from "@/components/forms/membership-application-form";
+import { MembershipWizard } from "@/components/forms/membership-wizard";
 
 /**
  * Mitgliedschaft / Aufnahmeantrag.
@@ -35,7 +35,7 @@ export default async function AntragPage({
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {t("titel")}
         </h1>
-        <GoldRule diamonds className="mx-0 mt-6" />
+        <GoldRule className="mx-0 mt-6" />
       </ImageOverlay>
 
       <Section background="pergament">
@@ -48,7 +48,7 @@ export default async function AntragPage({
 
           <Reveal delay={120}>
             <Card className="mt-12">
-              <MembershipApplicationForm />
+              <MembershipWizard />
             </Card>
           </Reveal>
         </Container>

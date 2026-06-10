@@ -5,7 +5,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { navItems } from "@/lib/navigation";
-import { LocaleSwitcher } from "@/components/locale-switcher";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { Wordmark } from "@/components/wordmark";
 
 /**
  * Mobile Off-Canvas-Navigation (lg:hidden). Radix Dialog liefert
@@ -39,15 +40,10 @@ export function MobileNav() {
           aria-label="Hauptnavigation"
         >
           <div className="flex items-center justify-between border-b border-gold/30 px-5 py-4">
-            <Dialog.Title className="font-serif text-sm uppercase tracking-[0.14em] text-koenigsblau">
-              Kontor
-              <span
-                className="mx-2 inline-flex h-7 w-7 items-center justify-center rounded-full border border-gold align-middle text-xs text-gold"
-                aria-hidden="true"
-              >
-                K
+            <Dialog.Title asChild>
+              <span className="flex">
+                <Wordmark tone="dark" size="footer" />
               </span>
-              Business Club
             </Dialog.Title>
             <Dialog.Close asChild>
               <button
@@ -101,7 +97,7 @@ export function MobileNav() {
           </nav>
 
           <div className="mt-auto border-t border-gold/30 px-5 py-5">
-            <LocaleSwitcher tone="dark" />
+            <LanguageSwitcher tone="dark" />
           </div>
         </Dialog.Content>
       </Dialog.Portal>

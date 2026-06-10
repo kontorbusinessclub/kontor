@@ -28,7 +28,7 @@ export async function Hero() {
         {t("slogan")}
       </h1>
 
-      <GoldRule diamonds className="mt-7" />
+      <GoldRule className="mt-7" />
 
       <p className="mx-auto mt-7 max-w-2xl font-sans text-lg font-light leading-relaxed text-champagner/90">
         {t("intro")}
@@ -37,7 +37,7 @@ export async function Hero() {
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <Button
           variant="gold"
-          href="/events/eventkalender"
+          href="/events#kalender"
           className="bg-champagner text-koenigsblau shadow-lg hover:bg-gold hover:text-koenigsblau focus-visible:ring-offset-koenigsblau"
         >
           {t("nextEvent.cta")}
