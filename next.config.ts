@@ -19,6 +19,8 @@ const legacyRoutes: Record<string, string> = {
   "/mitgliedschaft/vorteile": "/mitgliedschaft#vorteile",
   "/kontakt/beratung": "/kontakt#beratung",
   "/kontakt/formular": "/kontakt#formular",
+  // Iteration 2 § 13: Feedback ist jetzt eine Sektion der Events-Seite.
+  "/feedback": "/events#feedback",
 };
 
 const nextConfig: NextConfig = {

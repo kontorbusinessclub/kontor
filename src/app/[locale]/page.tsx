@@ -41,7 +41,7 @@ export default async function HomePage({
         <Testimonials />
       </Section>
 
-      <Section background="pergament">
+      <Section id="service-informationen" background="pergament">
         <Faq />
       </Section>
 

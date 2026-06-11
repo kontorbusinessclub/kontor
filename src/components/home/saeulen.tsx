@@ -12,7 +12,7 @@ const SAEULEN = ["club", "veranstaltungen", "miteinander"] as const;
 const SAEULEN_HREFS: Record<(typeof SAEULEN)[number], string> = {
   club: "/club#clubleben",
   veranstaltungen: "/events#business-events",
-  miteinander: "/mitgliedschaft#vorteile",
+  miteinander: "/club#charta",
 };
 
 /**
@@ -27,7 +27,7 @@ export async function Saeulen() {
   return (
     <Container>
       <header className="flex flex-col gap-5">
-        <Kicker tone="light">{t("saeulen.kicker")}</Kicker>
+        <Kicker tone="light" className="text-koenigsblau">{t("saeulen.kicker")}</Kicker>
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
           {t("saeulen.titel")}
         </h2>

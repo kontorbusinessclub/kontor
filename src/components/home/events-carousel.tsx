@@ -91,12 +91,8 @@ export function EventsCarousel({ cards, labels }: EventsCarouselProps) {
               <p className="font-sans text-sm leading-relaxed text-tinte/80">
                 {card.location}
               </p>
-              <span className="mt-auto inline-flex items-center gap-2 pt-2 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-koenigsblau">
+              <span className="mt-auto inline-flex min-h-11 items-center justify-center rounded-full bg-koenigsblau px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-champagner transition-colors group-hover:bg-kontorblau">
                 {labels.anmelden}
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-2 w-2 -rotate-45 border-r border-t border-gold transition-transform group-hover:translate-x-1"
-                />
               </span>
               </div>
             </Link>

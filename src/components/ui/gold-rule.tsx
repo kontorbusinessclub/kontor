@@ -7,7 +7,8 @@ type GoldRuleProps = {
 };
 
 /**
- * Feine, zentrierte goldene Trennlinie (Aufgabe 7: ohne Rauten-Enden).
+ * Feine, zentrierte goldene Trennlinie. Einheitliche Maße (Iteration 2 § 6):
+ * Höhe 1px, Breite 64px (w-16, innerhalb der Markenfibel-Empfehlung 48–64px).
  * Rein dekorativ (aria-hidden), sofern kein Label gesetzt ist.
  */
 export function GoldRule({ className, ...aria }: GoldRuleProps) {
@@ -17,7 +18,7 @@ export function GoldRule({ className, ...aria }: GoldRuleProps) {
     <div
       role={labelled ? "separator" : undefined}
       aria-hidden={labelled ? undefined : true}
-      className={cn("mx-auto flex w-24 items-center justify-center", className)}
+      className={cn("mx-auto flex w-16 items-center justify-center", className)}
       {...aria}
     >
       <span className="h-px flex-1 bg-gold" />

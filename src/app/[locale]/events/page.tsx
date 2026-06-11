@@ -7,7 +7,13 @@ import { GoldRule } from "@/components/ui/gold-rule";
 import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
 import { EventRegistrationForm } from "@/components/forms/event-registration-form";
-import { getUpcomingEvents, formatEventOption, formatEventDate } from "@/lib/events";
+import { FeedbackForm } from "@/components/forms/feedback-form";
+import {
+  getUpcomingEvents,
+  getPastEvents,
+  formatEventOption,
+  formatEventDate,
+} from "@/lib/events";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -31,9 +37,14 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
   const { event: preselected } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("events");
+  const tfb = await getTranslations("feedback");
 
   const upcoming = getUpcomingEvents();
   const eventOptions = upcoming.map((event) => ({
+    id: event.id,
+    label: formatEventOption(event, locale),
+  }));
+  const pastOptions = getPastEvents().map((event) => ({
     id: event.id,
     label: formatEventOption(event, locale),
   }));
@@ -137,6 +148,27 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
             defaultEventId={preselected}
             vertreterHint={t("business.text")}
           />
+        </Container>
+      </Section>
+
+      {/* Feedback zur Veranstaltung (Iteration 2 § 13) */}
+      <Section id="feedback" background="champagner">
+        <Container variant="text">
+          <Reveal className="flex flex-col gap-4">
+            <Kicker tone="light" className="text-koenigsblau">
+              {tfb("kicker")}
+            </Kicker>
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
+              {tfb("titel")}
+            </h2>
+            <GoldRule className="mx-0" />
+            <p className="font-sans text-lg font-light leading-relaxed text-tinte/85">
+              {tfb("intro")}
+            </p>
+          </Reveal>
+          <Reveal delay={120} className="mt-8">
+            <FeedbackForm events={pastOptions} />
+          </Reveal>
         </Container>
       </Section>
     </>

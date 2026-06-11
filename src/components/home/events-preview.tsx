@@ -32,14 +32,11 @@ export async function EventsPreview() {
   return (
     <Container>
       <header className="flex flex-col gap-5">
-        <Kicker tone="light">{t("kicker")}</Kicker>
+        <Kicker tone="light" className="text-koenigsblau">{t("kicker")}</Kicker>
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
           {t("titel")}
         </h2>
         <GoldRule className="mx-0" />
-        <p className="max-w-2xl font-sans text-lg font-light leading-relaxed text-tinte/85">
-          {t("text")}
-        </p>
       </header>
 
       <Reveal className="mt-10">

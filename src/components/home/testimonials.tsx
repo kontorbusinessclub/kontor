@@ -17,6 +17,9 @@ type Testimonial = {
  */
 export async function Testimonials() {
   const t = await getTranslations("home");
+  // TODO brand: Platzhalter „Mitglied · Branche [Platzhalter]" durch konkrete,
+  // branchen-anonymisierte Mitgliederzuordnungen ersetzen (name/rolle in
+  // messages/{de,en}.json → home.testimonials.items). Siehe Iteration 2 § 10.
   const items = t.raw("testimonials.items") as Testimonial[];
 
   return (
@@ -45,7 +48,7 @@ export async function Testimonials() {
                   {item.zitat}
                 </blockquote>
 
-                <span className="h-px w-12 bg-gold" aria-hidden="true" />
+                <span className="h-px w-16 bg-gold" aria-hidden="true" />
 
                 <figcaption className="font-mono text-xs uppercase tracking-[0.16em] text-champagner/70">
                   <span className="block text-champagner">{item.name}</span>

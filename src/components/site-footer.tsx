@@ -12,7 +12,6 @@ import { Wordmark } from "@/components/wordmark";
 export async function SiteFooter() {
   const tf = await getTranslations("footer");
   const tn = await getTranslations("nav");
-  const adresse = tf.raw("adresse") as string[];
 
   const heading =
     "font-mono text-[11px] uppercase tracking-[0.22em] text-gold";
@@ -30,24 +29,12 @@ export async function SiteFooter() {
               className="inline-flex transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
               aria-label="Kontor Business Club – Startseite"
             >
-              <Wordmark tone="light" size="footer" />
+              <Wordmark tone="light" />
             </Link>
 
-            <p className="mt-4 font-serif text-base font-semibold leading-snug text-gold">
-              {tf("claim")}
-            </p>
-
-            <p className="mt-4 font-serif text-lg leading-snug text-champagner/90">
+            <p className="mt-5 font-serif text-lg leading-snug text-champagner">
               {tf("slogan")}
             </p>
-
-            <address className="mt-5 space-y-0.5 font-sans text-sm not-italic text-champagner/65">
-              {adresse.map((zeile) => (
-                <span key={zeile} className="block">
-                  {zeile}
-                </span>
-              ))}
-            </address>
           </div>
 
           {/* Navigation */}
@@ -61,11 +48,6 @@ export async function SiteFooter() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/feedback" className={link}>
-                  {tf("feedback")}
-                </Link>
-              </li>
             </ul>
           </nav>
 
@@ -122,12 +104,10 @@ export async function SiteFooter() {
         {/* Schlusszeile */}
         <div className="mt-14 h-px w-full bg-champagner/15" />
         <div className="mt-6 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-champagner/55">
-            © 2026 Kontor Business Club
-          </p>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold">
-            {tf("ort")}
+            {tf("copyright")}
           </p>
+          <p className="font-serif text-sm text-gold">{tf("claim")}</p>
         </div>
       </Container>
     </footer>
