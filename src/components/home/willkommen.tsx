@@ -9,6 +9,7 @@ import { Reveal } from "@/components/ui/reveal";
  */
 export async function Willkommen() {
   const t = await getTranslations("home.willkommen");
+  const absaetze = t.raw("absaetze") as string[];
 
   return (
     <Container variant="text">
@@ -17,9 +18,16 @@ export async function Willkommen() {
           {t("titel")}
         </h2>
         <GoldRule />
-        <p className="font-sans text-lg font-light leading-relaxed text-tinte/85">
-          {t("text")}
-        </p>
+        <div className="flex flex-col gap-5">
+          {absaetze.map((absatz, index) => (
+            <p
+              key={index}
+              className="font-sans text-lg font-bold leading-relaxed text-tinte/85"
+            >
+              {absatz}
+            </p>
+          ))}
+        </div>
       </Reveal>
     </Container>
   );

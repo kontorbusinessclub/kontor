@@ -24,7 +24,9 @@ export async function Hero() {
       </p>
 
       <h1 className="mt-4 max-w-4xl font-serif text-[clamp(2.25rem,6vw,3.75rem)] font-semibold leading-tight text-champagner [text-shadow:0_2px_24px_rgba(20,24,31,0.45)]">
-        {t("hero.titel")}
+        {t("hero.titelZeile1")}
+        <br />
+        {t("hero.titelZeile2")}
       </h1>
 
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

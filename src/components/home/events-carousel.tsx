@@ -101,24 +101,30 @@ export function EventsCarousel({ cards, labels }: EventsCarouselProps) {
       </ul>
 
       {cards.length > 1 ? (
-        <div className="mt-6 flex justify-end gap-3">
+        <>
           <button
             type="button"
             onClick={() => scrollByCards(-1)}
             aria-label={labels.prev}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-koenigsblau/30 text-koenigsblau transition-colors hover:border-koenigsblau hover:bg-koenigsblau hover:text-champagner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            className="absolute left-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-koenigsblau/30 bg-champagner/95 text-koenigsblau shadow-md transition-colors hover:border-koenigsblau hover:bg-koenigsblau hover:text-champagner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
-            <span aria-hidden="true" className="block h-2.5 w-2.5 rotate-[135deg] border-r-2 border-t-2 border-current" />
+            <span
+              aria-hidden="true"
+              className="block h-2.5 w-2.5 rotate-[-135deg] border-r-2 border-t-2 border-current"
+            />
           </button>
           <button
             type="button"
             onClick={() => scrollByCards(1)}
             aria-label={labels.next}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-koenigsblau/30 text-koenigsblau transition-colors hover:border-koenigsblau hover:bg-koenigsblau hover:text-champagner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            className="absolute right-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-koenigsblau/30 bg-champagner/95 text-koenigsblau shadow-md transition-colors hover:border-koenigsblau hover:bg-koenigsblau hover:text-champagner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
-            <span aria-hidden="true" className="block h-2.5 w-2.5 -rotate-45 border-r-2 border-t-2 border-current" />
+            <span
+              aria-hidden="true"
+              className="block h-2.5 w-2.5 rotate-45 border-r-2 border-t-2 border-current"
+            />
           </button>
-        </div>
+        </>
       ) : null}
     </div>
   );

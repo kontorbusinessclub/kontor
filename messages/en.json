@@ -56,11 +56,16 @@
   "home": {
     "hero": {
       "vorlauf": "Welcome to the Club",
-      "titel": "for inspiring encounters, exclusive networking and shared experiences."
+      "titelZeile1": "for encounters of distinction,",
+      "titelZeile2": "exclusive networking and shared experiences."
     },
     "willkommen": {
       "titel": "A warm welcome to Kontor.",
-      "text": "We bring together people who think and act entrepreneurially. To the self-employed, managing directors and ambitious founders we offer a select circle in which personal encounters grow into lasting business relationships. For we are convinced that recommendations arise from trust, and trust arises where people know and value one another. That is why we create the right setting for exchange among companions, for shared experiences and for a network that carries with commitment."
+      "absaetze": [
+        "We bring together people who think and act entrepreneurially.",
+        "To the self-employed, managing directors and ambitious founders we offer a select circle in which personal encounters grow into lasting business relationships. For we are convinced that recommendations arise from trust, and trust arises where people know and value one another.",
+        "That is why we create the right setting for exchange among companions, for shared experiences and for a network that carries with commitment."
+      ]
     },
     "events": {
       "kicker": "Dates",
@@ -78,7 +83,7 @@
       "kicker": "What matters",
       "titel": "Our Essence",
       "club": {
-        "titel": "Club",
+        "titel": "The Club",
         "text": "The exclusive Kontor for personalities who seek more than the next network. We place commitment above reach, to gather a circle of mutual value."
       },
       "veranstaltungen": {
@@ -95,24 +100,24 @@
       "titel": "What Our Members Say",
       "items": [
         {
-          "zitat": "Three introductions from the club have grown into long-term clients. A referral from here carries a different weight than any cold outreach.",
+          "zitat": "Three introductions from the club have grown into long-term clients. A referral from here carries greater weight than any cold outreach.",
           "name": "Member",
           "rolle": "Industry [placeholder]"
         },
         {
-          "zitat": "I searched for a long time for a circle in which I am not the only one of my field. At Kontor I experience what becomes possible when people see each other as allies.",
+          "zitat": "I searched for a long time for a circle in which I am not the third of my industry. At Kontor I experience what becomes possible when people see each other as allies.",
           "name": "Member",
           "rolle": "Industry [placeholder]"
         },
         {
-          "zitat": "Over time, two members became genuine business partners. These relationships do not arise at a fleeting after-work event, but where people meet in person on a regular basis.",
+          "zitat": "Over time, two members became genuine business partners. Relationships of this kind do not arise at a fleeting after-work event, but where people meet in person on a regular basis.",
           "name": "Member",
           "rolle": "Industry [placeholder]"
         }
       ]
     },
     "faq": {
-      "kicker": "Frequent questions",
+      "kicker": "Service & Information",
       "titel": "Frequently Asked Questions",
       "items": [
         {
@@ -147,7 +152,8 @@
     },
     "kontaktCta": {
       "titel": "With whom do you spend your most valuable time?",
-      "text": "We believe that the right people make the difference. If you see it that way too, we look forward to your participation.",
+      "text1": "We believe that the right people make the difference.",
+      "text2": "If you see it that way too, we look forward to your participation.",
       "ctaEvent": "Register for the Event",
       "ctaMitglied": "Become a Member"
     }

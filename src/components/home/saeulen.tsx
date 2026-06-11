@@ -8,10 +8,14 @@ import { Button } from "@/components/ui/button";
 
 const SAEULEN = ["club", "veranstaltungen", "miteinander"] as const;
 
-/** Ziel-Anker je Säule (Aufgabe 9, „Mehr erfahren"). */
+/**
+ * Ziel je Säule für „Mehr erfahren" (Iteration 3 § 5).
+ * Unpräfixierte Pfade; der next-intl-Link ergänzt das Locale-Prefix
+ * automatisch (z.B. /de/club bzw. /en/club) – daher keine Domain-Hardcodes.
+ */
 const SAEULEN_HREFS: Record<(typeof SAEULEN)[number], string> = {
-  club: "/club#clubleben",
-  veranstaltungen: "/events#business-events",
+  club: "/club",
+  veranstaltungen: "/events",
   miteinander: "/club#charta",
 };
 
