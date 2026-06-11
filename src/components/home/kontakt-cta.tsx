@@ -27,7 +27,8 @@ export async function KontaktCta() {
         <GoldRule className="mt-6" />
 
         <p className="mx-auto mt-6 max-w-xl font-sans text-lg font-light leading-relaxed text-champagner/90">
-          {t("kontaktCta.text")}
+          <span className="block">{t("kontaktCta.text1")}</span>
+          <span className="block">{t("kontaktCta.text2")}</span>
         </p>
 
         <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

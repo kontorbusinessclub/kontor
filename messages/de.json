@@ -56,11 +56,16 @@
   "home": {
     "hero": {
       "vorlauf": "Willkommen im Club",
-      "titel": "für inspirierende Begegnungen, exklusives Networking und gemeinsame Erlebnisse."
+      "titelZeile1": "für Begegnungen mit Niveau,",
+      "titelZeile2": "exklusives Networking und gemeinsame Erlebnisse."
     },
     "willkommen": {
       "titel": "Herzlich Willkommen im Kontor.",
-      "text": "Wir verbinden Menschen, die unternehmerisch denken und handeln. Selbstständigen, Geschäftsführern sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen. Denn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt. Aus diesem Grund schaffen wir den passenden Rahmen für den Austausch unter Weggefährten, für gemeinsame Erlebnisse und für ein Netzwerk, das verbindlich trägt."
+      "absaetze": [
+        "Wir verbinden Menschen, die unternehmerisch denken und handeln.",
+        "Selbstständigen, Geschäftsführern sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen. Denn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt.",
+        "Aus diesem Grund schaffen wir den passenden Rahmen für den Austausch unter Weggefährten, für gemeinsame Erlebnisse und für ein Netzwerk, das verbindlich trägt."
+      ]
     },
     "events": {
       "kicker": "Termine",
@@ -78,7 +83,7 @@
       "kicker": "Worauf es ankommt",
       "titel": "Unsere Essenz",
       "club": {
-        "titel": "Club",
+        "titel": "Der Club",
         "text": "Das exklusive Kontor für Persönlichkeiten, die mehr suchen als das nächste Netzwerk. Wir stellen Verbindlichkeit über Reichweite, um zu einem Kreis von gegenseitigem Wert zu versammeln."
       },
       "veranstaltungen": {
@@ -95,24 +100,24 @@
       "titel": "Was unsere Mitglieder sagen",
       "items": [
         {
-          "zitat": "Drei Vermittlungen aus dem Club haben sich zu langfristigen Mandanten entwickelt. Eine Empfehlung von hier hat ein anderes Gewicht als jede Kaltakquise.",
+          "zitat": "Drei Vermittlungen aus dem Club haben sich zu langfristigen Mandanten entwickelt. Eine Empfehlung von hier ist gewichtiger als jede Kaltakquise.",
           "name": "Mitglied",
           "rolle": "Branche [Platzhalter]"
         },
         {
-          "zitat": "Ich habe lange nach einem Kreis gesucht, in dem ich nicht der meiner Branche bin. Im Kontor erlebe ich, was möglich wird, wenn man sich als Verbündete versteht.",
+          "zitat": "Ich habe lange nach einem Kreis gesucht, in dem ich nicht der dritte meiner Branche bin. Im Kontor erlebe ich, was möglich wird, wenn man sich als Verbündete versteht.",
           "name": "Mitglied",
           "rolle": "Branche [Platzhalter]"
         },
         {
-          "zitat": "Aus zwei Mitgliedern sind über die Zeit echte Geschäftspartner geworden. Diese Beziehungen entstehen nicht beim flüchtigen After-Work, sondern dort, wo man sich regelmäßig persönlich begegnet.",
+          "zitat": "Aus zwei Mitgliedern sind über die Zeit echte Geschäftspartner geworden. Derartige Beziehungen entstehen nicht beim flüchtigen After-Work, sondern dort, wo man sich regelmäßig persönlich begegnet.",
           "name": "Mitglied",
           "rolle": "Branche [Platzhalter]"
         }
       ]
     },
     "faq": {
-      "kicker": "Häufige Fragen",
+      "kicker": "Service & Informationen",
       "titel": "Häufig gestellte Fragen",
       "items": [
         {
@@ -147,7 +152,8 @@
     },
     "kontaktCta": {
       "titel": "Mit wem verbringen Sie Ihre wertvollste Zeit?",
-      "text": "Wir glauben, dass die richtigen Menschen den Unterschied machen. Wenn auch Sie das so sehen, freuen wir uns auf Ihre Teilnahme.",
+      "text1": "Wir glauben, dass die richtigen Menschen den Unterschied machen.",
+      "text2": "Wenn auch Sie das so sehen, freuen wir uns auf Ihre Teilnahme.",
       "ctaEvent": "Anmeldung zum Event",
       "ctaMitglied": "Mitglied werden"
     }
