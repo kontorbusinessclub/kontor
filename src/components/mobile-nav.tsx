@@ -42,7 +42,7 @@ export function MobileNav() {
           <div className="flex items-center justify-between border-b border-gold/30 px-5 py-4">
             <Dialog.Title asChild>
               <span className="flex">
-                <Wordmark tone="dark" size="footer" />
+                <Wordmark tone="dark" />
               </span>
             </Dialog.Title>
             <Dialog.Close asChild>

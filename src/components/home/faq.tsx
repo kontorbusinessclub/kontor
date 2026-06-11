@@ -22,7 +22,7 @@ export function Faq() {
   return (
     <Container variant="text" className="flex flex-col">
       <header className="flex flex-col gap-5">
-        <Kicker tone="light">{t("faq.kicker")}</Kicker>
+        <Kicker tone="light" className="text-koenigsblau">{t("faq.kicker")}</Kicker>
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
           {t("faq.titel")}
         </h2>
@@ -49,7 +49,7 @@ export function Faq() {
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className="overflow-hidden data-[state=closed]:animate-none">
-              <p className="pb-5 pe-8 font-sans text-base leading-relaxed text-tinte/85">
+              <p className="whitespace-pre-line pb-5 pe-8 font-sans text-base leading-relaxed text-tinte/85">
                 {item.antwort}
               </p>
             </Accordion.Content>

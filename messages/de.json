@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kontor Business Club",
-    "description": "Empfehlen. Wachsen. Verbinden. Ein exklusiver Unternehmerkreis – eine Branche, ein Vertreter."
+    "description": "Begegnen. Vertrauen. Empfehlen. Ein exklusiver Unternehmerkreis – eine Branche, ein Vertreter."
   },
   "nav": {
     "club": "Club",
@@ -54,18 +54,17 @@
     }
   },
   "home": {
-    "kicker": "Münster",
-    "slogan": "Empfehlen. Wachsen. Verbinden.",
-    "aufhaenger": "Viele Branchen. Ein Ziel.",
-    "intro": "Ein exklusiver Kreis von Unternehmern und Führungskräften. Eine Branche, ein Vertreter.",
+    "hero": {
+      "vorlauf": "Willkommen im Club",
+      "titel": "für inspirierende Begegnungen, exklusives Networking und gemeinsame Erlebnisse."
+    },
     "willkommen": {
-      "titel": "Herzlich willkommen",
-      "text": "Schön, dass du da bist. Der Kontor Business Club bringt Unternehmer, Geschäftsführer und Gründer in einem festen, vertrauensvollen Kreis zusammen. Wir empfehlen einander, wachsen gemeinsam und verbinden Geschäftliches mit echtem Miteinander – immer in Präsenz und außerhalb deiner Arbeitszeit."
+      "titel": "Herzlich Willkommen im Kontor.",
+      "text": "Wir verbinden Menschen, die unternehmerisch denken und handeln. Selbstständigen, Geschäftsführern sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen. Denn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt. Aus diesem Grund schaffen wir den passenden Rahmen für den Austausch unter Weggefährten, für gemeinsame Erlebnisse und für ein Netzwerk, das verbindlich trägt."
     },
     "events": {
       "kicker": "Termine",
-      "titel": "Die nächsten Veranstaltungen",
-      "text": "Ein Blick auf die kommenden Business- und Social Events. Sichere dir deinen Platz.",
+      "titel": "Unsere nächsten Veranstaltungen",
       "anmelden": "Anmelden",
       "leer": "Aktuell sind keine kommenden Veranstaltungen eingetragen.",
       "tag": {
@@ -75,83 +74,80 @@
       "prev": "Vorheriges Event",
       "next": "Nächstes Event"
     },
-    "nextEvent": {
-      "kicker": "Auftakt",
-      "titel": "Das erste Kontor Event",
-      "datumLabel": "18. Juni 2026",
-      "ortLabel": "Provinzial Zentrale, Münster",
-      "cta": "Platz sichern"
-    },
     "saeulen": {
       "kicker": "Worauf es ankommt",
-      "titel": "Drei Säulen, ein Club",
+      "titel": "Unsere Essenz",
       "club": {
-        "titel": "Der Club",
-        "text": "Ein fester Kreis aus Selbstständigen, Unternehmern und Geschäftsführern. Pro Branche ein Vertreter, damit keiner gegen den anderen arbeitet, sondern alle füreinander."
+        "titel": "Club",
+        "text": "Das exklusive Kontor für Persönlichkeiten, die mehr suchen als das nächste Netzwerk. Wir stellen Verbindlichkeit über Reichweite, um zu einem Kreis von gegenseitigem Wert zu versammeln."
       },
       "veranstaltungen": {
-        "titel": "Veranstaltungen",
-        "text": "Business Events für konkrete Empfehlungen und Social Events für den persönlichen Draht. Alles in Präsenz, nie während deiner regulären Arbeitszeit."
+        "titel": "Die Veranstaltungen",
+        "text": "Business Events für geschäftlichen Austausch und Impulse sowie Social Events zur persönlichen Verbundenheit. Ergänzt durch hochkarätige Unternehmer, die mit anregenden Reden neue Perspektiven eröffnen."
       },
       "miteinander": {
-        "titel": "Miteinander",
-        "text": "Wir setzen auf Vertrauen statt Visitenkarten-Stapel. Wer sich kennt, empfiehlt anders. Genau das ist der Kern vom Kontor."
+        "titel": "Das Miteinander",
+        "text": "Getragen wird unser Kontor von gegenseitiger Wertschätzung. Wir begegnen einander auf Augenhöhe mit Respekt, Offenheit und der Bereitschaft, geschäftlich wie auch menschlich, füreinander einzustehen."
       }
     },
     "testimonials": {
       "kicker": "Stimmen",
-      "titel": "Was Mitglieder sagen",
+      "titel": "Was unsere Mitglieder sagen",
       "items": [
         {
-          "zitat": "Im Kontor kenne ich jeden persönlich. Eine Empfehlung von hier hat ein anderes Gewicht als jeder Kaltkontakt.",
-          "name": "Platzhalter Name",
-          "rolle": "Geschäftsführerin, Beratung"
+          "zitat": "Drei Vermittlungen aus dem Club haben sich zu langfristigen Mandanten entwickelt. Eine Empfehlung von hier hat ein anderes Gewicht als jede Kaltakquise.",
+          "name": "Mitglied",
+          "rolle": "Branche [Platzhalter]"
         },
         {
-          "zitat": "Kein Wettbewerb am eigenen Tisch. Genau das macht den Unterschied. Wir helfen uns wirklich.",
-          "name": "Platzhalter Name",
-          "rolle": "Inhaber, Handwerk"
+          "zitat": "Ich habe lange nach einem Kreis gesucht, in dem ich nicht der meiner Branche bin. Im Kontor erlebe ich, was möglich wird, wenn man sich als Verbündete versteht.",
+          "name": "Mitglied",
+          "rolle": "Branche [Platzhalter]"
         },
         {
-          "zitat": "Die Events liegen nie in meiner Arbeitszeit. Das nehme ich ernst und meine Familie auch.",
-          "name": "Platzhalter Name",
-          "rolle": "Gründer, Start-Up"
+          "zitat": "Aus zwei Mitgliedern sind über die Zeit echte Geschäftspartner geworden. Diese Beziehungen entstehen nicht beim flüchtigen After-Work, sondern dort, wo man sich regelmäßig persönlich begegnet.",
+          "name": "Mitglied",
+          "rolle": "Branche [Platzhalter]"
         }
       ]
     },
     "faq": {
       "kicker": "Häufige Fragen",
-      "titel": "Gut zu wissen",
+      "titel": "Häufig gestellte Fragen",
       "items": [
         {
-          "frage": "Finden die Events online statt?",
-          "antwort": "Nein. Alle Events finden ausschließlich in Präsenz statt. Persönliche Begegnung ist der Kern vom Kontor."
+          "frage": "An welche Persönlichkeiten richtet sich die Mitgliedschaft?",
+          "antwort": "Wir richten uns an unternehmerisch handelnde Persönlichkeiten aus der Region, die mit geschäftlicher Verantwortung, innovativem Weitblick und persönlichem Anspruch agieren. Ob inhabergeführtes Unternehmen, etablierte Geschäftsleitung oder aufstrebende Gründung — ausschlaggebend sind Haltung, Substanz und die Bereitschaft, sich auf ein Kontor einzulassen, in dem Verbindlichkeit zählt."
         },
         {
-          "frage": "Wann liegen die Termine?",
-          "antwort": "Nie während deiner regulären Arbeitszeit. Wir respektieren, dass dein Tagesgeschäft Vorrang hat."
+          "frage": "Was bedeutet das Prinzip der Branchenexklusivität in der gelebten Praxis?",
+          "antwort": "Jede Branche ist im Kontor Business Club durch genau ein Mitglied vertreten. So entsteht ein Kreis, in dem jede Stimme eine eigene Disziplin repräsentiert. Empfehlungen können dadurch offen und gezielt ausgesprochen werden, Gespräche gewinnen an Tiefe, und aus dem Austausch wird ein echter, gegenseitiger Mehrwert."
         },
         {
-          "frage": "Wie viele Mitglieder pro Branche?",
-          "antwort": "Genau einer. Pro Branche gibt es im Kontor nur einen Vertreter. So entsteht kein Wettbewerb im Club, sondern echtes Empfehlungsgeschäft."
+          "frage": "Kann ich als interessierter Gast an einer Veranstaltung teilnehmen, bevor ich eine Mitgliedschaft in Erwägung ziehe?",
+          "antwort": "Sehr gerne. Wir laden Interessenten ausdrücklich dazu ein, den Kontor Business Club zunächst persönlich kennenzulernen, sowohl bei einem Business Event als auch bei einem Social Event. Bis zu zwei Besuche sind für Sie kostenfrei, unabhängig davon, ob Sie auf Empfehlung eines Mitglieds oder aus eigener Initiative auf uns zukommen. Wir ersuchen jedoch um eine vorherige Online-Anmeldung zum jeweiligen Event, damit wir Sie angemessen empfangen können."
         },
         {
-          "frage": "Kann ich mich vertreten lassen?",
-          "antwort": "Bei Business Events ja. Wenn du selbst nicht kannst, darf ein fester Vertreter aus deinem Unternehmen kommen. Social Events sind persönlich."
+          "frage": "Darf ich einen Geschäftspartner zu einem Event mitbringen, und kann ich mich vertreten lassen, wenn ich einmal nicht persönlich anwesend sein kann?",
+          "antwort": "Sowohl das Mitbringen eines Geschäftspartners als auch die Entsendung einer Vertretung sind bei unseren Events möglich. Pro Business Event dürfen Sie bis zu zwei Geschäftspartner als Gäste einladen. Für sie ist ebenso eine vorherige Online-Anmeldung erforderlich. Sollten Sie an einem Business Event einmal nicht persönlich teilnehmen können, ist eine Vertretung möglich. Wir ersuchen jedoch, hierfür stets dieselbe Person zu benennen, damit auch Ihre Vertretung im Kontor vertraut und wiedererkennbar bleibt."
         },
         {
-          "frage": "Darf ich jemanden mitbringen?",
-          "antwort": "Ja. Freunde und Kollegen sind willkommen, gerade wenn sie zur Idee vom Kontor passen könnten."
+          "frage": "Welche Kleiderordnung ist bei den Zusammenkünften üblich?",
+          "antwort": "Für unsere Business Events gilt Business Casual. Bei unseren Social Events ist Smart Casual angemessen, wobei sich die Kleiderwahl auch am jeweiligen Anlass und Rahmen orientiert. Sollte eine Veranstaltung eine besondere Note erfordern, weisen wir vorab darauf hin."
         },
         {
-          "frage": "Wie werde ich Mitglied?",
-          "antwort": "Niedrigschwellig und transparent. Du stellst einen Antrag, wir sprechen, und wenn deine Branche noch frei ist, nehmen wir dich auf."
+          "frage": "Wie häufig kommen die Mitglieder zusammen, und an welchen Orten finden die Treffen statt?",
+          "antwort": "Der Kontor Business Club trifft sich zweimal monatlich: Einmal zu einem Business Event und einmal zu einem Social Event. Unser Hauptveranstaltungsort sind die Eventflächen in der Zentrale der Provinzial Versicherung. Für ausgewählte Social Events wählen wir bewusst andere Orte, sofern es der Charakter der Veranstaltung nahelegt."
+        },
+        {
+          "frage": "Worin unterscheiden sich Business Events und Social Events inhaltlich voneinander?",
+          "antwort": "Unsere Business Events stehen im Zeichen unternehmerischen Mehrwerts. Sie verbinden anregende Vorträge hochkarätiger Redner mit Pitches unserer Mitglieder, einer offenen Diskussions- und Fragerunde sowie ausgiebigem Networking. Hier entstehen Impulse, Empfehlungen und tragfähige geschäftliche Verbindungen.\n\nUnsere Social Events folgen einem anderen Geist. Sie leben von den Anregungen, Interessen und Vorschlägen unserer Mitglieder. Der Anlass und Rahmen entsteht somit aus dem Kontor selbst."
         }
       ]
     },
     "kontaktCta": {
-      "titel": "Passt der Club zu dir?",
-      "text": "Wenn deine Branche noch frei ist und du auf echte Empfehlungen setzt, lass uns reden.",
+      "titel": "Mit wem verbringen Sie Ihre wertvollste Zeit?",
+      "text": "Wir glauben, dass die richtigen Menschen den Unterschied machen. Wenn auch Sie das so sehen, freuen wir uns auf Ihre Teilnahme.",
       "ctaEvent": "Anmeldung zum Event",
       "ctaMitglied": "Mitglied werden"
     }
@@ -411,19 +407,14 @@
     "button": "Verstanden"
   },
   "footer": {
-    "slogan": "Empfehlen. Wachsen. Verbinden.",
+    "slogan": "Begegnen. Vertrauen. Empfehlen.",
     "claim": "Kontor – Viele Branchen, ein Ziel.",
-    "ort": "Kontor Business Club · Münster",
-    "adresse": [
-      "Kontor Business Club",
-      "Münster"
-    ],
+    "copyright": "© 2026 Kontor Business Club · Alle Rechte vorbehalten.",
     "rechtliches": {
       "impressum": "Impressum",
       "datenschutz": "Datenschutz",
       "agb": "AGB"
     },
-    "feedback": "Feedback zur Veranstaltung",
     "socialTitel": "Vernetzen",
     "headings": {
       "navigation": "Navigation",

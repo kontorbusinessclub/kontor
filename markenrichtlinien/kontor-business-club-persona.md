@@ -6,7 +6,7 @@
 
 ## Projekthintergrund
 
-Aktuell befindet sich das Start-Up in der Gründungsphase. Es handelt sich um eine **UG (haftungsbeschränkt)** in Deutschland. Das Unternehmen trägt den Namen **Kontor Business Club**. Der Slogan lautet „Empfehlen. Wachsen. Verbinden." und der Claim „Kontor – Viele Branchen, ein Ziel." Der Kontor Business Club dient als Möglichkeit der elitären Zusammenkunft ausgewählter Branchenvertreter. Diese sind ausschließlich selbstständige Unternehmer, Geschäftsführer oder auch innovative und vielversprechende Start-Up-Gründer — das ist die Zielgruppe.
+Aktuell befindet sich das Start-Up in der Gründungsphase. Es handelt sich um eine **UG (haftungsbeschränkt)** in Deutschland. Das Unternehmen trägt den Namen **Kontor Business Club**. Der Slogan lautet „Begegnen. Vertrauen. Empfehlen." und der Claim „Kontor – Viele Branchen, ein Ziel." Der Kontor Business Club dient als Möglichkeit der elitären Zusammenkunft ausgewählter Branchenvertreter. Diese sind ausschließlich selbstständige Unternehmer, Geschäftsführer oder auch innovative und vielversprechende Start-Up-Gründer — das ist die Zielgruppe.
 
 **Alleinstellungsmerkmale:** Fokus auf geschäftlichen Nutzen und Mehrwert (Business Events). Gleichzeitige Förderung eines persönlichen Kennenlernens durch Social Events. Alle Veranstaltungen finden nur in Präsenz statt; ausnahmsweise kann ein Vertreter geschickt werden, allerdings nur zu Business Events. Keine Veranstaltungen während regulärer Arbeitszeiten. Interessierte Freunde und Kollegen dürfen zu Veranstaltungen mitgebracht werden, ehe diese Mitglied werden. Jede Branche ist nur einmal vertreten, damit sich Mitglieder nicht gegenseitig die Kunden wegnehmen. Niedrigschwelliger Zugang mit transparentem, nicht langwierigem Aufnahmeprozess.
 

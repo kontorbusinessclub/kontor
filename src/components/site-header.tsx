@@ -26,7 +26,7 @@ export async function SiteHeader() {
             className="flex items-center justify-center transition-colors hover:text-kontorblau focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
             aria-label="Kontor Business Club – Startseite"
           >
-            <Wordmark tone="dark" size="header" />
+            <Wordmark tone="dark" />
           </Link>
 
           <div className="flex items-center justify-end gap-2">

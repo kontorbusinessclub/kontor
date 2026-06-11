@@ -7,7 +7,7 @@ import type { LegalBlock } from "./legal";
 export const AGB_STAND = "Stand: [Datum bei Live-Schaltung]";
 
 export const agb: LegalBlock[] = [
-  { text: "Motto: „Empfehlen. Wachsen. Verbinden.“" },
+  { text: "Motto: „Begegnen. Vertrauen. Empfehlen.“" },
 
   {
     heading: "I. Präambel & Grundverständnis",
