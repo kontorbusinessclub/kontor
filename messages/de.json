@@ -60,7 +60,7 @@
       "titelZeile2": "exklusives Networking und gemeinsame Erlebnisse."
     },
     "willkommen": {
-      "titel": "Herzlich Willkommen im Kontor.",
+      "titel": "Herzlich willkommen im Kontor.",
       "absaetze": [
         "Wir verbinden Menschen, die unternehmerisch denken und handeln.",
         "Selbstständigen, Geschäftsführern sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen. Denn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt.",
@@ -121,7 +121,7 @@
       "titel": "Häufig gestellte Fragen",
       "items": [
         {
-          "frage": "An welche Persönlichkeiten richtet sich die Mitgliedschaft?",
+          "frage": "An welche Unternehmer richtet sich die Mitgliedschaft?",
           "antwort": "Wir richten uns an unternehmerisch handelnde Persönlichkeiten aus der Region, die mit geschäftlicher Verantwortung, innovativem Weitblick und persönlichem Anspruch agieren. Ob inhabergeführtes Unternehmen, etablierte Geschäftsleitung oder aufstrebende Gründung — ausschlaggebend sind Haltung, Substanz und die Bereitschaft, sich auf ein Kontor einzulassen, in dem Verbindlichkeit zählt."
         },
         {
@@ -211,6 +211,7 @@
       "text": "Locker, persönlich, ohne Agenda. Hier lernt man den Menschen hinter der Firma kennen. Freunde und Kollegen dürfen mitkommen, wenn sie zur Idee vom Kontor passen."
     },
     "kalender": {
+      "kicker": "Eventkalender",
       "titel": "Kommende Termine",
       "text": "Die nächsten Events auf einen Blick. Anmeldung über das Formular unten.",
       "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 in Münster."
@@ -231,6 +232,8 @@
     }
   },
   "mitgliedschaft": {
+    "titel": "Mitgliedschaft",
+    "slogan": "Begegnen. Vertrauen. Empfehlen.",
     "vorteile": {
       "kicker": "Mitgliedschaft",
       "titel": "Was du im Kontor bekommst",
@@ -254,10 +257,12 @@
     "schrittLabel": "Schritt {n} von {total}",
     "weiter": "Weiter",
     "zurueck": "Zurück",
-    "absenden": "Antrag jetzt absenden",
+    "bearbeiten": "Bearbeiten",
+    "absenden": "Verbindlich abschicken.",
     "senden": "Wird gesendet …",
     "erfolgTitel": "Vielen Dank!",
-    "erfolgText": "Ihr Antrag ist bei uns eingegangen. Das Kuratorium meldet sich innerhalb von 7 Werktagen bei Ihnen.",
+    "erfolgText1": "Ihr Mitgliedsantrag ist bei uns eingegangen.",
+    "erfolgText2": "Das Kuratorium wird sich zeitnah mit Ihnen in Verbindung setzen.",
     "erfolgCta": "Zur Startseite",
     "fehler": "Das hat nicht geklappt. Bitte prüfe deine Angaben und versuch es erneut.",
     "pflicht": "Pflichtfeld",
@@ -265,66 +270,64 @@
       "1": "Persönliche Angaben",
       "2": "Unternehmensdaten",
       "3": "Vertretungsberechtigung",
-      "4": "Mitgliedschaft & Laufzeit",
-      "5": "Zahlungsinformation",
-      "6": "Kommunikation",
-      "7": "FAQs",
-      "8": "Einverständnisse",
-      "9": "Bestätigung"
+      "4": "Mitgliedschaft & Zahlungsinformationen",
+      "5": "Einverständniserklärungen",
+      "6": "Zusammenfassung & Verbindlich abschicken"
     },
     "fields": {
+      "titel": "Titel",
       "vorname": "Vorname",
       "nachname": "Nachname",
-      "titelFunktion": "Titel / Funktion",
+      "berufsbezeichnung": "Berufsbezeichnung",
+      "position": "Position",
       "geburtsdatum": "Geburtsdatum",
       "strasse": "Straße und Hausnummer",
       "plzOrt": "PLZ und Ort",
-      "telefonMobil": "Telefon mobil",
-      "telefonBuero": "Telefon Büro / Festnetz",
-      "emailPrivat": "E-Mail privat",
-      "emailGeschaeftlich": "E-Mail geschäftlich",
-      "website": "Website",
+      "telefonMobil": "Telefon (Mobil)",
+      "telefonGeschaeftlich": "Telefon (Geschäftlich)",
+      "emailPrivat": "E-Mail (Privat)",
+      "emailGeschaeftlich": "E-Mail (Geschäftlich)",
+      "personenbeschreibung": "Kurzbeschreibung von Person und Tätigkeit",
       "unternehmen": "Unternehmensname (vollständig)",
       "rechtsform": "Rechtsform",
-      "registernummer": "Handelsregister-/Registernummer",
+      "handelsregisternummer": "Handelsregisternummer",
       "unternehmensanschrift": "Unternehmensanschrift",
       "plzOrtUnternehmen": "PLZ und Ort (Unternehmen)",
-      "branche": "Branche / Tätigkeitsschwerpunkt",
+      "branche": "Branche",
       "fachgebiet": "Gewünschtes Fachgebiet im Club",
-      "erwerb": "Erwerb",
+      "erwerb": "Erwerbstätigkeit",
       "unternehmensgroesse": "Unternehmensgröße",
-      "kurzbeschreibung": "Kurzbeschreibung des Unternehmens",
-      "kurzpraesentation": "Kurzpräsentation von Person und Tätigkeit",
-      "istVertretungsberechtigt": "Ist die antragstellende Person die vertretungsberechtigte Person?",
-      "vbVorname": "Vorname (Vertretung)",
-      "vbNachname": "Nachname (Vertretung)",
-      "vbFunktion": "Funktion (Vertretung)",
-      "vbTelefon": "Telefon (Vertretung)",
-      "vbEmail": "E-Mail (Vertretung)",
+      "website": "Website",
+      "unternehmensbeschreibung": "Kurzbeschreibung des Unternehmens",
+      "istVertreterGewuenscht": "Möchten Sie eine vertretungsberechtigte Person für Events angeben?",
+      "vbTitel": "Titel",
+      "vbVorname": "Vorname",
+      "vbNachname": "Nachname",
+      "vbBerufsbezeichnung": "Berufsbezeichnung",
+      "vbPosition": "Position",
+      "vbTelefon": "Telefon (Geschäftlich)",
+      "vbEmail": "E-Mail (Geschäftlich)",
+      "aufnahmedatum": "Gewünschtes Aufnahmedatum",
+      "empfohlenVon": "Wurden Sie durch ein bestehendes Mitglied empfohlen?",
       "zahlungsintervall": "Zahlungsintervall",
-      "starttermin": "Gewünschter Starttermin",
-      "empfohlenVon": "Empfohlen durch bestehendes Mitglied?",
       "zahlungsmethode": "Zahlungsmethode",
       "kontoinhaber": "Kontoinhaber",
       "iban": "IBAN",
       "bic": "BIC",
-      "bank": "Bank",
-      "profiltext": "Profiltext für den Mitgliederbereich",
-      "referenzen": "3 stärkste Referenzleistungen / Produkte",
-      "kommunikation": "Newsletter & Clubkommunikation"
+      "bank": "Bank"
     },
     "ja": "Ja",
     "nein": "Nein",
     "erwerbOpt": {
-      "haupterwerb": "Haupterwerb",
-      "nebenerwerb": "Nebenerwerb"
+      "haupttaetigkeit": "Haupttätigkeit",
+      "nebentaetigkeit": "Nebentätigkeit"
     },
     "groessen": {
       "1": "1 Person",
-      "2-5": "2–5 Mitarbeitende",
-      "6-20": "6–20 Mitarbeitende",
-      "21-50": "21–50 Mitarbeitende",
-      "50+": "50+ Mitarbeitende"
+      "le10": "≤ 10 Vollzeitmitarbeiter",
+      "le50": "≤ 50 Vollzeitmitarbeiter",
+      "le250": "≤ 250 Vollzeitmitarbeiter",
+      "ge250": "≥ 250 Vollzeitmitarbeiter"
     },
     "intervalle": {
       "monatlich": "Monatlich",
@@ -332,7 +335,6 @@
       "halbjaehrlich": "Halbjährlich",
       "jaehrlich": "Jährlich"
     },
-    "laufzeitInfo": "Vertragslaufzeit: Unbestimmt, monatlich kündbar mit einer Frist von einem vollen Monat zum Monatsende.",
     "aufnahmegebuehr": "Zusätzlich fällt einmalig eine Aufnahmegebühr von 150,00 € an.",
     "methoden": {
       "sepa": "SEPA-Lastschrift",
@@ -341,33 +343,16 @@
     "sepaBald": "Diese Zahlungsmethode wird in Kürze freigeschaltet.",
     "sepaMandatTitel": "SEPA-Lastschriftmandat",
     "sepaMandatCheckbox": "Ich ermächtige den Kontor Business Club, Zahlungen von meinem Konto mittels Lastschrift einzuziehen, und erkenne den oben stehenden Mandatstext an.",
-    "ueberweisungInfo": "Die Bankverbindung des Clubs wird nach Aufnahme separat mitgeteilt. [Platzhalter – wird nachgereicht.]",
-    "kanaele": {
-      "email": "E-Mail",
-      "whatsapp": "WhatsApp",
-      "app": "App"
-    },
+    "ueberweisungInfo": "Die Bankverbindung des Clubs wird nach Aufnahme separat mitgeteilt.",
     "einverstaendnis": {
       "agb": "Ich habe die AGB des Kontor Business Clubs gelesen und erkenne diese als verbindlich an.",
       "datenschutz": "Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu.",
-      "foto": "Ich bin damit einverstanden, dass bei Clubveranstaltungen Foto- und Video-Aufnahmen meiner Person erstellt und für die Öffentlichkeitsarbeit des Kontor Business Clubs genutzt werden dürfen. (optional, jederzeit widerrufbar)",
-      "unternehmer": "Ich bestätige, dass ich als Unternehmer/in im Sinne des deutschen Rechts (HGB/BGB) handle und diese Mitgliedschaft im Rahmen meiner beruflichen/gewerblichen Tätigkeit abschließe."
+      "unternehmer": "Ich bestätige, dass ich als Unternehmer im Sinne des deutschen Rechts (HGB/BGB) handle und diese Mitgliedschaft im Rahmen meiner beruflichen / gewerblichen Tätigkeit abschließe.",
+      "foto": "Ich bin damit einverstanden, dass bei Clubveranstaltungen Foto- und Video-Aufnahmen meiner Person erstellt und für die Öffentlichkeitsarbeit des Kontor Business Clubs genutzt werden dürfen."
     },
     "agbLink": "AGB",
     "datenschutzLink": "Datenschutzerklärung",
-    "faqTitel": "Häufige Fragen zum Aufnahmeprozess",
-    "faq": {
-      "items": [
-        { "frage": "Wer kann Mitglied werden?", "antwort": "Selbstständige Unternehmer/innen, Geschäftsführer/innen und innovative Start-up-Gründer/innen. Je Branche nimmt der Club genau ein Mitglied auf." },
-        { "frage": "Wie läuft der Aufnahmeprozess?", "antwort": "Sie reichen Ihren Antrag mit einer kurzen Vorstellung Ihrer Person und Ihres Unternehmens ein. Das Kuratorium prüft den Antrag und entscheidet innerhalb von sieben Werktagen." },
-        { "frage": "Was kostet die Mitgliedschaft?", "antwort": "Der monatliche Beitrag beträgt 80 € (alternativ vierteljährlich, halbjährlich oder jährlich zu zahlen). Zusätzlich fällt einmalig eine Aufnahmegebühr von 150 € an." },
-        { "frage": "Wie lange läuft der Vertrag?", "antwort": "Die Mitgliedschaft läuft auf unbestimmte Zeit und kann mit einer Frist von einem vollen Monat zum Monatsende gekündigt werden." },
-        { "frage": "Was passiert, wenn ich nicht zu einem Event kommen kann?", "antwort": "Zu Business Events können Sie einen Vertreter entsenden. Zu Social Events ist die persönliche Teilnahme erwünscht, eine Vertretung ist hier nicht vorgesehen." },
-        { "frage": "Kann ich Gäste mitbringen?", "antwort": "Ja. Interessierte Freunde und Kollegen sind willkommen, ehe sie ggf. selbst Mitglied werden. Bitte kündigen Sie Gäste vorher beim Clubmanagement an." },
-        { "frage": "Wann finden die Veranstaltungen statt?", "antwort": "Zweimal pro Monat – ein Business Event und ein Social Event – außerhalb regulärer Arbeitszeiten, immer in Präsenz." }
-      ]
-    },
-    "reviewTitel": "Bitte prüfe deine Angaben"
+    "reviewTitel": "Bitte prüfen Sie Ihre Angaben"
   },
   "kontakt": {
     "beratung": {

@@ -43,7 +43,6 @@ export default async function KontaktPage({ params }: PageProps) {
         heightClassName="min-h-[42vh]"
         align="end"
       >
-        <Kicker tone="dark">{tb("kicker")}</Kicker>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {tb("titel")}
         </h1>
@@ -63,7 +62,7 @@ export default async function KontaktPage({ params }: PageProps) {
               <Button href="/kontakt#formular" variant="primary">
                 {tcta("zumKontakt")}
               </Button>
-              <Button href="/mitgliedschaft/antrag" variant="outline">
+              <Button href="/mitgliedschaft#mitgliedsantrag" variant="outline">
                 {tcta("zumAntrag")}
               </Button>
             </div>
@@ -72,7 +71,7 @@ export default async function KontaktPage({ params }: PageProps) {
       </Section>
 
       {/* Kontaktformular */}
-      <Section id="formular" background="champagner">
+      <Section id="formular" background="pergament">
         <Container variant="text">
           <Reveal className="flex flex-col gap-4">
             <Kicker tone="light">{tfm("kicker")}</Kicker>

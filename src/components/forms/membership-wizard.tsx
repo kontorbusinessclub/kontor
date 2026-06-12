@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm, type FieldPath } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import * as Accordion from "@radix-ui/react-accordion";
 import { Link } from "@/i18n/navigation";
 import {
   membershipWizardSchema,
@@ -12,7 +11,6 @@ import {
   type MembershipWizardData,
   ZAHLUNGSINTERVALLE,
   UNTERNEHMENSGROESSEN,
-  KOMMUNIKATIONSKANAELE,
 } from "@/lib/forms/membership";
 import { SEPA_ENABLED } from "@/lib/sepa";
 import { SEPA_MANDAT_TEXT } from "@/content/legal";
@@ -22,20 +20,17 @@ import { Button } from "@/components/ui/button";
 
 type Values = MembershipWizardInput;
 
+const TOTAL = 6;
+
 /** Pflicht-/relevante Felder je Schritt (für die schrittweise Validierung). */
 const STEP_FIELDS: FieldPath<Values>[][] = [
-  ["vorname", "nachname", "strasse", "plzOrt", "telefonMobil", "emailGeschaeftlich", "emailPrivat", "website"],
-  ["unternehmen", "rechtsform", "unternehmensanschrift", "plzOrtUnternehmen", "branche", "fachgebiet", "erwerb", "unternehmensgroesse", "kurzbeschreibung", "kurzpraesentation"],
-  ["istVertretungsberechtigt", "vbVorname", "vbNachname", "vbFunktion", "vbTelefon", "vbEmail"],
-  ["zahlungsintervall", "starttermin"],
-  ["zahlungsmethode", "kontoinhaber", "iban", "sepaMandat"],
-  [],
-  [],
+  ["titel", "vorname", "nachname", "berufsbezeichnung", "position", "geburtsdatum", "strasse", "plzOrt", "telefonMobil", "telefonGeschaeftlich", "emailPrivat", "emailGeschaeftlich", "personenbeschreibung"],
+  ["unternehmen", "rechtsform", "handelsregisternummer", "unternehmensanschrift", "plzOrtUnternehmen", "branche", "fachgebiet", "erwerb", "unternehmensgroesse", "website", "unternehmensbeschreibung"],
+  ["istVertreterGewuenscht", "vbVorname", "vbNachname", "vbBerufsbezeichnung", "vbPosition", "vbTelefon", "vbEmail"],
+  ["aufnahmedatum", "empfohlenVon", "zahlungsintervall", "zahlungsmethode", "kontoinhaber", "iban", "sepaMandat"],
   ["agbAkzeptiert", "datenschutzAkzeptiert", "unternehmerBestaetigung"],
   [],
 ];
-
-const TOTAL = 9;
 
 export function MembershipWizard() {
   const t = useTranslations("antrag");
@@ -49,28 +44,28 @@ export function MembershipWizard() {
     resolver: zodResolver(membershipWizardSchema),
     mode: "onTouched",
     defaultValues: {
-      vorname: "", nachname: "", titelFunktion: "", geburtsdatum: "",
-      strasse: "", plzOrt: "", telefonMobil: "", telefonBuero: "",
-      emailPrivat: "", emailGeschaeftlich: "", website: "",
-      unternehmen: "", rechtsform: "", registernummer: "",
+      titel: "", vorname: "", nachname: "", berufsbezeichnung: "", position: "",
+      geburtsdatum: "", strasse: "", plzOrt: "", telefonMobil: "", telefonGeschaeftlich: "",
+      emailPrivat: "", emailGeschaeftlich: "", personenbeschreibung: "",
+      unternehmen: "", rechtsform: "", handelsregisternummer: "",
       unternehmensanschrift: "", plzOrtUnternehmen: "", branche: "", fachgebiet: "",
-      erwerb: "haupterwerb", unternehmensgroesse: "1",
-      kurzbeschreibung: "", kurzpraesentation: "",
-      istVertretungsberechtigt: "ja",
-      vbVorname: "", vbNachname: "", vbFunktion: "", vbTelefon: "", vbEmail: "",
-      zahlungsintervall: "monatlich", starttermin: "", empfohlenVon: "",
-      zahlungsmethode: "ueberweisung",
+      erwerb: "haupttaetigkeit", unternehmensgroesse: "1", website: "",
+      unternehmensbeschreibung: "",
+      istVertreterGewuenscht: "nein",
+      vbTitel: "", vbVorname: "", vbNachname: "", vbBerufsbezeichnung: "", vbPosition: "",
+      vbTelefon: "", vbEmail: "",
+      aufnahmedatum: "", empfohlenVon: "",
+      zahlungsintervall: "monatlich", zahlungsmethode: "ueberweisung",
       kontoinhaber: "", iban: "", bic: "", bank: "", sepaMandat: false,
-      profiltext: "", referenzen: "", kommunikation: [],
       agbAkzeptiert: false, datenschutzAkzeptiert: false,
-      fotoEinverstaendnis: false, unternehmerBestaetigung: false,
+      unternehmerBestaetigung: false, fotoEinverstaendnis: false,
       hp: "",
     },
   });
 
-  const { register, handleSubmit, trigger, watch, getValues, formState: { errors, isSubmitting } } = form;
+  const { register, handleSubmit, trigger, watch, getValues, formState: { isSubmitting } } = form;
 
-  const vbNein = watch("istVertretungsberechtigt") === "nein";
+  const vertreterJa = watch("istVertreterGewuenscht") === "ja";
   const istSepa = watch("zahlungsmethode") === "sepa";
 
   async function next() {
@@ -93,7 +88,8 @@ export function MembershipWizard() {
     return (
       <div className="rounded-lg border border-smaragd/40 bg-white p-8 text-center">
         <h2 className="font-serif text-2xl font-semibold text-koenigsblau">{t("erfolgTitel")}</h2>
-        <p className="mt-4 font-sans text-lg text-tinte/85">{t("erfolgText")}</p>
+        <p className="mt-4 font-sans text-lg text-tinte/85">{t("erfolgText1")}</p>
+        <p className="mt-1 font-sans text-lg text-tinte/85">{t("erfolgText2")}</p>
         <div className="mt-8">
           <Button href="/">{t("erfolgCta")}</Button>
         </div>
@@ -118,30 +114,39 @@ export function MembershipWizard() {
         </div>
       </div>
 
-      {/* Schritt 1 */}
+      {/* Schritt 1 – Persönliche Angaben */}
       {step === 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2">
-          <TextField name="vorname" label={tf("vorname")} required form={form} />
-          <TextField name="nachname" label={tf("nachname")} required form={form} />
-          <TextField name="titelFunktion" label={tf("titelFunktion")} form={form} />
-          <TextField name="geburtsdatum" label={tf("geburtsdatum")} type="date" form={form} />
-          <TextField name="strasse" label={tf("strasse")} required form={form} />
-          <TextField name="plzOrt" label={tf("plzOrt")} required form={form} />
-          <TextField name="telefonMobil" label={tf("telefonMobil")} type="tel" required form={form} />
-          <TextField name="telefonBuero" label={tf("telefonBuero")} type="tel" form={form} />
-          <TextField name="emailPrivat" label={tf("emailPrivat")} type="email" form={form} />
-          <TextField name="emailGeschaeftlich" label={tf("emailGeschaeftlich")} type="email" required form={form} />
-          <TextField name="website" label={tf("website")} type="url" form={form} />
+        <div className="flex flex-col gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <TextField name="titel" label={tf("titel")} form={form} />
+            <span className="hidden sm:block" aria-hidden="true" />
+            <TextField name="vorname" label={tf("vorname")} required form={form} />
+            <TextField name="nachname" label={tf("nachname")} required form={form} />
+            <TextField name="berufsbezeichnung" label={tf("berufsbezeichnung")} required form={form} />
+            <TextField name="position" label={tf("position")} required form={form} />
+            <TextField name="geburtsdatum" label={tf("geburtsdatum")} type="date" form={form} />
+            <TextField name="strasse" label={tf("strasse")} required form={form} />
+            <TextField name="plzOrt" label={tf("plzOrt")} required form={form} />
+            <span className="hidden sm:block" aria-hidden="true" />
+            <TextField name="telefonMobil" label={tf("telefonMobil")} type="tel" required form={form} />
+            <TextField name="telefonGeschaeftlich" label={tf("telefonGeschaeftlich")} type="tel" form={form} />
+            <TextField name="emailPrivat" label={tf("emailPrivat")} type="email" form={form} />
+            <TextField name="emailGeschaeftlich" label={tf("emailGeschaeftlich")} type="email" required form={form} />
+          </div>
+          <Field label={tf("personenbeschreibung")} htmlFor="mw-personenbeschreibung" required error={fieldError(form, "personenbeschreibung")}>
+            <Textarea id="mw-personenbeschreibung" {...register("personenbeschreibung")} />
+          </Field>
         </div>
       ) : null}
 
-      {/* Schritt 2 */}
+      {/* Schritt 2 – Unternehmensdaten */}
       {step === 1 ? (
         <div className="flex flex-col gap-6">
           <div className="grid gap-6 sm:grid-cols-2">
             <TextField name="unternehmen" label={tf("unternehmen")} required form={form} />
             <TextField name="rechtsform" label={tf("rechtsform")} required form={form} />
-            <TextField name="registernummer" label={tf("registernummer")} form={form} />
+            <TextField name="handelsregisternummer" label={tf("handelsregisternummer")} form={form} />
+            <TextField name="website" label={tf("website")} type="url" form={form} />
             <TextField name="unternehmensanschrift" label={tf("unternehmensanschrift")} required form={form} />
             <TextField name="plzOrtUnternehmen" label={tf("plzOrtUnternehmen")} required form={form} />
             <TextField name="branche" label={tf("branche")} required form={form} />
@@ -152,10 +157,10 @@ export function MembershipWizard() {
             name="erwerb"
             label={tf("erwerb")}
             form={form}
-            options={(["haupterwerb", "nebenerwerb"] as const).map((v) => ({ value: v, label: t(`erwerbOpt.${v}`) }))}
+            options={(["haupttaetigkeit", "nebentaetigkeit"] as const).map((v) => ({ value: v, label: t(`erwerbOpt.${v}`) }))}
           />
 
-          <Field label={tf("unternehmensgroesse")} htmlFor="mw-groesse" required error={errors.unternehmensgroesse?.message}>
+          <Field label={tf("unternehmensgroesse")} htmlFor="mw-groesse" required error={fieldError(form, "unternehmensgroesse")}>
             <Select id="mw-groesse" {...register("unternehmensgroesse")}>
               {UNTERNEHMENSGROESSEN.map((g) => (
                 <option key={g} value={g}>{t(`groessen.${g}`)}</option>
@@ -163,32 +168,32 @@ export function MembershipWizard() {
             </Select>
           </Field>
 
-          <Field label={tf("kurzbeschreibung")} htmlFor="mw-kurzb" required hint="min. 100 Zeichen" error={errors.kurzbeschreibung?.message}>
-            <Textarea id="mw-kurzb" {...register("kurzbeschreibung")} />
-          </Field>
-          <Field label={tf("kurzpraesentation")} htmlFor="mw-kurzp" required hint="min. 200 Zeichen" error={errors.kurzpraesentation?.message}>
-            <Textarea id="mw-kurzp" {...register("kurzpraesentation")} />
+          <Field label={tf("unternehmensbeschreibung")} htmlFor="mw-unternehmensbeschreibung" required error={fieldError(form, "unternehmensbeschreibung")}>
+            <Textarea id="mw-unternehmensbeschreibung" {...register("unternehmensbeschreibung")} />
           </Field>
         </div>
       ) : null}
 
-      {/* Schritt 3 */}
+      {/* Schritt 3 – Vertretungsberechtigung */}
       {step === 2 ? (
         <div className="flex flex-col gap-6">
           <RadioGroup
-            name="istVertretungsberechtigt"
-            label={tf("istVertretungsberechtigt")}
+            name="istVertreterGewuenscht"
+            label={tf("istVertreterGewuenscht")}
             form={form}
             options={[
               { value: "ja", label: t("ja") },
               { value: "nein", label: t("nein") },
             ]}
           />
-          {vbNein ? (
+          {vertreterJa ? (
             <div className="grid gap-6 sm:grid-cols-2">
+              <TextField name="vbTitel" label={tf("vbTitel")} form={form} />
+              <span className="hidden sm:block" aria-hidden="true" />
               <TextField name="vbVorname" label={tf("vbVorname")} required form={form} />
               <TextField name="vbNachname" label={tf("vbNachname")} required form={form} />
-              <TextField name="vbFunktion" label={tf("vbFunktion")} required form={form} />
+              <TextField name="vbBerufsbezeichnung" label={tf("vbBerufsbezeichnung")} required form={form} />
+              <TextField name="vbPosition" label={tf("vbPosition")} required form={form} />
               <TextField name="vbTelefon" label={tf("vbTelefon")} type="tel" required form={form} />
               <TextField name="vbEmail" label={tf("vbEmail")} type="email" required form={form} />
             </div>
@@ -196,53 +201,50 @@ export function MembershipWizard() {
         </div>
       ) : null}
 
-      {/* Schritt 4 */}
+      {/* Schritt 4 – Mitgliedschaft & Zahlungsinformationen */}
       {step === 3 ? (
         <div className="flex flex-col gap-6">
-          <p className="rounded-md border border-koenigsblau/20 bg-champagner/50 p-4 font-sans text-sm text-tinte/90">
-            {t("laufzeitInfo")}
-          </p>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <TextField name="aufnahmedatum" label={tf("aufnahmedatum")} type="date" required form={form} />
+            <TextField name="empfohlenVon" label={tf("empfohlenVon")} form={form} />
+          </div>
+
           <RadioGroup
             name="zahlungsintervall"
             label={tf("zahlungsintervall")}
             form={form}
-            options={ZAHLUNGSINTERVALLE.map((i) => ({
-              value: i.value,
-              label: `${t(`intervalle.${i.value}`)} · ${i.betrag}`,
-            }))}
+            options={ZAHLUNGSINTERVALLE.map((v) => ({ value: v, label: t(`intervalle.${v}`) }))}
           />
           <p className="font-sans text-sm text-tinte/70">{t("aufnahmegebuehr")}</p>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <TextField name="starttermin" label={tf("starttermin")} type="date" required form={form} />
-            <TextField name="empfohlenVon" label={tf("empfohlenVon")} form={form} />
-          </div>
-        </div>
-      ) : null}
 
-      {/* Schritt 5 */}
-      {step === 4 ? (
-        <div className="flex flex-col gap-6">
+          {/* Zahlungsmethode (§ 10.6) */}
           <fieldset>
             <legend className="font-sans text-xs font-semibold uppercase tracking-[0.08em] text-koenigsblau">
               {tf("zahlungsmethode")}<span className="text-smaragd"> *</span>
             </legend>
             <div className="mt-3 flex flex-col gap-3">
-              <label className={`flex items-center gap-3 font-sans text-base ${SEPA_ENABLED ? "text-tinte" : "text-tinte/40"}`} title={!SEPA_ENABLED ? t("sepaBald") : undefined}>
-                <input type="radio" value="sepa" disabled={!SEPA_ENABLED} {...register("zahlungsmethode")} className="size-5" />
-                <span>{t("methoden.sepa")}</span>
-                {!SEPA_ENABLED ? (
-                  <span className="rounded-full border border-gold/50 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-gold">
-                    {t("sepaBald")}
-                  </span>
-                ) : null}
-              </label>
-              <label className="flex items-center gap-3 font-sans text-base text-tinte">
-                <input type="radio" value="ueberweisung" {...register("zahlungsmethode")} className="size-5" />
-                <span>{t("methoden.ueberweisung")}</span>
-              </label>
+              <div className="flex flex-wrap items-center gap-3">
+                <label
+                  className={`flex items-center gap-3 font-sans text-base ${SEPA_ENABLED ? "text-tinte" : "text-tinte/40"}`}
+                  title={!SEPA_ENABLED ? t("sepaBald") : undefined}
+                >
+                  <input type="radio" value="sepa" disabled={!SEPA_ENABLED} {...register("zahlungsmethode")} className="size-5" />
+                  <span>{t("methoden.sepa")}</span>
+                </label>
+                <span className="font-sans text-sm text-smaragd">{t("sepaBald")}</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <label className="flex items-center gap-3 font-sans text-base text-tinte">
+                  <input type="radio" value="ueberweisung" {...register("zahlungsmethode")} className="size-5" />
+                  <span>{t("methoden.ueberweisung")}</span>
+                </label>
+                <span className="rounded-lg border border-smaragd px-3 py-1 font-sans text-sm text-smaragd">
+                  {t("ueberweisungInfo")}
+                </span>
+              </div>
             </div>
-            {errors.zahlungsmethode ? (
-              <p role="alert" className="mt-1 font-sans text-sm text-smaragd">{errors.zahlungsmethode.message}</p>
+            {fieldError(form, "zahlungsmethode") ? (
+              <p role="alert" className="mt-1 font-sans text-sm text-smaragd">{fieldError(form, "zahlungsmethode")}</p>
             ) : null}
           </fieldset>
 
@@ -258,103 +260,66 @@ export function MembershipWizard() {
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.08em] text-koenigsblau">{t("sepaMandatTitel")}</p>
                 <p className="mt-2 whitespace-pre-line font-sans text-sm text-tinte/80">{SEPA_MANDAT_TEXT}</p>
               </div>
-              <label className="flex items-start gap-3 font-sans text-sm text-tinte">
-                <input type="checkbox" {...register("sepaMandat")} className="mt-1 size-5 shrink-0" />
-                <span>{t("sepaMandatCheckbox")}</span>
-              </label>
-              {errors.sepaMandat ? (
-                <p role="alert" className="font-sans text-sm text-smaragd">{errors.sepaMandat.message}</p>
-              ) : null}
+              <Checkbox name="sepaMandat" form={form}>{t("sepaMandatCheckbox")}</Checkbox>
             </div>
-          ) : (
-            <p className="rounded-md border border-koenigsblau/20 bg-champagner/50 p-4 font-sans text-sm text-tinte/90">
-              {t("ueberweisungInfo")}
-            </p>
-          )}
+          ) : null}
         </div>
       ) : null}
 
-      {/* Schritt 6 */}
-      {step === 5 ? (
-        <div className="flex flex-col gap-6">
-          <Field label={tf("profiltext")} htmlFor="mw-profil">
-            <Textarea id="mw-profil" rows={3} {...register("profiltext")} />
-          </Field>
-          <Field label={tf("referenzen")} htmlFor="mw-ref">
-            <Textarea id="mw-ref" rows={3} {...register("referenzen")} />
-          </Field>
-          <fieldset>
-            <legend className="font-sans text-xs font-semibold uppercase tracking-[0.08em] text-koenigsblau">{tf("kommunikation")}</legend>
-            <div className="mt-3 flex flex-wrap gap-4">
-              {KOMMUNIKATIONSKANAELE.map((k) => (
-                <label key={k} className="flex items-center gap-2 font-sans text-base text-tinte">
-                  <input type="checkbox" value={k} {...register("kommunikation")} className="size-5" />
-                  <span>{t(`kanaele.${k}`)}</span>
-                </label>
-              ))}
-            </div>
-          </fieldset>
-        </div>
-      ) : null}
-
-      {/* Schritt 7 – FAQs */}
-      {step === 6 ? (
-        <div>
-          <h3 className="font-serif text-xl font-semibold text-koenigsblau">{t("faqTitel")}</h3>
-          <Accordion.Root type="single" collapsible className="mt-4 flex flex-col">
-            {(t.raw("faq.items") as { frage: string; antwort: string }[]).map((item, i) => (
-              <Accordion.Item key={i} value={`faq-${i}`} className="border-b border-gold/30">
-                <Accordion.Header>
-                  <Accordion.Trigger className="flex w-full items-center justify-between gap-4 py-4 text-left font-sans text-base font-semibold text-koenigsblau">
-                    {item.frage}
-                    <span aria-hidden="true" className="inline-block h-2 w-2 rotate-45 border-b border-r border-gold" />
-                  </Accordion.Trigger>
-                </Accordion.Header>
-                <Accordion.Content className="pb-4 font-sans text-base leading-relaxed text-tinte/85">
-                  {item.antwort}
-                </Accordion.Content>
-              </Accordion.Item>
-            ))}
-          </Accordion.Root>
-        </div>
-      ) : null}
-
-      {/* Schritt 8 – Einverständnisse */}
-      {step === 7 ? (
+      {/* Schritt 5 – Einverständniserklärungen */}
+      {step === 4 ? (
         <div className="flex flex-col gap-4">
-          <Checkbox name="agbAkzeptiert" form={form}>
-            {t("einverstaendnis.agb")}{" "}
+          <Checkbox name="agbAkzeptiert" form={form} required>
+            {t("einverstaendnis.agb")}{" ("}
             <Link href="/agb" target="_blank" className="text-koenigsblau underline decoration-gold underline-offset-2">
-              ({t("agbLink")})
+              {t("agbLink")}
             </Link>
+            {")"}
           </Checkbox>
-          <Checkbox name="datenschutzAkzeptiert" form={form}>
-            {t("einverstaendnis.datenschutz")}{" "}
+          <Checkbox name="datenschutzAkzeptiert" form={form} required>
+            {t("einverstaendnis.datenschutz")}{" ("}
             <Link href="/datenschutz" target="_blank" className="text-koenigsblau underline decoration-gold underline-offset-2">
-              ({t("datenschutzLink")})
+              {t("datenschutzLink")}
             </Link>
+            {")"}
+          </Checkbox>
+          <Checkbox name="unternehmerBestaetigung" form={form} required>
+            {t("einverstaendnis.unternehmer")}
           </Checkbox>
           <Checkbox name="fotoEinverstaendnis" form={form}>
             {t("einverstaendnis.foto")}
           </Checkbox>
-          <Checkbox name="unternehmerBestaetigung" form={form}>
-            {t("einverstaendnis.unternehmer")}
-          </Checkbox>
         </div>
       ) : null}
 
-      {/* Schritt 9 – Review */}
-      {step === 8 ? (
-        <div className="flex flex-col gap-4">
+      {/* Schritt 6 – Zusammenfassung */}
+      {step === 5 ? (
+        <div className="flex flex-col gap-6">
           <h3 className="font-serif text-xl font-semibold text-koenigsblau">{t("reviewTitel")}</h3>
-          <dl className="grid gap-x-6 gap-y-2 rounded-md border border-koenigsblau/20 bg-champagner/40 p-5 sm:grid-cols-2">
-            {reviewRows(getValues(), tf).map(([label, value]) => (
-              <div key={label} className="flex flex-col">
-                <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-tinte/60">{label}</dt>
-                <dd className="font-sans text-sm text-tinte/90">{value || "–"}</dd>
+          {reviewGroups(getValues(), t, tf, vertreterJa).map((group) => (
+            <div key={group.step} className="rounded-md border border-koenigsblau/20 bg-champagner/40 p-5">
+              <div className="flex items-center justify-between gap-4">
+                <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-koenigsblau">
+                  {group.title}
+                </h4>
+                <button
+                  type="button"
+                  onClick={() => setStep(group.step)}
+                  className="font-sans text-sm text-koenigsblau underline decoration-gold underline-offset-2 hover:text-kontorblau"
+                >
+                  {t("bearbeiten")}
+                </button>
               </div>
-            ))}
-          </dl>
+              <dl className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                {group.rows.map(([label, value]) => (
+                  <div key={label} className="flex flex-col">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-tinte/60">{label}</dt>
+                    <dd className="whitespace-pre-line font-sans text-sm text-tinte/90">{value || "–"}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
           {status === "error" ? (
             <p role="alert" className="font-sans text-base text-smaragd">{tc(errorKey)}</p>
           ) : null}
@@ -382,6 +347,10 @@ export function MembershipWizard() {
 
 type FormType = ReturnType<typeof useForm<Values, unknown, MembershipWizardData>>;
 
+function fieldError(form: FormType, name: FieldPath<Values>): string | undefined {
+  return form.getFieldState(name, form.formState).error?.message;
+}
+
 function TextField({
   name, label, type = "text", required, form,
 }: {
@@ -391,7 +360,7 @@ function TextField({
   required?: boolean;
   form: FormType;
 }) {
-  const error = form.getFieldState(name, form.formState).error?.message;
+  const error = fieldError(form, name);
   return (
     <Field label={label} htmlFor={`mw-${name}`} required={required} error={error}>
       <Input id={`mw-${name}`} type={type} invalid={Boolean(error)} {...form.register(name)} />
@@ -407,7 +376,7 @@ function RadioGroup({
   options: { value: string; label: string }[];
   form: FormType;
 }) {
-  const error = form.getFieldState(name, form.formState).error?.message;
+  const error = fieldError(form, name);
   return (
     <fieldset>
       <legend className="font-sans text-xs font-semibold uppercase tracking-[0.08em] text-koenigsblau">
@@ -427,38 +396,101 @@ function RadioGroup({
 }
 
 function Checkbox({
-  name, form, children,
+  name, form, required, children,
 }: {
   name: FieldPath<Values>;
   form: FormType;
+  required?: boolean;
   children: React.ReactNode;
 }) {
-  const error = form.getFieldState(name, form.formState).error?.message;
+  const error = fieldError(form, name);
   return (
     <div>
       <label className="flex items-start gap-3 font-sans text-sm leading-relaxed text-tinte">
         <input type="checkbox" {...form.register(name)} className="mt-1 size-5 shrink-0" />
-        <span>{children}</span>
+        <span>
+          {children}
+          {required ? <span className="text-smaragd"> *</span> : null}
+        </span>
       </label>
       {error ? <p role="alert" className="mt-1 pl-8 font-sans text-sm text-smaragd">{error}</p> : null}
     </div>
   );
 }
 
-/** Zusammenfassung für den Review-Schritt. */
-function reviewRows(
+type ReviewGroup = { step: number; title: string; rows: [string, string][] };
+
+/** Gruppierte Zusammenfassung für den Review-Schritt (§ 10.11). */
+function reviewGroups(
   v: Values,
+  t: (k: string) => string,
   tf: (k: string) => string,
-): [string, string][] {
-  return [
-    [tf("vorname"), `${v.vorname} ${v.nachname}`],
-    [tf("emailGeschaeftlich"), v.emailGeschaeftlich],
-    [tf("telefonMobil"), v.telefonMobil],
-    [tf("unternehmen"), v.unternehmen],
-    [tf("branche"), v.branche],
-    [tf("fachgebiet"), v.fachgebiet],
-    [tf("zahlungsintervall"), v.zahlungsintervall],
-    [tf("zahlungsmethode"), v.zahlungsmethode],
-    [tf("starttermin"), v.starttermin ?? ""],
+  vertreterJa: boolean,
+): ReviewGroup[] {
+  const groups: ReviewGroup[] = [
+    {
+      step: 0,
+      title: t("steps.1"),
+      rows: [
+        [tf("vorname"), [v.titel, v.vorname, v.nachname].filter(Boolean).join(" ")],
+        [tf("berufsbezeichnung"), v.berufsbezeichnung ?? ""],
+        [tf("position"), v.position ?? ""],
+        [tf("strasse"), [v.strasse, v.plzOrt].filter(Boolean).join(", ")],
+        [tf("telefonMobil"), v.telefonMobil ?? ""],
+        [tf("emailGeschaeftlich"), v.emailGeschaeftlich ?? ""],
+        [tf("personenbeschreibung"), v.personenbeschreibung ?? ""],
+      ],
+    },
+    {
+      step: 1,
+      title: t("steps.2"),
+      rows: [
+        [tf("unternehmen"), v.unternehmen ?? ""],
+        [tf("rechtsform"), v.rechtsform ?? ""],
+        [tf("branche"), v.branche ?? ""],
+        [tf("fachgebiet"), v.fachgebiet ?? ""],
+        [tf("erwerb"), v.erwerb ? t(`erwerbOpt.${v.erwerb}`) : ""],
+        [tf("unternehmensgroesse"), v.unternehmensgroesse ? t(`groessen.${v.unternehmensgroesse}`) : ""],
+        [tf("unternehmensbeschreibung"), v.unternehmensbeschreibung ?? ""],
+      ],
+    },
+    {
+      step: 2,
+      title: t("steps.3"),
+      rows: vertreterJa
+        ? [
+            [tf("istVertreterGewuenscht"), t("ja")],
+            [tf("vbVorname"), [v.vbTitel, v.vbVorname, v.vbNachname].filter(Boolean).join(" ")],
+            [tf("vbBerufsbezeichnung"), v.vbBerufsbezeichnung ?? ""],
+            [tf("vbPosition"), v.vbPosition ?? ""],
+            [tf("vbTelefon"), v.vbTelefon ?? ""],
+            [tf("vbEmail"), v.vbEmail ?? ""],
+          ]
+        : [[tf("istVertreterGewuenscht"), t("nein")]],
+    },
+    {
+      step: 3,
+      title: t("steps.4"),
+      rows: [
+        [tf("aufnahmedatum"), v.aufnahmedatum ?? ""],
+        [tf("empfohlenVon"), v.empfohlenVon ?? ""],
+        [tf("zahlungsintervall"), v.zahlungsintervall ? t(`intervalle.${v.zahlungsintervall}`) : ""],
+        [tf("zahlungsmethode"), v.zahlungsmethode ? t(`methoden.${v.zahlungsmethode}`) : ""],
+      ],
+    },
+    {
+      step: 4,
+      title: t("steps.5"),
+      rows: [
+        [t("agbLink"), boolLabel(t, v.agbAkzeptiert)],
+        [t("datenschutzLink"), boolLabel(t, v.datenschutzAkzeptiert)],
+      ],
+    },
   ];
+  return groups;
+}
+
+function boolLabel(t: (k: string) => string, value: unknown): string {
+  const truthy = value === true || value === "true" || value === "on" || value === "1";
+  return truthy ? t("ja") : t("nein");
 }

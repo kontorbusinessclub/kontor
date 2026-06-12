@@ -5,7 +5,7 @@
  * Aufgabe 10: Pro Reiter gibt es EINE Seite. Die ehemaligen Unterseiten
  * sind jetzt Anker-Sektionen (#anker) auf dieser Seite und werden per
  * Smooth-Scroll angesprungen. Ausnahme: der mehrstufige Mitgliedsantrag
- * bleibt eine eigene Route (/mitgliedschaft/antrag).
+ * bleibt eine eigene Route (/mitgliedschaft#mitgliedsantrag).
  */
 export type NavChild = { key: string; href: string };
 export type NavItem = { key: string; href: string; children?: NavChild[] };
@@ -39,7 +39,7 @@ export const navItems: NavItem[] = [
     href: "/mitgliedschaft",
     children: [
       { key: "vorteile", href: "/mitgliedschaft#vorteile" },
-      { key: "antrag", href: "/mitgliedschaft/antrag" },
+      { key: "antrag", href: "/mitgliedschaft#mitgliedsantrag" },
     ],
   },
   {

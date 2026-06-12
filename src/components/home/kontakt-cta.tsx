@@ -20,7 +20,7 @@ export async function KontaktCta() {
       contentClassName="items-center text-center"
     >
       <Reveal className="flex flex-col items-center">
-        <h2 className="max-w-xl font-serif text-3xl font-semibold leading-tight text-champagner sm:text-4xl [text-shadow:0_2px_18px_rgba(20,24,31,0.4)]">
+        <h2 className="max-w-4xl font-serif text-3xl font-semibold leading-tight text-champagner sm:text-4xl md:whitespace-nowrap [text-shadow:0_2px_18px_rgba(20,24,31,0.4)]">
           {t("kontaktCta.titel")}
         </h2>
 
@@ -41,7 +41,7 @@ export async function KontaktCta() {
           </Button>
           <Button
             variant="outline"
-            href="/mitgliedschaft/antrag"
+            href="/mitgliedschaft#mitgliedsantrag"
             className="border-champagner text-champagner hover:border-champagner hover:bg-champagner hover:text-koenigsblau focus-visible:ring-offset-koenigsblau"
           >
             {t("kontaktCta.ctaMitglied")}
