@@ -59,7 +59,6 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
         heightClassName="min-h-[42vh]"
         align="end"
       >
-        <Kicker tone="dark">{t("intro.kicker")}</Kicker>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {t("intro.titel")}
         </h1>
@@ -84,7 +83,7 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
       </Section>
 
       {/* Social Events */}
-      <Section id="social-events" background="champagner">
+      <Section id="social-events" background="pergament">
         <Container variant="text" className="flex flex-col gap-5">
           <Kicker tone="light">{t("intro.kicker")}</Kicker>
           <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
@@ -101,7 +100,7 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
       <Section id="kalender" background="koenigsblau">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
-            <Kicker tone="dark">{t("intro.kicker")}</Kicker>
+            <Kicker tone="dark">{t("kalender.kicker")}</Kicker>
             <h2 className="font-serif text-3xl font-semibold leading-tight text-champagner sm:text-4xl">
               {t("kalender.titel")}
             </h2>
@@ -152,7 +151,7 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
       </Section>
 
       {/* Feedback zur Veranstaltung (Iteration 2 § 13) */}
-      <Section id="feedback" background="champagner">
+      <Section id="feedback" background="pergament">
         <Container variant="text">
           <Reveal className="flex flex-col gap-4">
             <Kicker tone="light" className="text-koenigsblau">

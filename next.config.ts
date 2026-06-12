@@ -17,6 +17,9 @@ const legacyRoutes: Record<string, string> = {
   "/events/social-events": "/events#social-events",
   "/events/eventkalender": "/events#kalender",
   "/mitgliedschaft/vorteile": "/mitgliedschaft#vorteile",
+  // Iteration 4 § 8: Mitgliedsantrag-Wizard ist jetzt eine Anker-Sektion.
+  "/mitgliedschaft/antrag": "/mitgliedschaft#mitgliedsantrag",
+  "/mitgliedschaft/mitgliedsantrag": "/mitgliedschaft#mitgliedsantrag",
   "/kontakt/beratung": "/kontakt#beratung",
   "/kontakt/formular": "/kontakt#formular",
   // Iteration 2 § 13: Feedback ist jetzt eine Sektion der Events-Seite.

@@ -60,7 +60,7 @@ export const events: KontorEvent[] = [
   {
     id: "folge-2026-07-16",
     slug: "folgeveranstaltung-juli",
-    title: "Folgeveranstaltung",
+    title: "Kontor Vision Summit",
     type: "business",
     date: "2026-07-16",
     time: "18:00",
@@ -71,7 +71,7 @@ export const events: KontorEvent[] = [
   {
     id: "folge-2026-08-20",
     slug: "folgeveranstaltung-august",
-    title: "Folgeveranstaltung",
+    title: "Kontor Circle Connect",
     type: "business",
     date: "2026-08-20",
     time: "18:00",

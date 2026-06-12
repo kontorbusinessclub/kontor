@@ -6,7 +6,7 @@ import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
 import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
-import { Button } from "@/components/ui/button";
+import { MembershipWizard } from "@/components/forms/membership-wizard";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -16,21 +16,23 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "mitgliedschaft.vorteile" });
+  const t = await getTranslations({ locale, namespace: "mitgliedschaft" });
   return { title: t("titel") };
 }
 
 /**
- * Reiter „Mitgliedschaft" als Seite mit Anker-Sektion #vorteile
- * (Aufgabe 10). Der mehrstufige Antrag bleibt eigene Route
- * /mitgliedschaft/antrag und wird hier prominent verlinkt.
+ * Reiter „Mitgliedschaft" als EINE Seite mit zwei Anker-Sektionen
+ * (Iteration 4 § 8): #vorteile und #mitgliedsantrag (Wizard). Statt des
+ * früheren Einleitungstextes steht prominent der Slogan. Alte Einzelrouten
+ * (/mitgliedschaft/vorteile, /mitgliedschaft/antrag) leiten per 308 hierher.
  */
 export default async function MitgliedschaftPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("mitgliedschaft.vorteile");
-  const tcta = await getTranslations("common.cta");
-  const punkte = t.raw("punkte") as string[];
+  const t = await getTranslations("mitgliedschaft");
+  const tv = await getTranslations("mitgliedschaft.vorteile");
+  const ta = await getTranslations("mitgliedschaft.antrag");
+  const punkte = tv.raw("punkte") as string[];
 
   return (
     <>
@@ -42,18 +44,36 @@ export default async function MitgliedschaftPage({ params }: PageProps) {
         heightClassName="min-h-[42vh]"
         align="end"
       >
-        <Kicker tone="dark">{t("kicker")}</Kicker>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {t("titel")}
         </h1>
         <GoldRule className="mx-0 mt-6" />
       </ImageOverlay>
 
+      {/* Slogan statt Einleitungstext (§ 8.1) */}
+      <Section background="pergament">
+        <Container variant="text">
+          <Reveal className="text-center">
+            <p className="font-serif text-2xl font-bold leading-snug text-koenigsblau sm:text-3xl">
+              {t("slogan")}
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Vorteile */}
       <Section id="vorteile" background="pergament">
         <Container variant="text">
-          <Reveal>
+          <Reveal className="flex flex-col gap-5">
+            <Kicker tone="light" className="text-koenigsblau">
+              {tv("kicker")}
+            </Kicker>
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
+              {tv("titel")}
+            </h2>
+            <GoldRule className="mx-0" />
             <p className="font-sans text-xl font-light leading-relaxed text-tinte/85">
-              {t("intro")}
+              {tv("intro")}
             </p>
           </Reveal>
 
@@ -75,12 +95,24 @@ export default async function MitgliedschaftPage({ params }: PageProps) {
               </li>
             ))}
           </ul>
+        </Container>
+      </Section>
 
-          <div className="mt-12">
-            <Button href="/mitgliedschaft/antrag" variant="primary">
-              {tcta("zumAntrag")}
-            </Button>
-          </div>
+      {/* Mitgliedsantrag (Wizard) */}
+      <Section id="mitgliedsantrag" background="pergament">
+        <Container variant="text">
+          <Reveal className="flex flex-col gap-4">
+            <Kicker tone="light" className="text-koenigsblau">
+              {ta("kicker")}
+            </Kicker>
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
+              {ta("titel")}
+            </h2>
+            <GoldRule className="mx-0" />
+          </Reveal>
+          <Reveal delay={120} className="mt-10">
+            <MembershipWizard />
+          </Reveal>
         </Container>
       </Section>
     </>

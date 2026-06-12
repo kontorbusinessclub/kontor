@@ -2,26 +2,26 @@ import { z } from "zod";
 import { honeypot } from "./schemas";
 
 /**
- * Schema + Konstanten für den mehrstufigen Mitgliedsantrag (Aufgabe 13).
- * Geteilt zwischen Wizard (Client) und /api/membership-application (Server).
+ * Schema + Konstanten für den Mitgliedsantrag-Wizard (Iteration 4 § 10).
+ * 6 Schritte. Geteilt zwischen Wizard (Client) und
+ * /api/membership-application (Server).
  */
 
 export const ZAHLUNGSINTERVALLE = [
-  { value: "monatlich", betrag: "80,00 €" },
-  { value: "vierteljaehrlich", betrag: "240,00 €" },
-  { value: "halbjaehrlich", betrag: "480,00 €" },
-  { value: "jaehrlich", betrag: "960,00 €" },
+  "monatlich",
+  "vierteljaehrlich",
+  "halbjaehrlich",
+  "jaehrlich",
 ] as const;
 
+/** Unternehmensgrößen (Iteration 4 § 10.3). */
 export const UNTERNEHMENSGROESSEN = [
   "1",
-  "2-5",
-  "6-20",
-  "21-50",
-  "50+",
+  "le10",
+  "le50",
+  "le250",
+  "ge250",
 ] as const;
-
-export const KOMMUNIKATIONSKANAELE = ["email", "whatsapp", "app"] as const;
 
 const pflicht = (msg: string) => z.string().trim().min(1, msg);
 const optional = z.string().trim().optional().or(z.literal(""));
@@ -35,50 +35,47 @@ const optionalBool = requiredTrue;
 export const membershipWizardSchema = z
   .object({
     // Schritt 1 – Persönliche Angaben
+    titel: optional,
     vorname: pflicht("Bitte gib deinen Vornamen an."),
     nachname: pflicht("Bitte gib deinen Nachnamen an."),
-    titelFunktion: optional,
+    berufsbezeichnung: pflicht("Bitte gib deine Berufsbezeichnung an."),
+    position: pflicht("Bitte gib deine Position an."),
     geburtsdatum: optional,
     strasse: pflicht("Bitte gib Straße und Hausnummer an."),
     plzOrt: pflicht("Bitte gib PLZ und Ort an."),
     telefonMobil: z.string().trim().min(5, "Bitte gib eine Mobilnummer an."),
-    telefonBuero: optional,
+    telefonGeschaeftlich: optional,
     emailPrivat: z.string().trim().email("Ungültige E-Mail.").optional().or(z.literal("")),
     emailGeschaeftlich: z.string().trim().email("Bitte gib eine gültige geschäftliche E-Mail an."),
-    website: z.string().trim().url("Ungültige URL.").optional().or(z.literal("")),
+    personenbeschreibung: pflicht("Bitte beschreibe kurz dich und deine Tätigkeit."),
 
     // Schritt 2 – Unternehmensdaten
     unternehmen: pflicht("Bitte gib den Unternehmensnamen an."),
     rechtsform: pflicht("Bitte gib die Rechtsform an."),
-    registernummer: optional,
+    handelsregisternummer: optional,
     unternehmensanschrift: pflicht("Bitte gib die Unternehmensanschrift an."),
     plzOrtUnternehmen: pflicht("Bitte gib PLZ und Ort des Unternehmens an."),
     branche: pflicht("Bitte nenn deine Branche."),
     fachgebiet: pflicht("Bitte nenn dein gewünschtes Fachgebiet."),
-    erwerb: z.enum(["haupterwerb", "nebenerwerb"]),
+    erwerb: z.enum(["haupttaetigkeit", "nebentaetigkeit"]),
     unternehmensgroesse: z.enum(UNTERNEHMENSGROESSEN),
-    kurzbeschreibung: z.string().trim().min(100, "Mindestens 100 Zeichen."),
-    kurzpraesentation: z.string().trim().min(200, "Mindestens 200 Zeichen."),
+    website: z.string().trim().url("Ungültige URL.").optional().or(z.literal("")),
+    unternehmensbeschreibung: pflicht("Bitte beschreibe kurz dein Unternehmen."),
 
-    // Schritt 3 – Vertretungsberechtigte Person
-    istVertretungsberechtigt: z.enum(["ja", "nein"]),
+    // Schritt 3 – Vertretungsberechtigung (Event-Vertretung)
+    istVertreterGewuenscht: z.enum(["ja", "nein"]),
+    vbTitel: optional,
     vbVorname: optional,
     vbNachname: optional,
-    vbFunktion: optional,
+    vbBerufsbezeichnung: optional,
+    vbPosition: optional,
     vbTelefon: optional,
     vbEmail: z.string().trim().email("Ungültige E-Mail.").optional().or(z.literal("")),
 
-    // Schritt 4 – Mitgliedschaft & Laufzeit
-    zahlungsintervall: z.enum([
-      "monatlich",
-      "vierteljaehrlich",
-      "halbjaehrlich",
-      "jaehrlich",
-    ]),
-    starttermin: pflicht("Bitte gib einen gewünschten Starttermin an."),
+    // Schritt 4 – Mitgliedschaft & Zahlungsinformationen
+    aufnahmedatum: pflicht("Bitte gib ein gewünschtes Aufnahmedatum an."),
     empfohlenVon: optional,
-
-    // Schritt 5 – Zahlungsinformation
+    zahlungsintervall: z.enum(ZAHLUNGSINTERVALLE),
     zahlungsmethode: z.enum(["sepa", "ueberweisung"]),
     kontoinhaber: optional,
     iban: optional,
@@ -86,28 +83,29 @@ export const membershipWizardSchema = z
     bank: optional,
     sepaMandat: optionalBool,
 
-    // Schritt 6 – Kommunikation & Online-Präsenz
-    profiltext: optional,
-    referenzen: optional,
-    kommunikation: z.array(z.enum(KOMMUNIKATIONSKANAELE)).optional().default([]),
-
-    // Schritt 8 – Erklärungen & Einverständnisse
+    // Schritt 5 – Einverständniserklärungen
     agbAkzeptiert: requiredTrue,
     datenschutzAkzeptiert: requiredTrue,
-    fotoEinverstaendnis: optionalBool,
     unternehmerBestaetigung: requiredTrue,
+    fotoEinverstaendnis: optionalBool,
 
     hp: honeypot,
   })
   .superRefine((data, ctx) => {
-    // Vertretungsberechtigte Person bei "nein" Pflichtangaben
-    if (data.istVertretungsberechtigt === "nein") {
-      for (const field of ["vbVorname", "vbNachname", "vbFunktion", "vbTelefon"] as const) {
+    // Felder zur berechtigten Person nur Pflicht, wenn gewünscht (§ 10.4).
+    if (data.istVertreterGewuenscht === "ja") {
+      for (const field of [
+        "vbVorname",
+        "vbNachname",
+        "vbBerufsbezeichnung",
+        "vbPosition",
+        "vbTelefon",
+      ] as const) {
         if (!data[field]) {
           ctx.addIssue({
             code: "custom",
             path: [field],
-            message: "Pflichtangabe zur vertretungsberechtigten Person.",
+            message: "Bitte ausfüllen.",
           });
         }
       }
@@ -115,7 +113,7 @@ export const membershipWizardSchema = z
         ctx.addIssue({
           code: "custom",
           path: ["vbEmail"],
-          message: "Pflichtangabe zur vertretungsberechtigten Person.",
+          message: "Bitte ausfüllen.",
         });
       }
     }

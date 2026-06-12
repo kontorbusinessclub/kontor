@@ -43,7 +43,6 @@ export default async function ClubPage({ params }: PageProps) {
         heightClassName="min-h-[42vh]"
         align="end"
       >
-        <Kicker tone="dark">{t("kicker")}</Kicker>
         <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
           {t("titel")}
         </h1>
@@ -79,7 +78,7 @@ export default async function ClubPage({ params }: PageProps) {
       </Section>
 
       {/* Philosophie */}
-      <Section id="philosophie" background="champagner">
+      <Section id="philosophie" background="pergament">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
             <Kicker tone="light">{t("philosophie.kicker")}</Kicker>

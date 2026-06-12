@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
@@ -29,6 +29,19 @@ type EventsCarouselProps = {
  */
 export function EventsCarousel({ cards, labels }: EventsCarouselProps) {
   const trackRef = useRef<HTMLUListElement>(null);
+  // Pfeile nur einblenden, wenn die Karten horizontal überlaufen (§4).
+  const [canScroll, setCanScroll] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const measure = () =>
+      setCanScroll(track.scrollWidth > track.clientWidth + 1);
+    // ResizeObserver feuert initial beim Beobachten und bei jedem Resize.
+    const observer = new ResizeObserver(measure);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [cards.length]);
 
   function scrollByCards(dir: 1 | -1) {
     const track = trackRef.current;
@@ -100,7 +113,7 @@ export function EventsCarousel({ cards, labels }: EventsCarouselProps) {
         ))}
       </ul>
 
-      {cards.length > 1 ? (
+      {canScroll ? (
         <>
           <button
             type="button"

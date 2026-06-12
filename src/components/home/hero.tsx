@@ -39,7 +39,7 @@ export async function Hero() {
         </Button>
         <Button
           variant="outline"
-          href="/mitgliedschaft/antrag"
+          href="/mitgliedschaft#mitgliedsantrag"
           className="border-champagner text-champagner hover:border-champagner hover:bg-champagner hover:text-koenigsblau focus-visible:ring-offset-koenigsblau"
         >
           {t("kontaktCta.ctaMitglied")}

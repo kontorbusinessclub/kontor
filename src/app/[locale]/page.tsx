@@ -29,7 +29,7 @@ export default async function HomePage({
         <Willkommen />
       </Section>
 
-      <Section background="champagner">
+      <Section background="pergament">
         <Saeulen />
       </Section>
 
