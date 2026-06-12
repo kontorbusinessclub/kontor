@@ -45,7 +45,7 @@ export default async function KontaktPage({ params }: PageProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-bottom"
+          className="object-cover object-[center_69.78%]"
         />
       </div>
 
