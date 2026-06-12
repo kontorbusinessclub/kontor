@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
 import { Card } from "@/components/ui/card";
-import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -35,24 +35,26 @@ export default async function KontaktPage({ params }: PageProps) {
 
   return (
     <>
-      <ImageOverlay
-        src="/images/muenster-promenade.jpg"
-        alt="Baumbestandene Promenade rund um die Altstadt von Münster"
-        overlay="strong"
-        priority
-        heightClassName="min-h-[42vh]"
-        align="end"
-      >
-        <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
-          {tb("titel")}
-        </h1>
-        <GoldRule className="mx-0 mt-6" />
-      </ImageOverlay>
+      {/* Header-Bild ohne Schleier/Filter (Iteration 4 § 9) */}
+      <div className="relative min-h-[42vh] w-full overflow-hidden">
+        <Image
+          src="/images/kontakt-header.png"
+          alt="Kontaktbereich Kontor Business Club"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       {/* Beratung */}
       <Section id="beratung" background="pergament">
         <Container variant="text">
-          <Reveal>
+          <Reveal className="flex flex-col gap-5">
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
+              {tb("titel")}
+            </h1>
+            <GoldRule className="mx-0" />
             <p className="font-sans text-xl font-light leading-relaxed text-tinte/85">
               {tb("intro")}
             </p>
