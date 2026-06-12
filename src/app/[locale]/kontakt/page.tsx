@@ -35,17 +35,17 @@ export default async function KontaktPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Header-Bild ohne Schleier/Filter (Iteration 4 § 9) */}
-      <div className="relative min-h-[42vh] w-full overflow-hidden">
-        <Image
-          src="/images/kontakt-header.png"
-          alt="Kontaktbereich Kontor Business Club"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
+      {/* Header-Bild ohne Schleier/Filter, vollständig sichtbar in voller
+          Breite (natürliches Seitenverhältnis 2752×1410, kein Crop). */}
+      <Image
+        src="/images/kontakt-header.png"
+        alt="Kontaktbereich Kontor Business Club"
+        width={2752}
+        height={1410}
+        priority
+        sizes="100vw"
+        className="h-auto w-full"
+      />
 
       {/* Beratung */}
       <Section id="beratung" background="pergament">
