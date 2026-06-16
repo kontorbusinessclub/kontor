@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
-import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
 import { EventRegistrationForm } from "@/components/forms/event-registration-form";
 import { FeedbackForm } from "@/components/forms/feedback-form";
@@ -51,22 +51,30 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
 
   return (
     <>
-      <ImageOverlay
-        src="/images/muenster-rathaus.jpg"
-        alt="Historisches Rathaus von Münster am Abend"
-        overlay="strong"
-        priority
-        heightClassName="min-h-[42vh]"
-        align="end"
-      >
-        <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
-          {t("intro.titel")}
-        </h1>
-        <GoldRule className="mx-0 mt-6" />
-        <p className="mt-6 max-w-2xl font-sans text-lg font-light leading-relaxed text-champagner/85">
-          {t("intro.text")}
-        </p>
-      </ImageOverlay>
+      {/* Hero: nur Bild, ohne Filter (Iteration 5 § 5.3) */}
+      <div className="relative min-h-[42vh] w-full overflow-hidden">
+        <Image
+          src="/images/Events_ohne_Wasserzeichen.png"
+          alt="Veranstaltungsbereich Kontor Business Club"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
+      {/* Einleitung */}
+      <Section background="pergament">
+        <Container variant="text" className="flex flex-col gap-5">
+          <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
+            {t("intro.titel")}
+          </h1>
+          <GoldRule className="mx-0" />
+          <p className="font-sans text-lg font-light leading-relaxed text-tinte/85">
+            {t("intro.text")}
+          </p>
+        </Container>
+      </Section>
 
       {/* Business Events */}
       <Section id="business-events" background="pergament">

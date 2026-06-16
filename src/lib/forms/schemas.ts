@@ -33,11 +33,19 @@ const formBoolean = z
     return normalized === "true" || normalized === "on" || normalized === "1";
   });
 
+/**
+ * Kontaktformular (Iteration 5 § 6). Neue Feldliste mit Anrede, getrenntem
+ * Vor-/Nachnamen und optionalem Unternehmensblock. Telefon ist optional.
+ */
 export const contactSchema = z.object({
-  name,
-  firma,
+  anrede: z.enum(["herr", "frau"]),
+  titel: z.string().trim().optional().or(z.literal("")),
+  vorname: z.string().trim().min(2, "Bitte gib deinen Vornamen an."),
+  name: z.string().trim().min(2, "Bitte gib deinen Namen an."),
+  unternehmensname: z.string().trim().optional().or(z.literal("")),
+  position: z.string().trim().optional().or(z.literal("")),
   email,
-  telefon,
+  telefon: z.string().trim().optional().or(z.literal("")),
   nachricht,
   hp: honeypot,
 });

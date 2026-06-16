@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm, type FieldPath } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
   membershipWizardSchema,
@@ -24,9 +24,9 @@ const TOTAL = 6;
 
 /** Pflicht-/relevante Felder je Schritt (für die schrittweise Validierung). */
 const STEP_FIELDS: FieldPath<Values>[][] = [
-  ["titel", "vorname", "nachname", "berufsbezeichnung", "position", "geburtsdatum", "strasse", "plzOrt", "telefonMobil", "telefonGeschaeftlich", "emailPrivat", "emailGeschaeftlich", "personenbeschreibung"],
-  ["unternehmen", "rechtsform", "handelsregisternummer", "unternehmensanschrift", "plzOrtUnternehmen", "branche", "fachgebiet", "erwerb", "unternehmensgroesse", "website", "unternehmensbeschreibung"],
-  ["istVertreterGewuenscht", "vbVorname", "vbNachname", "vbBerufsbezeichnung", "vbPosition", "vbTelefon", "vbEmail"],
+  ["anrede", "titel", "vorname", "nachname", "berufsbezeichnung", "position", "geburtsdatum", "strasse", "plzOrt", "telefonMobil", "telefonGeschaeftlich", "emailPrivat", "emailGeschaeftlich", "personenbeschreibung"],
+  ["unternehmen", "rechtsform", "unternehmensanschrift", "plzOrtUnternehmen", "branche", "fachgebiet", "handelsregisternummer", "website", "erwerb", "unternehmensgroesse", "unternehmensbeschreibung"],
+  ["istVertreterGewuenscht", "vbAnrede", "vbVorname", "vbNachname", "vbBerufsbezeichnung", "vbPosition", "vbTelefon", "vbEmail"],
   ["aufnahmedatum", "empfohlenVon", "zahlungsintervall", "zahlungsmethode", "kontoinhaber", "iban", "sepaMandat"],
   ["agbAkzeptiert", "datenschutzAkzeptiert", "unternehmerBestaetigung"],
   [],
@@ -44,6 +44,7 @@ export function MembershipWizard() {
     resolver: zodResolver(membershipWizardSchema),
     mode: "onTouched",
     defaultValues: {
+      anrede: "herr",
       titel: "", vorname: "", nachname: "", berufsbezeichnung: "", position: "",
       geburtsdatum: "", strasse: "", plzOrt: "", telefonMobil: "", telefonGeschaeftlich: "",
       emailPrivat: "", emailGeschaeftlich: "", personenbeschreibung: "",
@@ -52,7 +53,7 @@ export function MembershipWizard() {
       erwerb: "haupttaetigkeit", unternehmensgroesse: "1", website: "",
       unternehmensbeschreibung: "",
       istVertreterGewuenscht: "nein",
-      vbTitel: "", vbVorname: "", vbNachname: "", vbBerufsbezeichnung: "", vbPosition: "",
+      vbAnrede: "", vbTitel: "", vbVorname: "", vbNachname: "", vbBerufsbezeichnung: "", vbPosition: "",
       vbTelefon: "", vbEmail: "",
       aufnahmedatum: "", empfohlenVon: "",
       zahlungsintervall: "monatlich", zahlungsmethode: "ueberweisung",
@@ -68,11 +69,21 @@ export function MembershipWizard() {
   const vertreterJa = watch("istVertreterGewuenscht") === "ja";
   const istSepa = watch("zahlungsmethode") === "sepa";
 
+  const anredeOptions = [
+    { value: "herr", label: t("anredeOpt.herr") },
+    { value: "frau", label: t("anredeOpt.frau") },
+  ];
+
+  const currentYear = new Date().getFullYear();
+  const geburtsYears = Array.from({ length: 63 }, (_, i) => String(currentYear - 18 - i));
+  const aufnahmeYears = Array.from({ length: 3 }, (_, i) => String(currentYear + i));
+
   async function next() {
     const ok = await trigger(STEP_FIELDS[step], { shouldFocus: true });
     if (ok) setStep((s) => Math.min(s + 1, TOTAL - 1));
   }
 
+  // Submit wird AUSSCHLIESSLICH über den finalen Button ausgelöst (§ 7.5):
   async function onSubmit(values: MembershipWizardData) {
     setStatus("idle");
     const result = await postForm("/api/membership-application", values);
@@ -100,7 +111,8 @@ export function MembershipWizard() {
   const progress = ((step + 1) / TOTAL) * 100;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-8">
+    // Kein handleSubmit am Form: verhindert impliziten Submit (Enter / Schrittwechsel).
+    <form onSubmit={(e) => e.preventDefault()} noValidate className="flex flex-col gap-8">
       <input {...honeypotProps} {...register("hp")} />
 
       {/* Fortschrittsanzeige */}
@@ -116,26 +128,27 @@ export function MembershipWizard() {
 
       {/* Schritt 1 – Persönliche Angaben */}
       {step === 0 ? (
-        <div className="flex flex-col gap-6">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <TextField name="titel" label={tf("titel")} form={form} />
-            <span className="hidden sm:block" aria-hidden="true" />
-            <TextField name="vorname" label={tf("vorname")} required form={form} />
-            <TextField name="nachname" label={tf("nachname")} required form={form} />
-            <TextField name="berufsbezeichnung" label={tf("berufsbezeichnung")} required form={form} />
-            <TextField name="position" label={tf("position")} required form={form} />
-            <TextField name="geburtsdatum" label={tf("geburtsdatum")} type="date" form={form} />
-            <TextField name="strasse" label={tf("strasse")} required form={form} />
-            <TextField name="plzOrt" label={tf("plzOrt")} required form={form} />
-            <span className="hidden sm:block" aria-hidden="true" />
-            <TextField name="telefonMobil" label={tf("telefonMobil")} type="tel" required form={form} />
-            <TextField name="telefonGeschaeftlich" label={tf("telefonGeschaeftlich")} type="tel" form={form} />
-            <TextField name="emailPrivat" label={tf("emailPrivat")} type="email" form={form} />
-            <TextField name="emailGeschaeftlich" label={tf("emailGeschaeftlich")} type="email" required form={form} />
+        <div className="grid gap-6 sm:grid-cols-2">
+          <SelectField name="anrede" label={tf("anrede")} required form={form} options={anredeOptions} />
+          <TextField name="titel" label={tf("titel")} form={form} />
+          <TextField name="vorname" label={tf("vorname")} required form={form} />
+          <TextField name="nachname" label={tf("nachname")} required form={form} />
+          <TextField name="berufsbezeichnung" label={tf("berufsbezeichnung")} required form={form} />
+          <TextField name="position" label={tf("position")} required form={form} />
+          <div className="sm:col-span-2">
+            <DateSelect name="geburtsdatum" label={tf("geburtsdatum")} required form={form} years={geburtsYears} />
           </div>
-          <Field label={tf("personenbeschreibung")} htmlFor="mw-personenbeschreibung" required error={fieldError(form, "personenbeschreibung")}>
-            <Textarea id="mw-personenbeschreibung" {...register("personenbeschreibung")} />
-          </Field>
+          <TextField name="strasse" label={tf("strasse")} required form={form} />
+          <TextField name="plzOrt" label={tf("plzOrt")} required form={form} />
+          <TextField name="telefonMobil" label={tf("telefonMobil")} type="tel" required form={form} />
+          <TextField name="emailPrivat" label={tf("emailPrivat")} type="email" form={form} />
+          <TextField name="telefonGeschaeftlich" label={tf("telefonGeschaeftlich")} type="tel" form={form} />
+          <TextField name="emailGeschaeftlich" label={tf("emailGeschaeftlich")} type="email" required form={form} />
+          <div className="sm:col-span-2">
+            <Field label={tf("personenbeschreibung")} htmlFor="mw-personenbeschreibung" required error={fieldError(form, "personenbeschreibung")}>
+              <Textarea id="mw-personenbeschreibung" {...register("personenbeschreibung")} />
+            </Field>
+          </div>
         </div>
       ) : null}
 
@@ -145,12 +158,12 @@ export function MembershipWizard() {
           <div className="grid gap-6 sm:grid-cols-2">
             <TextField name="unternehmen" label={tf("unternehmen")} required form={form} />
             <TextField name="rechtsform" label={tf("rechtsform")} required form={form} />
-            <TextField name="handelsregisternummer" label={tf("handelsregisternummer")} form={form} />
-            <TextField name="website" label={tf("website")} type="url" form={form} />
             <TextField name="unternehmensanschrift" label={tf("unternehmensanschrift")} required form={form} />
             <TextField name="plzOrtUnternehmen" label={tf("plzOrtUnternehmen")} required form={form} />
             <TextField name="branche" label={tf("branche")} required form={form} />
             <TextField name="fachgebiet" label={tf("fachgebiet")} required form={form} />
+            <TextField name="handelsregisternummer" label={tf("handelsregisternummer")} form={form} />
+            <TextField name="website" label={tf("website")} type="url" form={form} />
           </div>
 
           <RadioGroup
@@ -188,8 +201,8 @@ export function MembershipWizard() {
           />
           {vertreterJa ? (
             <div className="grid gap-6 sm:grid-cols-2">
+              <SelectField name="vbAnrede" label={tf("vbAnrede")} required form={form} options={anredeOptions} />
               <TextField name="vbTitel" label={tf("vbTitel")} form={form} />
-              <span className="hidden sm:block" aria-hidden="true" />
               <TextField name="vbVorname" label={tf("vbVorname")} required form={form} />
               <TextField name="vbNachname" label={tf("vbNachname")} required form={form} />
               <TextField name="vbBerufsbezeichnung" label={tf("vbBerufsbezeichnung")} required form={form} />
@@ -205,8 +218,12 @@ export function MembershipWizard() {
       {step === 3 ? (
         <div className="flex flex-col gap-6">
           <div className="grid gap-6 sm:grid-cols-2">
-            <TextField name="aufnahmedatum" label={tf("aufnahmedatum")} type="date" required form={form} />
-            <TextField name="empfohlenVon" label={tf("empfohlenVon")} form={form} />
+            <div className="sm:col-span-2">
+              <DateSelect name="aufnahmedatum" label={tf("aufnahmedatum")} required form={form} years={aufnahmeYears} />
+            </div>
+            <div className="sm:col-span-2">
+              <TextField name="empfohlenVon" label={tf("empfohlenVon")} form={form} />
+            </div>
           </div>
 
           <RadioGroup
@@ -217,7 +234,7 @@ export function MembershipWizard() {
           />
           <p className="font-sans text-sm text-tinte/70">{t("aufnahmegebuehr")}</p>
 
-          {/* Zahlungsmethode (§ 10.6) */}
+          {/* Zahlungsmethode mit symmetrischen Smaragd-Hinweisen (§ 7.4.2/7.4.3) */}
           <fieldset>
             <legend className="font-sans text-xs font-semibold uppercase tracking-[0.08em] text-koenigsblau">
               {tf("zahlungsmethode")}<span className="text-smaragd"> *</span>
@@ -225,16 +242,18 @@ export function MembershipWizard() {
             <div className="mt-3 flex flex-col gap-3">
               <div className="flex flex-wrap items-center gap-3">
                 <label
-                  className={`flex items-center gap-3 font-sans text-base ${SEPA_ENABLED ? "text-tinte" : "text-tinte/40"}`}
+                  className={`flex min-w-[12rem] items-center gap-3 font-sans text-base ${SEPA_ENABLED ? "text-tinte" : "text-tinte/40"}`}
                   title={!SEPA_ENABLED ? t("sepaBald") : undefined}
                 >
                   <input type="radio" value="sepa" disabled={!SEPA_ENABLED} {...register("zahlungsmethode")} className="size-5" />
                   <span>{t("methoden.sepa")}</span>
                 </label>
-                <span className="font-sans text-sm text-smaragd">{t("sepaBald")}</span>
+                <span className="rounded-lg border border-smaragd px-3 py-1 font-sans text-sm text-smaragd">
+                  {t("sepaBald")}
+                </span>
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <label className="flex items-center gap-3 font-sans text-base text-tinte">
+                <label className="flex min-w-[12rem] items-center gap-3 font-sans text-base text-tinte">
                   <input type="radio" value="ueberweisung" {...register("zahlungsmethode")} className="size-5" />
                   <span>{t("methoden.ueberweisung")}</span>
                 </label>
@@ -334,7 +353,7 @@ export function MembershipWizard() {
         {step < TOTAL - 1 ? (
           <Button type="button" onClick={next}>{t("weiter")}</Button>
         ) : (
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="button" onClick={handleSubmit(onSubmit)} disabled={isSubmitting}>
             {isSubmitting ? t("senden") : t("absenden")}
           </Button>
         )}
@@ -364,6 +383,89 @@ function TextField({
   return (
     <Field label={label} htmlFor={`mw-${name}`} required={required} error={error}>
       <Input id={`mw-${name}`} type={type} invalid={Boolean(error)} {...form.register(name)} />
+    </Field>
+  );
+}
+
+function SelectField({
+  name, label, required, form, options,
+}: {
+  name: FieldPath<Values>;
+  label: string;
+  required?: boolean;
+  form: FormType;
+  options: { value: string; label: string }[];
+}) {
+  const error = fieldError(form, name);
+  return (
+    <Field label={label} htmlFor={`mw-${name}`} required={required} error={error}>
+      <Select id={`mw-${name}`} invalid={Boolean(error)} {...form.register(name)}>
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>{o.label}</option>
+        ))}
+      </Select>
+    </Field>
+  );
+}
+
+/**
+ * Geburts-/Aufnahmedatum als drei Dropdowns (Tag/Monat/Jahr) statt
+ * Kalender-Picker (Iteration 5 § 7.1.5/7.4.1). Schreibt den kombinierten
+ * Wert „YYYY-MM-DD" in das RHF-Feld.
+ */
+function DateSelect({
+  name, label, required, form, years,
+}: {
+  name: FieldPath<Values>;
+  label: string;
+  required?: boolean;
+  form: FormType;
+  years: string[];
+}) {
+  const t = useTranslations("antrag");
+  const locale = useLocale();
+  const error = fieldError(form, name);
+  const value = (form.watch(name) as string) || "";
+  const [yy = "", mm = "", dd = ""] = value.split("-");
+
+  const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, "0"));
+  const months = Array.from({ length: 12 }, (_, i) => ({
+    value: String(i + 1).padStart(2, "0"),
+    label: new Date(2000, i, 1).toLocaleDateString(locale === "en" ? "en-GB" : "de-DE", { month: "long" }),
+  }));
+
+  function update(part: "y" | "m" | "d", val: string) {
+    const cur = ((form.getValues(name) as string) || "").split("-");
+    const arr = [cur[0] ?? "", cur[1] ?? "", cur[2] ?? ""];
+    if (part === "y") arr[0] = val;
+    else if (part === "m") arr[1] = val;
+    else arr[2] = val;
+    const combined = arr[0] && arr[1] && arr[2] ? `${arr[0]}-${arr[1]}-${arr[2]}` : "";
+    form.setValue(name, combined, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+  }
+
+  return (
+    <Field label={label} htmlFor={`mw-${name}-tag`} required={required} error={error}>
+      <div className="grid grid-cols-3 gap-3">
+        <Select id={`mw-${name}-tag`} aria-label={t("dateTag")} value={dd} invalid={Boolean(error)} onChange={(e) => update("d", e.target.value)}>
+          <option value="">{t("dateTag")}</option>
+          {days.map((d) => (
+            <option key={d} value={d}>{Number(d)}</option>
+          ))}
+        </Select>
+        <Select id={`mw-${name}-monat`} aria-label={t("dateMonat")} value={mm} invalid={Boolean(error)} onChange={(e) => update("m", e.target.value)}>
+          <option value="">{t("dateMonat")}</option>
+          {months.map((m) => (
+            <option key={m.value} value={m.value}>{m.label}</option>
+          ))}
+        </Select>
+        <Select id={`mw-${name}-jahr`} aria-label={t("dateJahr")} value={yy} invalid={Boolean(error)} onChange={(e) => update("y", e.target.value)}>
+          <option value="">{t("dateJahr")}</option>
+          {years.map((y) => (
+            <option key={y} value={y}>{y}</option>
+          ))}
+        </Select>
+      </div>
     </Field>
   );
 }
@@ -435,6 +537,7 @@ function reviewGroups(
         [tf("vorname"), [v.titel, v.vorname, v.nachname].filter(Boolean).join(" ")],
         [tf("berufsbezeichnung"), v.berufsbezeichnung ?? ""],
         [tf("position"), v.position ?? ""],
+        [tf("geburtsdatum"), v.geburtsdatum ?? ""],
         [tf("strasse"), [v.strasse, v.plzOrt].filter(Boolean).join(", ")],
         [tf("telefonMobil"), v.telefonMobil ?? ""],
         [tf("emailGeschaeftlich"), v.emailGeschaeftlich ?? ""],

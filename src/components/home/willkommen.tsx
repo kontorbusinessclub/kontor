@@ -22,7 +22,7 @@ export async function Willkommen() {
           {absaetze.map((absatz, index) => (
             <p
               key={index}
-              className="font-sans text-lg font-bold leading-relaxed text-tinte/85"
+              className="whitespace-pre-line font-sans text-lg font-bold leading-relaxed text-tinte/85"
             >
               {absatz}
             </p>

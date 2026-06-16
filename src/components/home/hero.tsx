@@ -12,12 +12,13 @@ export async function Hero() {
 
   return (
     <ImageOverlay
-      src="/images/muenster-hero.jpg"
-      alt="Abendliche Stadtsilhouette"
+      src="/images/Foyer_ohne_Wasserzeichen.png"
+      alt="Foyer des Kontor Business Clubs"
       priority
-      overlay="medium"
+      overlay="soft"
       heightClassName="min-h-[78vh]"
-      contentClassName="items-center text-center"
+      align="end"
+      contentClassName="items-center text-center pb-[16vh]"
     >
       <p className="font-serif text-[clamp(1.05rem,2.4vw,1.6rem)] font-semibold uppercase tracking-[0.2em] text-champagner/90 [text-shadow:0_2px_18px_rgba(20,24,31,0.45)]">
         {t("hero.vorlauf")}
@@ -27,6 +28,8 @@ export async function Hero() {
         {t("hero.titelZeile1")}
         <br />
         {t("hero.titelZeile2")}
+        <br />
+        {t("hero.titelZeile3")}
       </h1>
 
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

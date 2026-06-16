@@ -35,12 +35,13 @@ const optionalBool = requiredTrue;
 export const membershipWizardSchema = z
   .object({
     // Schritt 1 – Persönliche Angaben
+    anrede: z.enum(["herr", "frau"]),
     titel: optional,
     vorname: pflicht("Bitte gib deinen Vornamen an."),
-    nachname: pflicht("Bitte gib deinen Nachnamen an."),
+    nachname: pflicht("Bitte gib deinen Namen an."),
     berufsbezeichnung: pflicht("Bitte gib deine Berufsbezeichnung an."),
     position: pflicht("Bitte gib deine Position an."),
-    geburtsdatum: optional,
+    geburtsdatum: pflicht("Bitte gib dein Geburtsdatum an."),
     strasse: pflicht("Bitte gib Straße und Hausnummer an."),
     plzOrt: pflicht("Bitte gib PLZ und Ort an."),
     telefonMobil: z.string().trim().min(5, "Bitte gib eine Mobilnummer an."),
@@ -64,6 +65,7 @@ export const membershipWizardSchema = z
 
     // Schritt 3 – Vertretungsberechtigung (Event-Vertretung)
     istVertreterGewuenscht: z.enum(["ja", "nein"]),
+    vbAnrede: optional,
     vbTitel: optional,
     vbVorname: optional,
     vbNachname: optional,
@@ -95,6 +97,7 @@ export const membershipWizardSchema = z
     // Felder zur berechtigten Person nur Pflicht, wenn gewünscht (§ 10.4).
     if (data.istVertreterGewuenscht === "ja") {
       for (const field of [
+        "vbAnrede",
         "vbVorname",
         "vbNachname",
         "vbBerufsbezeichnung",
