@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
-import { ImageOverlay } from "@/components/ui/image-overlay";
+import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { MembershipWizard } from "@/components/forms/membership-wizard";
 
@@ -36,24 +36,26 @@ export default async function MitgliedschaftPage({ params }: PageProps) {
 
   return (
     <>
-      <ImageOverlay
-        src="/images/muenster-aasee.jpg"
-        alt="Abendstimmung am Aasee in Münster"
-        overlay="strong"
-        priority
-        heightClassName="min-h-[42vh]"
-        align="end"
-      >
-        <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
-          {t("titel")}
-        </h1>
-        <GoldRule className="mx-0 mt-6" />
-      </ImageOverlay>
+      {/* Hero: nur Bild, ohne Filter (Iteration 5 § 5.1) */}
+      <div className="relative min-h-[42vh] w-full overflow-hidden">
+        <Image
+          src="/images/Mitgliedschaft_ohne_Wasserzeichen.png"
+          alt="Mitgliedschaftsbereich Kontor Business Club"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
-      {/* Slogan statt Einleitungstext (§ 8.1) */}
+      {/* Überschrift + Slogan statt Einleitungstext (§ 8.1) */}
       <Section background="pergament">
         <Container variant="text">
-          <Reveal className="text-center">
+          <Reveal className="flex flex-col items-center gap-5 text-center">
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
+              {t("titel")}
+            </h1>
+            <GoldRule />
             <p className="font-serif text-2xl font-bold leading-snug text-koenigsblau sm:text-3xl">
               {t("slogan")}
             </p>

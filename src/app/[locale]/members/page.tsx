@@ -6,7 +6,7 @@ import { GoldRule } from "@/components/ui/gold-rule";
 import { Card } from "@/components/ui/card";
 import { Field, Input } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
-import { ImageOverlay } from "@/components/ui/image-overlay";
+import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 
 type PageProps = {
@@ -29,23 +29,25 @@ export default async function MembersPage({ params }: PageProps) {
 
   return (
     <>
-      <ImageOverlay
-        src="/images/muenster-dom.jpg"
-        alt="St.-Paulus-Dom über den Dächern von Münster"
-        overlay="strong"
-        priority
-        heightClassName="min-h-[42vh]"
-        align="end"
-      >
-        <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
-          {t("titel")}
-        </h1>
-        <GoldRule className="mx-0 mt-6" />
-      </ImageOverlay>
+      {/* Hero: nur Bild, ohne Filter (Iteration 5 § 5.2) */}
+      <div className="relative min-h-[42vh] w-full overflow-hidden">
+        <Image
+          src="/images/Members_ohne_Wasserzeichen.png"
+          alt="Mitgliederbereich Kontor Business Club"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       <Section background="pergament">
         <Container variant="text">
-          <Reveal>
+          <Reveal className="flex flex-col gap-5">
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
+              {t("titel")}
+            </h1>
+            <GoldRule className="mx-0" />
             <p className="font-sans text-xl font-light leading-relaxed text-tinte/85">
               {t("intro")}
             </p>

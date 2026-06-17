@@ -34,7 +34,14 @@
       "zumKontakt": "Contact us"
     },
     "form": {
+      "anrede": "Salutation",
+      "anredeHerr": "Mr.",
+      "anredeFrau": "Ms.",
+      "titel": "Title",
+      "vorname": "First name",
       "name": "Name",
+      "unternehmensname": "Company name",
+      "position": "Position in the Company",
       "firma": "Company",
       "email": "Email",
       "telefon": "Phone",
@@ -42,6 +49,8 @@
       "branche": "Industry",
       "website": "Website",
       "veranstaltung": "Event",
+      "event": "Event",
+      "unternehmen": "Company",
       "vertreter": "Representative",
       "istMitglied": "I am already a member",
       "pflichtfeld": "Required",
@@ -56,14 +65,15 @@
   "home": {
     "hero": {
       "vorlauf": "Welcome to the Club",
-      "titelZeile1": "for encounters of distinction,",
-      "titelZeile2": "exclusive networking and shared experiences."
+      "titelZeile1": "for inspiring encounters,",
+      "titelZeile2": "exclusive networking and",
+      "titelZeile3": "shared experiences."
     },
     "willkommen": {
       "titel": "A warm welcome to Kontor.",
       "absaetze": [
         "We bring together people who think and act entrepreneurially.",
-        "To the self-employed, managing directors and ambitious founders we offer a select circle in which personal encounters grow into lasting business relationships. For we are convinced that recommendations arise from trust, and trust arises where people know and value one another.",
+        "To managing directors, self-employed professionals and ambitious founders we offer a select circle in which personal encounters grow into lasting business relationships.\nFor we are convinced that recommendations arise from trust, and trust arises where people know and value one another.",
         "That is why we create the right setting for exchange among companions, for shared experiences and for a network that carries with commitment."
       ]
     },
@@ -161,7 +171,7 @@
   "club": {
     "kicker": "Club",
     "titel": "Our club",
-    "intro": "Kontor is a fixed circle of entrepreneurs who know each other, trust each other and recommend one another. Here you learn how the club feels, why there is only one representative per industry and what we agree on.",
+    "intro": "In the Hanseatic tradition, a Kontor was more than a place of trade. It was a privileged establishment in which merchants gathered in defined circles, agreed upon shared rules and were bound to one another by word and honour. We carry this spirit forward: At Kontor Business Club, a curated circle of entrepreneurs comes together, where trust grows out of personal encounter and meaningful recommendations as well as personal connections grow out of trust.",
     "clubleben": {
       "kicker": "Club life",
       "titel": "How Kontor feels",
@@ -217,8 +227,13 @@
       "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in Münster."
     },
     "anmeldung": {
+      "kicker": "Registration",
       "titel": "Register for an event",
-      "intro": "Tell us which event you are coming to and whether you are bringing someone along."
+      "intro": "Tell us which event you are coming to and in which role.",
+      "member": "I am already a Kontor Business Club Member.",
+      "vertretung": "I am registering as a representative.",
+      "gast": "I would like to register as a guest.",
+      "vertretungLabel": "I represent the following Member:"
     }
   },
   "members": {
@@ -258,8 +273,15 @@
     "weiter": "Next",
     "zurueck": "Back",
     "bearbeiten": "Edit",
-    "absenden": "Submit bindingly.",
+    "absenden": "Confirm and Submit",
     "senden": "Sending …",
+    "anredeOpt": {
+      "herr": "Mr.",
+      "frau": "Ms."
+    },
+    "dateTag": "Day",
+    "dateMonat": "Month",
+    "dateJahr": "Year",
     "erfolgTitel": "Thank you!",
     "erfolgText1": "Your membership application has been received.",
     "erfolgText2": "The board will be in touch with you shortly.",
@@ -275,23 +297,24 @@
       "6": "Summary & Final Submission"
     },
     "fields": {
+      "anrede": "Salutation",
       "titel": "Title",
       "vorname": "First name",
-      "nachname": "Last name",
+      "nachname": "Name",
       "berufsbezeichnung": "Job Title",
-      "position": "Position",
+      "position": "Position in the Company",
       "geburtsdatum": "Date of birth",
-      "strasse": "Street and number",
+      "strasse": "Address",
       "plzOrt": "Postcode and city",
       "telefonMobil": "Phone (Mobile)",
       "telefonGeschaeftlich": "Phone (Business)",
       "emailPrivat": "Email (Personal)",
       "emailGeschaeftlich": "Email (Business)",
-      "personenbeschreibung": "Brief Description of Person and Activity",
+      "personenbeschreibung": "Brief Description of the Person and Activity",
       "unternehmen": "Company name (full)",
       "rechtsform": "Legal form",
       "handelsregisternummer": "Commercial Register Number",
-      "unternehmensanschrift": "Company address",
+      "unternehmensanschrift": "Address",
       "plzOrtUnternehmen": "Postcode and city (company)",
       "branche": "Industry",
       "fachgebiet": "Desired field in the club",
@@ -300,11 +323,12 @@
       "website": "Website",
       "unternehmensbeschreibung": "Short company description",
       "istVertreterGewuenscht": "Would you like to designate an authorized representative for events?",
+      "vbAnrede": "Salutation",
       "vbTitel": "Title",
       "vbVorname": "First name",
-      "vbNachname": "Last name",
+      "vbNachname": "Name",
       "vbBerufsbezeichnung": "Job Title",
-      "vbPosition": "Position",
+      "vbPosition": "Position in the Company",
       "vbTelefon": "Phone (Business)",
       "vbEmail": "Email (Business)",
       "aufnahmedatum": "Desired Membership Start Date",

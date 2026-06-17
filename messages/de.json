@@ -34,7 +34,14 @@
       "zumKontakt": "Zum Kontakt"
     },
     "form": {
+      "anrede": "Anrede",
+      "anredeHerr": "Herr",
+      "anredeFrau": "Frau",
+      "titel": "Titel",
+      "vorname": "Vorname",
       "name": "Name",
+      "unternehmensname": "Unternehmensname",
+      "position": "Position im Unternehmen",
       "firma": "Firma",
       "email": "E-Mail",
       "telefon": "Telefon",
@@ -42,6 +49,8 @@
       "branche": "Branche",
       "website": "Website",
       "veranstaltung": "Veranstaltung",
+      "event": "Event",
+      "unternehmen": "Unternehmen",
       "vertreter": "Vertreter",
       "istMitglied": "Ich bin bereits Mitglied",
       "pflichtfeld": "Pflichtfeld",
@@ -56,14 +65,15 @@
   "home": {
     "hero": {
       "vorlauf": "Willkommen im Club",
-      "titelZeile1": "für Begegnungen mit Niveau,",
-      "titelZeile2": "exklusives Networking und gemeinsame Erlebnisse."
+      "titelZeile1": "für inspirierende Begegnungen,",
+      "titelZeile2": "exklusives Networking und",
+      "titelZeile3": "gemeinsame Erlebnisse."
     },
     "willkommen": {
       "titel": "Herzlich willkommen im Kontor.",
       "absaetze": [
         "Wir verbinden Menschen, die unternehmerisch denken und handeln.",
-        "Selbstständigen, Geschäftsführern sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen. Denn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt.",
+        "Geschäftsführern, Selbstständigen sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen.\nDenn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt.",
         "Aus diesem Grund schaffen wir den passenden Rahmen für den Austausch unter Weggefährten, für gemeinsame Erlebnisse und für ein Netzwerk, das verbindlich trägt."
       ]
     },
@@ -161,7 +171,7 @@
   "club": {
     "kicker": "Club",
     "titel": "Unser Club",
-    "intro": "Das Kontor ist ein fester Kreis aus Unternehmern, die sich kennen, vertrauen und füreinander empfehlen. Hier erfährst du, wie sich der Club anfühlt, warum es pro Branche nur einen Vertreter gibt und worauf wir uns verständigen.",
+    "intro": "Im hanseatischen Erbe war ein Kontor mehr als ein Handelsplatz. Es war eine privilegierte Niederlassung, in der sich Kaufleute zu festen Kreisen zusammenfanden, gemeinsame Regeln vereinbarten und einander auf Wort und Ehre verbunden waren. Diesen Geist führen wir fort: Im Kontor Business Club versammelt sich ein kuratierter Kreis aus Unternehmern, in dem aus persönlicher Begegnung Vertrauen erwächst und aus Vertrauen tragfähige Empfehlungen sowie persönliche Verbundenheit entstehen.",
     "clubleben": {
       "kicker": "Clubleben",
       "titel": "So fühlt sich das Kontor an",
@@ -217,8 +227,13 @@
       "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 in Münster."
     },
     "anmeldung": {
+      "kicker": "Anmeldung",
       "titel": "Zum Event anmelden",
-      "intro": "Sag uns, zu welchem Event du kommst und ob du jemanden mitbringst."
+      "intro": "Sag uns, zu welchem Event du kommst und in welcher Rolle.",
+      "member": "Ich bin bereits Kontor Business Club Member.",
+      "vertretung": "Ich melde mich als Vertretung an.",
+      "gast": "Ich möchte mich als Gast anmelden.",
+      "vertretungLabel": "Ich vertrete folgenden Member:"
     }
   },
   "members": {
@@ -258,8 +273,15 @@
     "weiter": "Weiter",
     "zurueck": "Zurück",
     "bearbeiten": "Bearbeiten",
-    "absenden": "Verbindlich abschicken.",
+    "absenden": "Verbindlich anmelden",
     "senden": "Wird gesendet …",
+    "anredeOpt": {
+      "herr": "Herr",
+      "frau": "Frau"
+    },
+    "dateTag": "Tag",
+    "dateMonat": "Monat",
+    "dateJahr": "Jahr",
     "erfolgTitel": "Vielen Dank!",
     "erfolgText1": "Ihr Mitgliedsantrag ist bei uns eingegangen.",
     "erfolgText2": "Das Kuratorium wird sich zeitnah mit Ihnen in Verbindung setzen.",
@@ -275,23 +297,24 @@
       "6": "Zusammenfassung & Verbindlich abschicken"
     },
     "fields": {
+      "anrede": "Anrede",
       "titel": "Titel",
       "vorname": "Vorname",
-      "nachname": "Nachname",
+      "nachname": "Name",
       "berufsbezeichnung": "Berufsbezeichnung",
-      "position": "Position",
+      "position": "Position im Unternehmen",
       "geburtsdatum": "Geburtsdatum",
-      "strasse": "Straße und Hausnummer",
+      "strasse": "Anschrift",
       "plzOrt": "PLZ und Ort",
       "telefonMobil": "Telefon (Mobil)",
       "telefonGeschaeftlich": "Telefon (Geschäftlich)",
       "emailPrivat": "E-Mail (Privat)",
       "emailGeschaeftlich": "E-Mail (Geschäftlich)",
-      "personenbeschreibung": "Kurzbeschreibung von Person und Tätigkeit",
+      "personenbeschreibung": "Kurzbeschreibung der Person und Tätigkeit",
       "unternehmen": "Unternehmensname (vollständig)",
       "rechtsform": "Rechtsform",
       "handelsregisternummer": "Handelsregisternummer",
-      "unternehmensanschrift": "Unternehmensanschrift",
+      "unternehmensanschrift": "Anschrift",
       "plzOrtUnternehmen": "PLZ und Ort (Unternehmen)",
       "branche": "Branche",
       "fachgebiet": "Gewünschtes Fachgebiet im Club",
@@ -300,11 +323,12 @@
       "website": "Website",
       "unternehmensbeschreibung": "Kurzbeschreibung des Unternehmens",
       "istVertreterGewuenscht": "Möchten Sie eine vertretungsberechtigte Person für Events angeben?",
+      "vbAnrede": "Anrede",
       "vbTitel": "Titel",
       "vbVorname": "Vorname",
-      "vbNachname": "Nachname",
+      "vbNachname": "Name",
       "vbBerufsbezeichnung": "Berufsbezeichnung",
-      "vbPosition": "Position",
+      "vbPosition": "Position im Unternehmen",
       "vbTelefon": "Telefon (Geschäftlich)",
       "vbEmail": "E-Mail (Geschäftlich)",
       "aufnahmedatum": "Gewünschtes Aufnahmedatum",

@@ -13,9 +13,9 @@ export async function KontaktCta() {
 
   return (
     <ImageOverlay
-      src="/images/muenster-promenade.jpg"
-      alt="Promenade in Münster"
-      overlay="strong"
+      src="/images/Münster_Hafen.jpg"
+      alt="Münster Hafen im Abendlicht"
+      overlay="soft"
       heightClassName="min-h-[46vh]"
       contentClassName="items-center text-center"
     >

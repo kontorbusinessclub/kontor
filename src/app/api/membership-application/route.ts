@@ -24,6 +24,7 @@ export async function POST(req: Request) {
     title: "Neuer Mitgliedsantrag",
     replyTo: data.emailGeschaeftlich,
     fields: [
+      { label: "Anrede", value: data.anrede === "frau" ? "Frau" : "Herr" },
       { label: "Name", value: [data.titel, data.vorname, data.nachname].filter(Boolean).join(" ") },
       { label: "Berufsbezeichnung", value: data.berufsbezeichnung },
       { label: "Position", value: data.position },
@@ -55,7 +56,7 @@ export async function POST(req: Request) {
         ? [
             {
               label: "Berechtigte Person",
-              value: `${[data.vbTitel, data.vbVorname, data.vbNachname].filter(Boolean).join(" ")}, ${data.vbBerufsbezeichnung}, ${data.vbPosition}, ${data.vbTelefon}, ${data.vbEmail}`,
+              value: `${data.vbAnrede === "frau" ? "Frau" : "Herr"} ${[data.vbTitel, data.vbVorname, data.vbNachname].filter(Boolean).join(" ")}, ${data.vbBerufsbezeichnung}, ${data.vbPosition}, ${data.vbTelefon}, ${data.vbEmail}`,
             },
           ]
         : []),

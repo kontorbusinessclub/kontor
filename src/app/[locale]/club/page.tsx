@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { Kicker } from "@/components/ui/kicker";
 import { GoldRule } from "@/components/ui/gold-rule";
-import { ImageOverlay } from "@/components/ui/image-overlay";
 import { Reveal } from "@/components/ui/reveal";
 
 type PageProps = {
@@ -21,8 +21,9 @@ export async function generateMetadata({
 
 /**
  * Reiter „Club" als EINE Seite mit drei Anker-Sektionen (Aufgabe 10):
- * #clubleben, #philosophie, #charta. Smooth-Scroll-Sprünge aus der
- * Header-Navigation; alte Einzelrouten leiten per 308 hierher um.
+ * #clubleben, #philosophie, #charta. Hero zeigt nur das Bild; Überschrift
+ * und Kontor-Einleitungstext stehen in der ersten Sektion darunter
+ * (Iteration 5 § 4).
  */
 export default async function ClubPage({ params }: PageProps) {
   const { locale } = await params;
@@ -35,28 +36,38 @@ export default async function ClubPage({ params }: PageProps) {
 
   return (
     <>
-      <ImageOverlay
-        src="/images/muenster-altstadt.jpg"
-        alt="Atmosphärische Gasse in der Münsteraner Altstadt"
-        overlay="strong"
-        priority
-        heightClassName="min-h-[42vh]"
-        align="end"
-      >
-        <h1 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight text-champagner sm:text-5xl">
-          {t("titel")}
-        </h1>
-        <GoldRule className="mx-0 mt-6" />
-        <p className="mt-6 max-w-2xl font-sans text-lg font-light leading-relaxed text-champagner/85">
-          {t("intro")}
-        </p>
-      </ImageOverlay>
+      {/* Hero: nur Bild, ohne Text/Filter (Iteration 5 § 4.2) */}
+      <div className="relative min-h-[42vh] w-full overflow-hidden">
+        <Image
+          src="/images/muenster-altstadt.jpg"
+          alt="Atmosphärische Gasse in der Münsteraner Altstadt"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
-      {/* Clubleben */}
-      <Section id="clubleben" background="pergament">
+      {/* Einleitung „Unser Club" + Kontor-Geschichtstext */}
+      <Section background="pergament" className="pb-10 sm:pb-16">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
-            <Kicker tone="light">{t("clubleben.kicker")}</Kicker>
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
+              {t("titel")}
+            </h1>
+            <GoldRule className="mx-0" />
+            <p className="font-sans text-xl font-light leading-relaxed text-tinte/85">
+              {t("intro")}
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Clubleben */}
+      <Section id="clubleben" background="pergament" className="pt-10 pb-10 sm:pt-16 sm:pb-16">
+        <Container variant="text">
+          <Reveal className="flex flex-col gap-5">
+            <Kicker tone="light" className="text-koenigsblau">{t("clubleben.kicker")}</Kicker>
             <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
               {t("clubleben.titel")}
             </h2>
@@ -78,10 +89,10 @@ export default async function ClubPage({ params }: PageProps) {
       </Section>
 
       {/* Philosophie */}
-      <Section id="philosophie" background="pergament">
+      <Section id="philosophie" background="pergament" className="pt-10 pb-10 sm:pt-16 sm:pb-16">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
-            <Kicker tone="light">{t("philosophie.kicker")}</Kicker>
+            <Kicker tone="light" className="text-koenigsblau">{t("philosophie.kicker")}</Kicker>
             <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
               {t("philosophie.titel")}
             </h2>
@@ -103,10 +114,10 @@ export default async function ClubPage({ params }: PageProps) {
       </Section>
 
       {/* Charta */}
-      <Section id="charta" background="pergament">
+      <Section id="charta" background="pergament" className="pt-10 sm:pt-16">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
-            <Kicker tone="light">{t("charta.kicker")}</Kicker>
+            <Kicker tone="light" className="text-koenigsblau">{t("charta.kicker")}</Kicker>
             <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
               {t("charta.titel")}
             </h2>

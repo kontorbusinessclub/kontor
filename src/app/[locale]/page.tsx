@@ -25,15 +25,15 @@ export default async function HomePage({
     <>
       <Hero />
 
-      <Section background="pergament">
+      <Section background="pergament" className="pb-10 sm:pb-16">
         <Willkommen />
       </Section>
 
-      <Section background="pergament">
+      <Section background="pergament" className="pt-10 pb-10 sm:pt-16 sm:pb-16">
         <Saeulen />
       </Section>
 
-      <Section background="pergament">
+      <Section background="pergament" className="pt-10 sm:pt-16">
         <EventsPreview />
       </Section>
 

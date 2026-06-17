@@ -26,6 +26,25 @@ export const UNTERNEHMENSGROESSEN = [
 const pflicht = (msg: string) => z.string().trim().min(1, msg);
 const optional = z.string().trim().optional().or(z.literal(""));
 
+/** Echtes Kalenderdatum „YYYY-MM-DD" (fängt z.B. 31.02. ab). */
+function isValidIsoDate(s: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+  const [y, m, d] = s.split("-").map(Number);
+  const dt = new Date(y, m - 1, d);
+  return dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d;
+}
+
+/** Mindestalter 18 zum heutigen Tag. */
+function isAdult(s: string): boolean {
+  const [y, m, d] = s.split("-").map(Number);
+  const today = new Date();
+  let age = today.getFullYear() - y;
+  if (today.getMonth() < m - 1 || (today.getMonth() === m - 1 && today.getDate() < d)) {
+    age -= 1;
+  }
+  return age >= 18;
+}
+
 const requiredTrue = z
   .union([z.boolean(), z.string(), z.undefined(), z.null()])
   .transform((v) => v === true || v === "true" || v === "on" || v === "1");
@@ -35,12 +54,15 @@ const optionalBool = requiredTrue;
 export const membershipWizardSchema = z
   .object({
     // Schritt 1 – Persönliche Angaben
+    anrede: z.enum(["herr", "frau"]),
     titel: optional,
     vorname: pflicht("Bitte gib deinen Vornamen an."),
-    nachname: pflicht("Bitte gib deinen Nachnamen an."),
+    nachname: pflicht("Bitte gib deinen Namen an."),
     berufsbezeichnung: pflicht("Bitte gib deine Berufsbezeichnung an."),
     position: pflicht("Bitte gib deine Position an."),
-    geburtsdatum: optional,
+    geburtsdatum: pflicht("Bitte gib dein Geburtsdatum an.")
+      .refine((s) => s === "" || isValidIsoDate(s), "Bitte gib ein gültiges Datum an.")
+      .refine((s) => s === "" || !isValidIsoDate(s) || isAdult(s), "Du musst mindestens 18 Jahre alt sein."),
     strasse: pflicht("Bitte gib Straße und Hausnummer an."),
     plzOrt: pflicht("Bitte gib PLZ und Ort an."),
     telefonMobil: z.string().trim().min(5, "Bitte gib eine Mobilnummer an."),
@@ -64,6 +86,7 @@ export const membershipWizardSchema = z
 
     // Schritt 3 – Vertretungsberechtigung (Event-Vertretung)
     istVertreterGewuenscht: z.enum(["ja", "nein"]),
+    vbAnrede: optional,
     vbTitel: optional,
     vbVorname: optional,
     vbNachname: optional,
@@ -73,7 +96,8 @@ export const membershipWizardSchema = z
     vbEmail: z.string().trim().email("Ungültige E-Mail.").optional().or(z.literal("")),
 
     // Schritt 4 – Mitgliedschaft & Zahlungsinformationen
-    aufnahmedatum: pflicht("Bitte gib ein gewünschtes Aufnahmedatum an."),
+    aufnahmedatum: pflicht("Bitte gib ein gewünschtes Aufnahmedatum an.")
+      .refine((s) => s === "" || isValidIsoDate(s), "Bitte gib ein gültiges Datum an."),
     empfohlenVon: optional,
     zahlungsintervall: z.enum(ZAHLUNGSINTERVALLE),
     zahlungsmethode: z.enum(["sepa", "ueberweisung"]),
@@ -95,6 +119,7 @@ export const membershipWizardSchema = z
     // Felder zur berechtigten Person nur Pflicht, wenn gewünscht (§ 10.4).
     if (data.istVertreterGewuenscht === "ja") {
       for (const field of [
+        "vbAnrede",
         "vbVorname",
         "vbNachname",
         "vbBerufsbezeichnung",
