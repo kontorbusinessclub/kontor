@@ -7,6 +7,11 @@ export async function POST(req: Request) {
   return handleFormRequest(req, eventRegistrationSchema, (data) => {
     const event = getEventById(data.eventId);
     const eventLabel = event ? formatEventOption(event) : data.eventId;
+    const teilnahme: Record<string, string> = {
+      member: "Bereits Kontor Business Club Member",
+      vertretung: "Anmeldung als Vertretung",
+      gast: "Anmeldung als Gast",
+    };
 
     return {
       subject: `Anmeldung: ${eventLabel} – ${data.name}`,
@@ -15,15 +20,14 @@ export async function POST(req: Request) {
       fields: [
         { label: "Veranstaltung", value: eventLabel },
         { label: "Name", value: data.name },
-        { label: "Firma", value: data.firma },
+        { label: "Unternehmen", value: data.firma },
         { label: "E-Mail", value: data.email },
         { label: "Telefon", value: data.telefon },
-        { label: "Bereits Mitglied", value: data.istMitglied ? "Ja" : "Nein" },
-        {
-          label: "Kommt als Vertreter",
-          value: data.vertreter ? "Ja" : "Nein",
-        },
-        { label: "Nachricht", value: data.nachricht || "-" },
+        { label: "Teilnahmeart", value: teilnahme[data.teilnahmeart] ?? data.teilnahmeart },
+        ...(data.teilnahmeart === "vertretung"
+          ? [{ label: "Vertretung für", value: data.vertretungFuer || "-" }]
+          : []),
+        { label: "Nachricht", value: data.nachricht },
       ],
       confirm: {
         to: data.email,

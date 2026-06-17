@@ -64,7 +64,7 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
       </div>
 
       {/* Einleitung */}
-      <Section background="pergament">
+      <Section background="pergament" className="pb-10 sm:pb-16">
         <Container variant="text" className="flex flex-col gap-5">
           <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
             {t("intro.titel")}
@@ -77,9 +77,9 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
       </Section>
 
       {/* Business Events */}
-      <Section id="business-events" background="pergament">
+      <Section id="business-events" background="pergament" className="pt-10 pb-10 sm:pt-16 sm:pb-16">
         <Container variant="text" className="flex flex-col gap-5">
-          <Kicker tone="light">{t("intro.kicker")}</Kicker>
+          <Kicker tone="light" className="text-koenigsblau">{t("intro.kicker")}</Kicker>
           <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
             {t("business.titel")}
           </h2>
@@ -91,9 +91,9 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
       </Section>
 
       {/* Social Events */}
-      <Section id="social-events" background="pergament">
+      <Section id="social-events" background="pergament" className="pt-10 sm:pt-16">
         <Container variant="text" className="flex flex-col gap-5">
-          <Kicker tone="light">{t("intro.kicker")}</Kicker>
+          <Kicker tone="light" className="text-koenigsblau">{t("intro.kicker")}</Kicker>
           <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau sm:text-4xl">
             {t("social.titel")}
           </h2>
@@ -153,7 +153,6 @@ export default async function EventsPage({ params, searchParams }: PageProps) {
           <EventRegistrationForm
             events={eventOptions}
             defaultEventId={preselected}
-            vertreterHint={t("business.text")}
           />
         </Container>
       </Section>

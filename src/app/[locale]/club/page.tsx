@@ -49,7 +49,7 @@ export default async function ClubPage({ params }: PageProps) {
       </div>
 
       {/* Einleitung „Unser Club" + Kontor-Geschichtstext */}
-      <Section background="pergament">
+      <Section background="pergament" className="pb-10 sm:pb-16">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
             <h1 className="font-serif text-4xl font-semibold leading-tight text-koenigsblau sm:text-5xl">
@@ -64,7 +64,7 @@ export default async function ClubPage({ params }: PageProps) {
       </Section>
 
       {/* Clubleben */}
-      <Section id="clubleben" background="pergament" className="pb-10 sm:pb-16">
+      <Section id="clubleben" background="pergament" className="pt-10 pb-10 sm:pt-16 sm:pb-16">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
             <Kicker tone="light" className="text-koenigsblau">{t("clubleben.kicker")}</Kicker>

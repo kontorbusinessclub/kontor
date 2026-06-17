@@ -49,6 +49,8 @@
       "branche": "Branche",
       "website": "Website",
       "veranstaltung": "Veranstaltung",
+      "event": "Event",
+      "unternehmen": "Unternehmen",
       "vertreter": "Vertreter",
       "istMitglied": "Ich bin bereits Mitglied",
       "pflichtfeld": "Pflichtfeld",
@@ -225,8 +227,13 @@
       "leerHinweis": "Aktuell sind keine weiteren Termine eingetragen. Der Auftakt ist am 18. Juni 2026 in Münster."
     },
     "anmeldung": {
+      "kicker": "Anmeldung",
       "titel": "Zum Event anmelden",
-      "intro": "Sag uns, zu welchem Event du kommst und ob du jemanden mitbringst."
+      "intro": "Sag uns, zu welchem Event du kommst und in welcher Rolle.",
+      "member": "Ich bin bereits Kontor Business Club Member.",
+      "vertretung": "Ich melde mich als Vertretung an.",
+      "gast": "Ich möchte mich als Gast anmelden.",
+      "vertretungLabel": "Ich vertrete folgenden Member:"
     }
   },
   "members": {

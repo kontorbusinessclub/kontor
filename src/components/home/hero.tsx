@@ -24,7 +24,7 @@ export async function Hero() {
         {t("hero.vorlauf")}
       </p>
 
-      <h1 className="mt-4 max-w-4xl font-serif text-[clamp(2.25rem,6vw,3.75rem)] font-semibold leading-tight text-champagner [text-shadow:0_2px_24px_rgba(20,24,31,0.45)]">
+      <h1 className="mt-4 max-w-5xl font-serif text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-tight text-champagner [text-shadow:0_2px_24px_rgba(20,24,31,0.45)]">
         {t("hero.titelZeile1")}
         <br />
         {t("hero.titelZeile2")}

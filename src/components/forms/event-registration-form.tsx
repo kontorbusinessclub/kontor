@@ -1,20 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import type { z } from "zod";
 import {
   eventRegistrationSchema,
   type EventRegistrationInput,
 } from "@/lib/forms/schemas";
-
-/**
- * Eingabe-Typ (vor zod-Transform): Checkboxen kommen als String/Boolean
- * aus dem DOM, das Schema coerced sie zum Ausgabe-Typ.
- */
-type EventFormValues = z.input<typeof eventRegistrationSchema>;
 import { postForm, honeypotProps, submitErrorKey } from "@/lib/forms/submit";
 import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
@@ -27,24 +20,21 @@ type EventRegistrationFormProps = {
   events: EventOption[];
   /** Vorausgewähltes Event (z.B. via Query-Param ?event= oder Karten-Klick). */
   defaultEventId?: string;
-  /** Hinweistext zur Vertreter-Regel (Business Events). */
-  vertreterHint: string;
 };
 
 type Status = "idle" | "success" | "error";
 
+const TEILNAHME = ["member", "vertretung", "gast"] as const;
+
 /**
- * Anmeldeformular für eine Veranstaltung (Aufgabe 12).
- *
- * „Anzahl Gäste" entfällt (12.1). Stattdessen Pflicht-Auswahl der
- * Veranstaltung aus der zentralen events-Liste (12.2), vorausgewählt
- * ist die nächste anstehende bzw. die per ?event= übergebene.
- * Versand über /api/event-registration.
+ * Anmeldeformular für eine Veranstaltung (Iteration 6 § 7–§ 9).
+ * Teilnahmeart als Radio-Auswahl (Member / Vertretung / Gast); bei
+ * „Vertretung" erscheint ein Pflicht-Eingabefeld. Versand über
+ * /api/event-registration.
  */
 export function EventRegistrationForm({
   events,
   defaultEventId,
-  vertreterHint,
 }: EventRegistrationFormProps) {
   const t = useTranslations("events.anmeldung");
   const tf = useTranslations("common.form");
@@ -63,8 +53,10 @@ export function EventRegistrationForm({
     handleSubmit,
     reset,
     setError,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
-  } = useForm<EventFormValues, unknown, EventRegistrationInput>({
+  } = useForm<EventRegistrationInput>({
     resolver: zodResolver(eventRegistrationSchema),
     defaultValues: {
       name: "",
@@ -73,11 +65,18 @@ export function EventRegistrationForm({
       telefon: "",
       nachricht: "",
       eventId: initialEventId,
-      vertreter: false,
-      istMitglied: false,
+      teilnahmeart: "member",
+      vertretungFuer: "",
       hp: "",
     },
   });
+
+  const teilnahmeart = watch("teilnahmeart");
+
+  // Konditionales Feld leeren, sobald eine andere Option gewählt wird (§ 9.3).
+  useEffect(() => {
+    if (teilnahmeart !== "vertretung") setValue("vertretungFuer", "");
+  }, [teilnahmeart, setValue]);
 
   async function onSubmit(values: EventRegistrationInput) {
     setStatus("idle");
@@ -91,8 +90,8 @@ export function EventRegistrationForm({
         telefon: "",
         nachricht: "",
         eventId: initialEventId,
-        vertreter: false,
-        istMitglied: false,
+        teilnahmeart: "member",
+        vertretungFuer: "",
         hp: "",
       });
       setStatus("success");
@@ -102,7 +101,7 @@ export function EventRegistrationForm({
     if (result.errors) {
       for (const [key, messages] of Object.entries(result.errors)) {
         if (key === "_form") continue;
-        setError(key as keyof EventFormValues, {
+        setError(key as keyof EventRegistrationInput, {
           type: "server",
           message: messages?.[0],
         });
@@ -115,7 +114,7 @@ export function EventRegistrationForm({
   return (
     <div className="mx-auto w-full max-w-[var(--container-text)]">
       <div className="flex flex-col gap-4">
-        <Kicker tone="light">{tf("veranstaltung")}</Kicker>
+        <Kicker tone="light" className="text-koenigsblau">{t("kicker")}</Kicker>
         <h2 className="font-serif text-3xl font-semibold leading-tight text-koenigsblau">
           {t("titel")}
         </h2>
@@ -133,7 +132,7 @@ export function EventRegistrationForm({
         <input {...honeypotProps} {...register("hp")} />
 
         <Field
-          label={tf("veranstaltung")}
+          label={tf("event")}
           htmlFor="event-eventId"
           required
           error={errors.eventId?.message}
@@ -141,7 +140,6 @@ export function EventRegistrationForm({
           <Select
             id="event-eventId"
             invalid={Boolean(errors.eventId)}
-            aria-describedby={errors.eventId ? "event-eventId-error" : undefined}
             {...register("eventId")}
           >
             {events.length === 0 ? (
@@ -157,66 +155,42 @@ export function EventRegistrationForm({
         </Field>
 
         <div className="grid gap-6 sm:grid-cols-2">
-          <Field
-            label={tf("name")}
-            htmlFor="event-name"
-            required
-            error={errors.name?.message}
-          >
+          <Field label={tf("name")} htmlFor="event-name" required error={errors.name?.message}>
             <Input
               id="event-name"
               type="text"
               autoComplete="name"
               invalid={Boolean(errors.name)}
-              aria-describedby={errors.name ? "event-name-error" : undefined}
               {...register("name")}
             />
           </Field>
 
-          <Field
-            label={tf("firma")}
-            htmlFor="event-firma"
-            required
-            error={errors.firma?.message}
-          >
+          <Field label={tf("unternehmen")} htmlFor="event-firma" required error={errors.firma?.message}>
             <Input
               id="event-firma"
               type="text"
               autoComplete="organization"
               invalid={Boolean(errors.firma)}
-              aria-describedby={errors.firma ? "event-firma-error" : undefined}
               {...register("firma")}
             />
           </Field>
 
-          <Field
-            label={tf("email")}
-            htmlFor="event-email"
-            required
-            error={errors.email?.message}
-          >
+          <Field label={tf("email")} htmlFor="event-email" required error={errors.email?.message}>
             <Input
               id="event-email"
               type="email"
               autoComplete="email"
               invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? "event-email-error" : undefined}
               {...register("email")}
             />
           </Field>
 
-          <Field
-            label={tf("telefon")}
-            htmlFor="event-telefon"
-            required
-            error={errors.telefon?.message}
-          >
+          <Field label={tf("telefon")} htmlFor="event-telefon" required error={errors.telefon?.message}>
             <Input
               id="event-telefon"
               type="tel"
               autoComplete="tel"
               invalid={Boolean(errors.telefon)}
-              aria-describedby={errors.telefon ? "event-telefon-error" : undefined}
               {...register("telefon")}
             />
           </Field>
@@ -225,54 +199,49 @@ export function EventRegistrationForm({
         <Field
           label={tf("nachricht")}
           htmlFor="event-nachricht"
+          required
           error={errors.nachricht?.message}
         >
           <Textarea
             id="event-nachricht"
             invalid={Boolean(errors.nachricht)}
-            aria-describedby={
-              errors.nachricht ? "event-nachricht-error" : undefined
-            }
             {...register("nachricht")}
           />
         </Field>
 
-        <div className="flex flex-col gap-4 rounded-md border border-koenigsblau/20 bg-white/60 p-5">
-          <label
-            htmlFor="event-istMitglied"
-            className="flex min-h-11 items-center gap-3 font-sans text-base text-tinte"
-          >
-            <input
-              id="event-istMitglied"
-              type="checkbox"
-              className="size-5 shrink-0 rounded border-koenigsblau/40 text-koenigsblau focus:outline-none focus-visible:ring-2 focus-visible:ring-kontorblau/40"
-              {...register("istMitglied")}
-            />
-            <span>{tf("istMitglied")}</span>
-          </label>
-
-          <div className="flex flex-col gap-1">
+        {/* Teilnahmeart: Radio-Logik im Champagner-Kasten (§ 9) */}
+        <fieldset className="flex flex-col gap-4 rounded-md border border-koenigsblau/20 bg-champagner p-5">
+          {TEILNAHME.map((opt) => (
             <label
-              htmlFor="event-vertreter"
+              key={opt}
               className="flex min-h-11 items-center gap-3 font-sans text-base text-tinte"
             >
               <input
-                id="event-vertreter"
-                type="checkbox"
-                className="size-5 shrink-0 rounded border-koenigsblau/40 text-koenigsblau focus:outline-none focus-visible:ring-2 focus-visible:ring-kontorblau/40"
-                aria-describedby="event-vertreter-hint"
-                {...register("vertreter")}
+                type="radio"
+                value={opt}
+                {...register("teilnahmeart")}
+                className="size-5 shrink-0 border-koenigsblau/40 text-koenigsblau focus:outline-none focus-visible:ring-2 focus-visible:ring-kontorblau/40"
               />
-              <span>{tf("vertreter")}</span>
+              <span>{t(opt)}</span>
             </label>
-            <p
-              id="event-vertreter-hint"
-              className="pl-8 font-sans text-sm text-tinte/70"
+          ))}
+
+          {teilnahmeart === "vertretung" ? (
+            <Field
+              label={t("vertretungLabel")}
+              htmlFor="event-vertretungFuer"
+              required
+              error={errors.vertretungFuer?.message}
             >
-              {vertreterHint}
-            </p>
-          </div>
-        </div>
+              <Input
+                id="event-vertretungFuer"
+                type="text"
+                invalid={Boolean(errors.vertretungFuer)}
+                {...register("vertretungFuer")}
+              />
+            </Field>
+          ) : null}
+        </fieldset>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <Button type="submit" disabled={isSubmitting}>
@@ -280,21 +249,13 @@ export function EventRegistrationForm({
           </Button>
 
           {status === "success" ? (
-            <p
-              id="event-form-status"
-              role="status"
-              className="font-sans text-base text-smaragd"
-            >
+            <p id="event-form-status" role="status" className="font-sans text-base text-smaragd">
               {tf("erfolg")}
             </p>
           ) : null}
 
           {status === "error" ? (
-            <p
-              id="event-form-status"
-              role="alert"
-              className="font-sans text-base text-smaragd"
-            >
+            <p id="event-form-status" role="alert" className="font-sans text-base text-smaragd">
               {tf(errorKey)}
             </p>
           ) : null}

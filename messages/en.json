@@ -49,6 +49,8 @@
       "branche": "Industry",
       "website": "Website",
       "veranstaltung": "Event",
+      "event": "Event",
+      "unternehmen": "Company",
       "vertreter": "Representative",
       "istMitglied": "I am already a member",
       "pflichtfeld": "Required",
@@ -225,8 +227,13 @@
       "leerHinweis": "There are currently no further dates listed. The opening night is on 18 June 2026 in Münster."
     },
     "anmeldung": {
+      "kicker": "Registration",
       "titel": "Register for an event",
-      "intro": "Tell us which event you are coming to and whether you are bringing someone along."
+      "intro": "Tell us which event you are coming to and in which role.",
+      "member": "I am already a Kontor Business Club Member.",
+      "vertretung": "I am registering as a representative.",
+      "gast": "I would like to register as a guest.",
+      "vertretungLabel": "I represent the following Member:"
     }
   },
   "members": {

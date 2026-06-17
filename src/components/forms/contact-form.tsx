@@ -111,17 +111,18 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label={t("unternehmensname")} htmlFor="ct-unternehmen" error={errors.unternehmensname?.message}>
+        <Field label={t("unternehmensname")} htmlFor="ct-unternehmen" required error={errors.unternehmensname?.message}>
           <Input
             id="ct-unternehmen"
             type="text"
             autoComplete="organization"
+            invalid={Boolean(errors.unternehmensname)}
             {...register("unternehmensname")}
           />
         </Field>
 
-        <Field label={t("position")} htmlFor="ct-position" error={errors.position?.message}>
-          <Input id="ct-position" type="text" {...register("position")} />
+        <Field label={t("position")} htmlFor="ct-position" required error={errors.position?.message}>
+          <Input id="ct-position" type="text" invalid={Boolean(errors.position)} {...register("position")} />
         </Field>
 
         <Field label={t("email")} htmlFor="ct-email" required error={errors.email?.message}>

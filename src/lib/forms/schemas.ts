@@ -20,30 +20,16 @@ const nachricht = z.string().trim().min(10, "Bitte schreib uns ein paar Zeilen."
 export const honeypot = z.string().max(0).optional().or(z.literal(""));
 
 /**
- * Form-sichere Boolean-Konvertierung. z.coerce.boolean() nutzt reine
- * JS-Truthiness, womit der String "false" zu true würde. Checkboxen
- * senden je nach Form "on", "true", "1" oder gar nichts.
- */
-const formBoolean = z
-  .union([z.boolean(), z.string(), z.undefined(), z.null()])
-  .transform((value) => {
-    if (typeof value === "boolean") return value;
-    if (value == null) return false;
-    const normalized = value.trim().toLowerCase();
-    return normalized === "true" || normalized === "on" || normalized === "1";
-  });
-
-/**
- * Kontaktformular (Iteration 5 § 6). Neue Feldliste mit Anrede, getrenntem
- * Vor-/Nachnamen und optionalem Unternehmensblock. Telefon ist optional.
+ * Kontaktformular (Iteration 5 § 6 / Iteration 6 § 10). Unternehmensname
+ * und Position im Unternehmen sind jetzt Pflichtfelder.
  */
 export const contactSchema = z.object({
   anrede: z.enum(["herr", "frau"]),
   titel: z.string().trim().optional().or(z.literal("")),
   vorname: z.string().trim().min(2, "Bitte gib deinen Vornamen an."),
   name: z.string().trim().min(2, "Bitte gib deinen Namen an."),
-  unternehmensname: z.string().trim().optional().or(z.literal("")),
-  position: z.string().trim().optional().or(z.literal("")),
+  unternehmensname: z.string().trim().min(2, "Bitte gib den Unternehmensnamen an."),
+  position: z.string().trim().min(2, "Bitte gib deine Position im Unternehmen an."),
   email,
   telefon: z.string().trim().optional().or(z.literal("")),
   nachricht,
@@ -51,20 +37,32 @@ export const contactSchema = z.object({
 });
 
 /**
- * Event-Anmeldung (Aufgabe 12): „Anzahl Gäste" entfernt, stattdessen
- * Pflicht-Auswahl der Veranstaltung über die id aus der zentralen Liste.
+ * Event-Anmeldung (Iteration 6 § 8/§ 9): „Firma"→„Unternehmen" (UI),
+ * Nachricht ist Pflicht, und die Teilnahmeart wird per Radio gewählt
+ * (Member / Vertretung / Gast). Bei „Vertretung" ist das Feld
+ * „vertretungFuer" Pflicht.
  */
-export const eventRegistrationSchema = z.object({
-  name,
-  firma,
-  email,
-  telefon,
-  nachricht: z.string().trim().optional().or(z.literal("")),
-  eventId: z.string().trim().min(1, "Bitte wähle eine Veranstaltung."),
-  vertreter: formBoolean,
-  istMitglied: formBoolean,
-  hp: honeypot,
-});
+export const eventRegistrationSchema = z
+  .object({
+    name,
+    firma,
+    email,
+    telefon,
+    nachricht,
+    eventId: z.string().trim().min(1, "Bitte wähle eine Veranstaltung."),
+    teilnahmeart: z.enum(["member", "vertretung", "gast"]),
+    vertretungFuer: z.string().trim().optional().or(z.literal("")),
+    hp: honeypot,
+  })
+  .superRefine((data, ctx) => {
+    if (data.teilnahmeart === "vertretung" && !data.vertretungFuer) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["vertretungFuer"],
+        message: "Bitte gib an, wen du vertrittst.",
+      });
+    }
+  });
 
 /**
  * Veranstaltungs-Feedback (Aufgabe 12.3). E-Mail ist Pflicht

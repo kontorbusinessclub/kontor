@@ -425,8 +425,13 @@ function DateSelect({
   const t = useTranslations("antrag");
   const locale = useLocale();
   const error = fieldError(form, name);
-  const value = (form.watch(name) as string) || "";
-  const [yy = "", mm = "", dd = ""] = value.split("-");
+  // Lokaler State je Teil; nur das vollständige Datum wird ins Formular
+  // geschrieben (Bugfix Iteration 6 § 2: einzelne Auswahl blieb sonst nicht
+  // erhalten, weil das kombinierte Feld bis zur Vollständigkeit leer war).
+  const initial = ((form.getValues(name) as string) || "").split("-");
+  const [yy, setYy] = useState(initial[0] ?? "");
+  const [mm, setMm] = useState(initial[1] ?? "");
+  const [dd, setDd] = useState(initial[2] ?? "");
 
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, "0"));
   const months = Array.from({ length: 12 }, (_, i) => ({
@@ -435,12 +440,13 @@ function DateSelect({
   }));
 
   function update(part: "y" | "m" | "d", val: string) {
-    const cur = ((form.getValues(name) as string) || "").split("-");
-    const arr = [cur[0] ?? "", cur[1] ?? "", cur[2] ?? ""];
-    if (part === "y") arr[0] = val;
-    else if (part === "m") arr[1] = val;
-    else arr[2] = val;
-    const combined = arr[0] && arr[1] && arr[2] ? `${arr[0]}-${arr[1]}-${arr[2]}` : "";
+    const y = part === "y" ? val : yy;
+    const m = part === "m" ? val : mm;
+    const d = part === "d" ? val : dd;
+    if (part === "y") setYy(val);
+    else if (part === "m") setMm(val);
+    else setDd(val);
+    const combined = y && m && d ? `${y}-${m}-${d}` : "";
     form.setValue(name, combined, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
   }
 
