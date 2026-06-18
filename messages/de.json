@@ -73,7 +73,7 @@
       "titel": "Herzlich willkommen im Kontor.",
       "absaetze": [
         "Wir verbinden Menschen, die unternehmerisch denken und handeln.",
-        "Geschäftsführern, Selbstständigen sowie ambitionierten Gründern bieten wir einen erlesenen Kreis, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen.\nDenn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt.",
+        "Geschäftsführern, Selbstständigen sowie ambitionierten Gründern bieten wir ein erlesenes Netzwerk, in dem aus persönlicher Begegnung tragfähige Geschäftsbeziehungen erwachsen.\nDenn wir sind überzeugt: Empfehlungen entstehen aus Vertrauen, und Vertrauen entsteht dort, wo man sich kennt und schätzt.",
         "Aus diesem Grund schaffen wir den passenden Rahmen für den Austausch unter Weggefährten, für gemeinsame Erlebnisse und für ein Netzwerk, das verbindlich trägt."
       ]
     },
@@ -170,8 +170,11 @@
   },
   "club": {
     "kicker": "Club",
-    "titel": "Unser Club",
-    "intro": "Im hanseatischen Erbe war ein Kontor mehr als ein Handelsplatz. Es war eine privilegierte Niederlassung, in der sich Kaufleute zu festen Kreisen zusammenfanden, gemeinsame Regeln vereinbarten und einander auf Wort und Ehre verbunden waren. Diesen Geist führen wir fort: Im Kontor Business Club versammelt sich ein kuratierter Kreis aus Unternehmern, in dem aus persönlicher Begegnung Vertrauen erwächst und aus Vertrauen tragfähige Empfehlungen sowie persönliche Verbundenheit entstehen.",
+    "titel": "Unser Kontor",
+    "introAbsaetze": [
+      "Im hanseatischen Erbe war ein Kontor mehr als ein Handelsplatz. Es handelte sich um eine privilegierte Niederlassung und ein soziales Zentrum einer Kaufmannsgemeinschaft. Kaufleute fanden sich in festen Kreisen unter gemeinsamen Regeln zur Verhandlung, Versorgung, Vereinbarung und Abwicklung zusammen.",
+      "Diesen Geist führen wir fort: Im Kontor Business Club ermöglichen wir den Zusammenschluss einer kuratierten Gemeinschaft aus Unternehmern, in dem aus persönlicher Begegnung Vertrauen erwächst und aus Vertrauen tragfähige Empfehlungen sowie persönliche Verbundenheit entstehen."
+    ],
     "clubleben": {
       "kicker": "Clubleben",
       "titel": "So fühlt sich das Kontor an",
