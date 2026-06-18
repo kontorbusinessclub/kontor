@@ -30,25 +30,29 @@ export default async function ClubPage({ params }: PageProps) {
   setRequestLocale(locale);
   const t = await getTranslations("club");
 
+  const introAbsaetze = t.raw("introAbsaetze") as string[];
   const clublebenAbsaetze = t.raw("clubleben.absaetze") as string[];
   const philosophieAbsaetze = t.raw("philosophie.absaetze") as string[];
   const chartaPunkte = t.raw("charta.punkte") as string[];
 
   return (
     <>
-      {/* Hero: nur Bild, ohne Text/Filter (Iteration 5 § 4.2) */}
+      {/* Hero: nur Bild, ohne Filter (Iteration 7 § 6) */}
       <div className="relative min-h-[42vh] w-full overflow-hidden">
         <Image
-          src="/images/muenster-altstadt.jpg"
-          alt="Atmosphärische Gasse in der Münsteraner Altstadt"
+          src="/images/Club_ohne_Wasserzeichen.png"
+          alt="Clubbereich Kontor Business Club"
           fill
           priority
+          quality={90}
           sizes="100vw"
           className="object-cover"
         />
       </div>
 
-      {/* Einleitung „Unser Club" + Kontor-Geschichtstext */}
+      {/* Einleitung „Unser Kontor" + Kontor-Geschichtstext.
+          Typografie identisch zum Welcome-Text der Startseite
+          (text-lg, font-bold, leading-relaxed, text-tinte/85). */}
       <Section background="pergament" className="pb-10 sm:pb-16">
         <Container variant="text">
           <Reveal className="flex flex-col gap-5">
@@ -56,9 +60,14 @@ export default async function ClubPage({ params }: PageProps) {
               {t("titel")}
             </h1>
             <GoldRule className="mx-0" />
-            <p className="font-sans text-xl font-light leading-relaxed text-tinte/85">
-              {t("intro")}
-            </p>
+            {introAbsaetze.map((absatz, index) => (
+              <p
+                key={index}
+                className="font-sans text-lg font-bold leading-relaxed text-tinte/85"
+              >
+                {absatz}
+              </p>
+            ))}
           </Reveal>
         </Container>
       </Section>

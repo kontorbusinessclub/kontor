@@ -37,7 +37,7 @@ export default async function MembersPage({ params }: PageProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[50%_80%]"
         />
       </div>
 

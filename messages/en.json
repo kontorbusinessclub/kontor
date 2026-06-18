@@ -73,7 +73,7 @@
       "titel": "A warm welcome to Kontor.",
       "absaetze": [
         "We bring together people who think and act entrepreneurially.",
-        "To managing directors, self-employed professionals and ambitious founders we offer a select circle in which personal encounters grow into lasting business relationships.\nFor we are convinced that recommendations arise from trust, and trust arises where people know and value one another.",
+        "To managing directors, self-employed professionals and ambitious founders we offer a select network in which personal encounters grow into lasting business relationships.\nFor we are convinced that recommendations arise from trust, and trust arises where people know and value one another.",
         "That is why we create the right setting for exchange among companions, for shared experiences and for a network that carries with commitment."
       ]
     },
@@ -170,8 +170,11 @@
   },
   "club": {
     "kicker": "Club",
-    "titel": "Our club",
-    "intro": "In the Hanseatic tradition, a Kontor was more than a place of trade. It was a privileged establishment in which merchants gathered in defined circles, agreed upon shared rules and were bound to one another by word and honour. We carry this spirit forward: At Kontor Business Club, a curated circle of entrepreneurs comes together, where trust grows out of personal encounter and meaningful recommendations as well as personal connections grow out of trust.",
+    "titel": "Our Kontor",
+    "introAbsaetze": [
+      "In the Hanseatic tradition, a Kontor was more than a place of trade. It was a privileged establishment and a social centre of a merchant community. Merchants gathered in defined circles under shared rules for negotiation, supply, agreement and settlement.",
+      "We carry this spirit forward: At Kontor Business Club, we enable the gathering of a curated community of entrepreneurs in which trust grows out of personal encounter, and from trust emerge meaningful recommendations as well as personal connections."
+    ],
     "clubleben": {
       "kicker": "Club life",
       "titel": "How Kontor feels",
